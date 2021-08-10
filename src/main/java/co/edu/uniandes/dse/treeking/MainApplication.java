@@ -1,4 +1,4 @@
-package co.edu.uniandes.dse.ZZZ;
+package co.edu.uniandes.dse.treeking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

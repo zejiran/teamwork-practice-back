@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.uniandes.dse</groupId>
-	<artifactId>sXXX_ZZZ</artifactId>
+	<artifactId>s3_treeking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sXXX_ZZZ</name>
+	<name>s3_treeking</name>
 	<description>Course Project for ISIS2603</description>
 	<properties>
 		<java.version>11</java.version>
