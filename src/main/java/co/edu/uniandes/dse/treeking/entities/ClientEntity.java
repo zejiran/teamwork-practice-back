@@ -12,7 +12,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 @Getter
 @Setter
-public class ClientEntity extends BaseEntity{
+public abstract class ClientEntity extends BaseEntity{
 	
 	@PodamExclude
 	@OneToOne(cascade = CascadeType.ALL)
