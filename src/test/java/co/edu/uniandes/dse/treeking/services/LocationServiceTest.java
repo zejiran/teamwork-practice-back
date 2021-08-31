@@ -54,7 +54,7 @@ class LocationServiceTest {
 	}
 	
 	private void limpiarData() {
-		entityManager.getEntityManager().createQuery("DELETE FROM LocationEntity WHERE 1");
+		entityManager.getEntityManager().createQuery("delete from LocationEntity");
 	}
 	
 	private void insertarData() {
