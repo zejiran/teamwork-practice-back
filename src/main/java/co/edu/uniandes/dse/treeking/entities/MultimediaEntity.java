@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import co.edu.uniandes.dse.treeking.enums.FileType;
+
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -12,19 +14,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Getter
 @Setter
 public class MultimediaEntity extends BaseEntity {
-	private String filename;
+	private String fileName;
+	private FileType mediaType;
 	private String extension;
-	private String routeName;
 
 	@PodamExclude
 	@ManyToOne
 	private RouteEntity route;
-	
+
 	@PodamExclude
 	@ManyToOne
 	private PostEntity post;
 	
 	@PodamExclude
-	@OneToOne
+	@OneToOne(mappedBy = "homeImage")
 	private ComplementaryInformationEntity complementaryInformation;
 }
