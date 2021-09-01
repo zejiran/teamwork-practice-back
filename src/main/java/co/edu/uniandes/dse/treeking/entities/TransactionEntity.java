@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Getter
 @Setter
@@ -16,15 +17,11 @@ public class TransactionEntity extends BaseEntity {
 	
 	private PAYMENT payment;
 	private Integer value;
-	
-	/*
+  
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	 */
-	
-	/*
+
 	@PodamExclude
 	@ManyToOne
 	private ClientEntity client;
-	*/
 }
