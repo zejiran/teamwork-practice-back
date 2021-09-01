@@ -40,7 +40,7 @@ class PostServiceTest {
 	 * Limpia las tablas que están implicadas en la prueba.
 	 */
 	private void clearData() {
-		entityManager.getEntityManager().createQuery("delete from EnterpriseEntity").executeUpdate();
+		entityManager.getEntityManager().createQuery("delete from PostEntity").executeUpdate();
 	}
 
 	private void insertData() {
@@ -60,11 +60,16 @@ class PostServiceTest {
 	@Test
 	void testGetPosts() {
         List<PostEntity> posts = postService.getPosts();
-        assertEquals(posts.size(), postList.size());
+        assertEquals(postList.size(), posts.size());
         
-        PostEntity post1 = postList.get(0);
-        PostEntity post2 = entityManager.find(PostEntity.class, post1.getId());
-        assertEquals(post1.getId(), post2.getId());
+		for (PostEntity entity : posts) {
+			boolean found = false;
+			for (PostEntity storedEntity : postList)
+				if (entity.getId().equals(storedEntity.getId())) {
+					found = true;
+				}
+			assertTrue(found);
+		}
 	}
 
 }
