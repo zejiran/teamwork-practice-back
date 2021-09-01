@@ -1,7 +1,14 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import javax.persistence.Entity;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import co.edu.uniandes.dse.treeking.enums.Payment;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -11,11 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class TransactionEntity extends BaseEntity {
 	
-	enum PAYMENT {
-		CREDITCARD, DEBITCARD
-	}
-	
-	private PAYMENT payment;
+	private Payment payment;
 	private Integer value;
   
 	@Temporal(TemporalType.DATE)
