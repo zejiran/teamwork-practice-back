@@ -25,7 +25,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(TransactionService.class)
 class TransactionServiceTest {
-	
+
 	@Autowired
 	private TransactionService transactionService;
 
@@ -40,7 +40,7 @@ class TransactionServiceTest {
 	 * Limpia las tablas que están implicadas en la prueba.
 	 */
 	private void clearData() {
-		entityManager.getEntityManager().createQuery("delete from EnterpriseEntity").executeUpdate();
+		entityManager.getEntityManager().createQuery("delete from TransactionEntity").executeUpdate();
 	}
 
 	private void insertData() {
@@ -59,12 +59,17 @@ class TransactionServiceTest {
 
 	@Test
 	void testGetPosts() {
-        List<TransactionEntity> transactions = transactionService.getTransactions();
-        assertEquals(transactions.size(), transactionList.size());
-        
-        TransactionEntity transaction1 = transactionList.get(0);
-        TransactionEntity transaction2 = entityManager.find(TransactionEntity.class, transaction1.getId());
-        assertEquals(transaction1.getId(), transaction2.getId());
+		List<TransactionEntity> transactions = transactionService.getTransactions();
+		assertEquals(transactionList.size(), transactions.size());
+
+		for (TransactionEntity entity : transactions) {
+			boolean found = false;
+			for (TransactionEntity storedEntity : transactionList)
+				if (entity.getId().equals(storedEntity.getId())) {
+					found = true;
+				}
+			assertTrue(found);
+		}
 	}
 
 }
