@@ -27,6 +27,6 @@ public class MultimediaEntity extends BaseEntity {
 	private PostEntity post;
 	
 	@PodamExclude
-	@OneToOne(mappedBy = "homeImage")
+	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
 }

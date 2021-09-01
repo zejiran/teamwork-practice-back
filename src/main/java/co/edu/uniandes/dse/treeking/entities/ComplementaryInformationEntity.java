@@ -14,6 +14,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ComplementaryInformationEntity extends BaseEntity {
 	//TODO: add atributes of ComplementaryInformation
 	@PodamExclude
-	@OneToOne
+	@OneToOne(mappedBy = "complementaryInformation")
 	private MultimediaEntity homeImage;
 }
