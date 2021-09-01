@@ -37,7 +37,7 @@ public class OutingEntity extends BaseEntity{
 			   cascade = CascadeType.PERSIST, 
 			   fetch = FetchType.LAZY, 
 			   orphanRemoval = true)
-	private List<RouteEntity> route;
+	private List<RouteEntity> routes;
 	
 	@PodamExclude
 	@OneToOne
