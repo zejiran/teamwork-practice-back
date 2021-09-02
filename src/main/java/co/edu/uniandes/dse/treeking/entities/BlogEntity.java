@@ -6,6 +6,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,5 +15,5 @@ import java.util.List;
 public class BlogEntity extends BaseEntity{
     @PodamExclude
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY)
-    private List<PostEntity> blogPosts;
+    private List<PostEntity> blogPosts = new ArrayList<>();
 }
