@@ -21,48 +21,43 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Getter
 @Setter
 @Entity
-public class OutingEntity extends BaseEntity{
+public class OutingEntity extends BaseEntity {
 	private String name;
-	
+
 	@Temporal(TemporalType.DATE)
 	@PodamStrategyValue(DateStrategy.class)
 	private Date date;
-	
+
 	private String place;
-	
+
 	private Integer participationCost;
-	
+
 	@PodamExclude
-	@OneToMany(mappedBy = "outing", 
-			   cascade = CascadeType.PERSIST, 
-			   fetch = FetchType.LAZY, 
-			   orphanRemoval = true)
+	@OneToMany(mappedBy = "outing", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<RouteEntity> routes;
-	
+
 	@PodamExclude
-	@OneToOne
+	@OneToOne(mappedBy = "outing")
 	private ComplementaryInformationEntity complementaryInformation;
-	
+
 	@PodamExclude
 	@OneToOne
 	private ItineraryEntity itinerary;
-	
+
 	@PodamExclude
 	@OneToOne
 	private ReviewEntity review;
-	
+
 	@PodamExclude
-	@ManyToOne
-	private ActivityEntity activities;
-	
+	@OneToMany(mappedBy = "outing")
+	private List<ActivityEntity> activities;
+
 	@PodamExclude
-	@ManyToOne
-	private GuideEntity guides;
-	
+	@OneToMany
+	private List<GuideEntity> guides;
+
 	@PodamExclude
-	@OneToMany(mappedBy = "outing",
-			   fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
 	private List<QuotationEntity> quotation;
 
-	
 }
