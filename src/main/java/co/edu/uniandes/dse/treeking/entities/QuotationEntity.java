@@ -28,7 +28,9 @@ public class QuotationEntity extends BaseEntity {
 	@ManyToOne
 	private OutingEntity outing;
 
+
 	@PodamExclude
 	@ManyToOne
-	private CalendarEntity calendar;
+	private CalendarEntity quotation;
+
 }
