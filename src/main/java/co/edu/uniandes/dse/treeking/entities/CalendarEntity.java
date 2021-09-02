@@ -1,5 +1,4 @@
 package co.edu.uniandes.dse.treeking.entities;
-
 import lombok.Getter;
 import lombok.Setter;
 
