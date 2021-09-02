@@ -8,6 +8,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 
 public class ReviewEntity  extends BaseEntity{
     @ElementCollection
-    private ArrayList<Integer> ratings;
+    private List<Integer> ratings;
     @OneToMany
-    private ArrayList<CommentEntity> reviews;
+    private List<CommentEntity> reviews;
 
 }
