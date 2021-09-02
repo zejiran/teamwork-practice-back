@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
+import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -25,7 +26,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(EnterpriseService.class)
 class EnterpriseServiceTest {
-	
+
 	@Autowired
 	private EnterpriseService enterpriseService;
 
@@ -59,12 +60,17 @@ class EnterpriseServiceTest {
 
 	@Test
 	void testGetEnterprises() {
-        List<EnterpriseEntity> enterprises = enterpriseService.getEnterprises();
-        assertEquals(enterprises.size(), enterpriseList.size());
-        
-        EnterpriseEntity enterprise1 = enterpriseList.get(0);
-        EnterpriseEntity enterprise2 = entityManager.find(EnterpriseEntity.class, enterprise1.getId());
-        assertEquals(enterprise1.getId(), enterprise2.getId());
+		List<EnterpriseEntity> enterprises = enterpriseService.getEnterprises();
+		assertEquals(enterpriseList.size(), enterprises.size());
+
+		for (EnterpriseEntity entity : enterprises) {
+			boolean found = false;
+			for (EnterpriseEntity storedEntity : enterpriseList)
+				if (entity.getId().equals(storedEntity.getId())) {
+					found = true;
+				}
+			assertTrue(found);
+		}
 	}
 
 }

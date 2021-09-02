@@ -16,38 +16,38 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
+import co.edu.uniandes.dse.treeking.entities.PostEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
-@Import(TransactionService.class)
-class TransactionServiceTest {
-
+@Import(PostService.class)
+class PostServiceTest {
+	
 	@Autowired
-	private TransactionService transactionService;
+	private PostService postService;
 
 	@Autowired
 	private TestEntityManager entityManager;
 
 	private PodamFactory factory = new PodamFactoryImpl();
 
-	private List<TransactionEntity> transactionList = new ArrayList<>();
+	private List<PostEntity> postList = new ArrayList<>();
 
 	/**
 	 * Limpia las tablas que están implicadas en la prueba.
 	 */
 	private void clearData() {
-		entityManager.getEntityManager().createQuery("delete from TransactionEntity").executeUpdate();
+		entityManager.getEntityManager().createQuery("delete from PostEntity").executeUpdate();
 	}
 
 	private void insertData() {
 		for (int i = 0; i < 3; i++) {
-			TransactionEntity transactionEntity = factory.manufacturePojo(TransactionEntity.class);
-			entityManager.persist(transactionEntity);
-			transactionList.add(transactionEntity);
+			PostEntity postEntity = factory.manufacturePojo(PostEntity.class);
+			entityManager.persist(postEntity);
+			postList.add(postEntity);
 		}
 	}
 
@@ -58,13 +58,13 @@ class TransactionServiceTest {
 	}
 
 	@Test
-	void testGetTransactions() {
-		List<TransactionEntity> transactions = transactionService.getTransactions();
-		assertEquals(transactionList.size(), transactions.size());
-
-		for (TransactionEntity entity : transactions) {
+	void testGetPosts() {
+        List<PostEntity> posts = postService.getPosts();
+        assertEquals(postList.size(), posts.size());
+        
+		for (PostEntity entity : posts) {
 			boolean found = false;
-			for (TransactionEntity storedEntity : transactionList)
+			for (PostEntity storedEntity : postList)
 				if (entity.getId().equals(storedEntity.getId())) {
 					found = true;
 				}

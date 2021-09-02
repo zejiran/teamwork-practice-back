@@ -17,7 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Setter
 @Entity
 public class EnterpriseEntity extends BaseEntity {
-	
+
 	@PodamExclude
 	@OneToOne
 	protected PersonEntity representative;
