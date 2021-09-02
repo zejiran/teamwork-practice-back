@@ -1,6 +1,5 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -17,10 +16,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Setter
 @Entity
 public class TransactionEntity extends BaseEntity {
-	
+
 	private PaymentType payment;
 	private Integer value;
-  
+
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 

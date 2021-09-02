@@ -22,7 +22,7 @@ public class MultimediaEntity extends BaseEntity {
 	@PodamExclude
 	@ManyToOne
 	private PostEntity post;
-	
+
 	@PodamExclude
 	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
