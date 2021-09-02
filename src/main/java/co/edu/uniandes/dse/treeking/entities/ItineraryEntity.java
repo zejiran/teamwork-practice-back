@@ -8,9 +8,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class ItineraryEntity extends BaseEntity{
-	
+public class ItineraryEntity extends BaseEntity {
+
 	private String lodging;
-	
+
 	private String transportation;
 }

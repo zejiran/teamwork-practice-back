@@ -1,6 +1,5 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -11,15 +10,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 @Getter
 @Setter
-public class ComplementaryInformationEntity extends BaseEntity{
-	
-	private String description;
-	
-	private String recomendation; 
-	
+public class NaturalPersonEntity extends ClientEntity {
 	@PodamExclude
-	@OneToOne(mappedBy = "complementaryInformation")
-	private MultimediaEntity homeImage;
-	
-
+	@OneToOne
+	private PersonEntity person;
 }

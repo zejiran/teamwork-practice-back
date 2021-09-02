@@ -10,6 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter 
+
 public class ActivityEntity extends BaseEntity {
 	
 	private String name;
@@ -19,5 +20,6 @@ public class ActivityEntity extends BaseEntity {
 	private LocalDateTime time;
 	
 	private Integer minutes;
+	
 	
 }

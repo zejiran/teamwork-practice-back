@@ -25,6 +25,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(ItineraryService.class)
 
+
 class ItineraryServiceTest {
 
 	@Autowired
