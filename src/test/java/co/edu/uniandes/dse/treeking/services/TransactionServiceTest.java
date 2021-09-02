@@ -58,7 +58,7 @@ class TransactionServiceTest {
 	}
 
 	@Test
-	void testGetPosts() {
+	void testGetTransactions() {
 		List<TransactionEntity> transactions = transactionService.getTransactions();
 		assertEquals(transactionList.size(), transactions.size());
 
