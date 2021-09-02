@@ -2,37 +2,27 @@ package co.edu.uniandes.dse.treeking.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class PostEntity extends BaseEntity {
-	
-	private Integer ratings;
-	
-	@PodamExclude
-	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> multimedia;
-	
+public class ClientEntity extends BaseEntity {
 
 	@PodamExclude
-	@ManyToOne
-	private BlogEntity blog;
-
+	@OneToOne(cascade = CascadeType.ALL)
+	private CalendarEntity calendar;
 
 	@PodamExclude
-	@ManyToOne
-	private CommentEntity comment;
-	
-	@PodamExclude
-	@ManyToOne
-	private UserEntity user;
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	protected List<TransactionEntity> transactions;
 }

@@ -7,12 +7,24 @@ import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class MultimediaEntity extends BaseEntity {
-	
+	private String fileName;
+	private FileType mediaType;
+	private String extension;
+
+	@PodamExclude
+	@ManyToOne
+	private RouteEntity route;
+
 	@PodamExclude
 	@ManyToOne
 	private PostEntity post;
+	
+	@PodamExclude
+	@OneToOne
+	private ComplementaryInformationEntity complementaryInformation;
 }
+

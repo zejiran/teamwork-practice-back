@@ -10,11 +10,14 @@ import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class UserEntity extends BaseEntity{
-	
+public class UserEntity extends BaseEntity {
+	protected String user;
+	protected String password;
+	protected String mail;
+
 	@PodamExclude
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<PostEntity> posts;
