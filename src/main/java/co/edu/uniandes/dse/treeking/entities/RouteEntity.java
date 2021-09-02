@@ -1,8 +1,6 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import co.edu.uniandes.dse.treeking.enums.Difficulty;
 import lombok.Getter;
@@ -31,4 +29,9 @@ public class RouteEntity extends BaseEntity {
     @PodamExclude
     @OneToMany(mappedBy = "multimedia", fetch = FetchType.LAZY)
     private List<MultimediaEntity> multimedialist = new ArrayList<>();
+
+    @PodamExclude
+    @ManyToOne
+    private OutingEntity outing;
+
 }
