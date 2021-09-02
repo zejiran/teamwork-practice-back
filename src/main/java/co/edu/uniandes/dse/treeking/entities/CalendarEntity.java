@@ -1,13 +1,17 @@
 package co.edu.uniandes.dse.treeking.entities;
-
-import javax.persistence.Entity;
-
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Getter
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 @Setter
-public class CalendarEntity extends BaseEntity {
-	// TODO: add atributes of CalendarEntity
+@Getter
+@Entity
+public class CalendarEntity extends BaseEntity{
+    /*
+      no existe quotation entity x ahora :(
+    @ManyToOne
+    private QuotationEntity history;
+    */
 }
