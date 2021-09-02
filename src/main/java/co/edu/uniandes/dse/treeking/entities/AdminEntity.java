@@ -11,8 +11,4 @@ import javax.persistence.Entity;
 @Setter
 public class AdminEntity extends BaseEntity{ // TODO: extender de UserEntity
 
-    public void programarSalida(){ // TODO: poner los parametros route, fecha,
-
-    }
-
 }
