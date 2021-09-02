@@ -44,11 +44,11 @@ class AdminServiceTest {
     private List<AdminEntity> adminList = new ArrayList<>();
 
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 	}
 
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
 		 clearData();
          insertData();
 	}
