@@ -14,8 +14,11 @@ import java.util.List;
 public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<CommentEntity> repleis;
 
+    @PodamExclude
+    @ManyToOne
+    private CommentEntity comment;
 
 }
