@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -16,7 +14,8 @@ import java.util.List;
 public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
-    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<CommentEntity> repleis;
+
 
 }
