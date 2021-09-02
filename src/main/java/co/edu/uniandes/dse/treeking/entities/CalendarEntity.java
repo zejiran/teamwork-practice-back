@@ -9,9 +9,6 @@ import javax.persistence.ManyToOne;
 @Getter
 @Entity
 public class CalendarEntity extends BaseEntity{
-    /*
-      no existe quotation entity x ahora :(
     @ManyToOne
     private QuotationEntity history;
-    */
 }
