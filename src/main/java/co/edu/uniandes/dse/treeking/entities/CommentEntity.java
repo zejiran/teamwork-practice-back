@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private ArrayList<CommentEntity> repleis;
 
 }
