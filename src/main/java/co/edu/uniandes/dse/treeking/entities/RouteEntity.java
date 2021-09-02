@@ -23,4 +23,12 @@ public class RouteEntity extends BaseEntity {
     @PodamExclude
     @OneToMany(mappedBy = "map", fetch = FetchType.LAZY)
     private List<LocationEntity> locationlist = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
+    private List<ReviewEntity> reviewlist = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "multimedia", fetch = FetchType.LAZY)
+    private List<MultimediaEntity> multimedialist = new ArrayList<>();
 }
