@@ -19,5 +19,4 @@ public class LocationEntity extends BaseEntity {
 	@PodamExclude
 	@ManyToOne
 	private RouteEntity map;
-
 }
