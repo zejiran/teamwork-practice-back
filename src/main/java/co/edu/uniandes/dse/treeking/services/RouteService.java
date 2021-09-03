@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import co.edu.uniandes.dse.treeking.entities.RouteEntity;
-import co.edu.uniandes.dse.treeking.repositories.LocationRepository;
 import co.edu.uniandes.dse.treeking.repositories.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
