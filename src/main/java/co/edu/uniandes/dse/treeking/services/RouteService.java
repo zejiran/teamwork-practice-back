@@ -21,7 +21,7 @@ public class RouteService {
     @Transactional
     public RouteEntity getPrimerRoute() {
         List<RouteEntity> rutas = routeRepository.findAll();
-        if ( rutas.size() > 0 ){
+        if ( rutas.isEmpty() ){
             return rutas.get(0);
         } else {
             return null;
