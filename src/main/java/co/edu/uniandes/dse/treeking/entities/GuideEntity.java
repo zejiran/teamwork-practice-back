@@ -2,7 +2,6 @@ package co.edu.uniandes.dse.treeking.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;

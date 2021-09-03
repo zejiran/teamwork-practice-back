@@ -1,7 +1,7 @@
 package co.edu.uniandes.dse.treeking.entities;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
