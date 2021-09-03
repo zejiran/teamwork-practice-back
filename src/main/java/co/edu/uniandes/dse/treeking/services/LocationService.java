@@ -22,7 +22,7 @@ public class LocationService {
 	@Transactional
 	public LocationEntity getPrimerLocation() {
 		List<LocationEntity> locaciones = locationRepository.findAll();
-		if ( locaciones.size() > 0 ) {
+		if ( locaciones.isEmpty() ) {
 			return locaciones.get( 0 );
 		} else {
 			return null;
