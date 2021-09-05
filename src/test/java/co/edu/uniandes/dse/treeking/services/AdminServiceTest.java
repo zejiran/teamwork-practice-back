@@ -1,6 +1,12 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import co.edu.uniandes.dse.treeking.entities.AdminEntity;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,14 +16,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import co.edu.uniandes.dse.treeking.entities.AdminEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
-
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Pruebas de lógica de Student
@@ -29,19 +31,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Transactional
 @Import(AdminService.class)
 
-
-
 class AdminServiceTest {
 
 	@Autowired
-    private AdminService adminService;
+	private AdminService adminService;
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
-    private PodamFactory factory = new PodamFactoryImpl();
+	private PodamFactory factory = new PodamFactoryImpl();
 
-    private List<AdminEntity> adminList = new ArrayList<>();
+	private List<AdminEntity> adminList = new ArrayList<>();
 
 	@BeforeAll
 	static void setUpBeforeClass() {
@@ -49,35 +49,33 @@ class AdminServiceTest {
 
 	@BeforeEach
 	void setUp() {
-		 clearData();
-         insertData();
+		clearData();
+		insertData();
 	}
-   
 
-    /**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-            entityManager.getEntityManager().createQuery("delete from AdminEntity ").executeUpdate();
-    }
+	/**
+	 * Limpia las tablas que están implicadas en la prueba.
+	 */
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from AdminEntity ").executeUpdate();
+	}
 
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
-     */
-    private void insertData() {
-            for (int i = 0; i < 3; i++) {
-                    AdminEntity adminEntity = factory.manufacturePojo(AdminEntity.class);
-                    entityManager.persist(adminEntity);
-                    adminList.add(adminEntity);
-            }
-    }
+	/**
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
+	private void insertData() {
+		for (int i = 0; i < 3; i++) {
+			AdminEntity adminEntity = factory.manufacturePojo(AdminEntity.class);
+			entityManager.persist(adminEntity);
+			adminList.add(adminEntity);
+		}
+	}
 
-	
 	@Test
 	void testGetAdmins() {
-        List<AdminEntity> list = adminService.getAdmins();
-        assertEquals(list.size(), adminList.size());
+		List<AdminEntity> list = adminService.getAdmins();
+		assertEquals(list.size(), adminList.size());
 
-    }
+	}
 
 }

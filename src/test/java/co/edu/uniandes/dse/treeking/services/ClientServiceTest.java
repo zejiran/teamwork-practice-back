@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,21 +43,21 @@ class ClientServiceTest {
 	}
 
 	/**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-	private void clearData(){
-        entityManager.getEntityManager().createQuery("delete from ClientEntity").executeUpdate();
+	 * Limpia las tablas que están implicadas en la prueba.
+	 */
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from ClientEntity").executeUpdate();
 	}
 
 	/**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
-     */
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
 	private void insertData() {
-        for (int i = 0; i < 3; i++) {
-                ClientEntity clientEntity = factory.manufacturePojo(ClientEntity.class);
-                entityManager.persist(clientEntity);
-                clientList.add(clientEntity);
-        }
+		for (int i = 0; i < 3; i++) {
+			ClientEntity clientEntity = factory.manufacturePojo(ClientEntity.class);
+			entityManager.persist(clientEntity);
+			clientList.add(clientEntity);
+		}
 	}
 
 	/**

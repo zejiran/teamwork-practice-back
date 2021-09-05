@@ -17,7 +17,7 @@ public class GuideEntity extends BaseEntity {
 	private Float rating;
 
 	private Integer age;
-	
+
 	@PodamExclude
 	@ManyToOne
 	private OutingEntity outing;

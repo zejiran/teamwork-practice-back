@@ -15,23 +15,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Setter
 @Entity
 public class PostEntity extends BaseEntity {
-	
+
 	private Integer ratings;
-	
+
 	@PodamExclude
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
 	private List<MultimediaEntity> multimedia;
-	
 
 	@PodamExclude
 	@ManyToOne
 	private BlogEntity blog;
 
-
 	@PodamExclude
 	@ManyToOne
 	private CommentEntity comment;
-	
+
 	@PodamExclude
 	@ManyToOne
 	private UserEntity user;

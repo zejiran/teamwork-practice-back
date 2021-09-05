@@ -28,10 +28,4 @@ public class MultimediaEntity extends BaseEntity {
 	@PodamExclude
 	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
-
-	@PodamExclude
-    @ManyToOne
-    private RouteEntity multimedia;
-
 }
-

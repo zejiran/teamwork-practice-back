@@ -1,30 +1,31 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import co.edu.uniandes.dse.treeking.entities.RouteEntity;
-import co.edu.uniandes.dse.treeking.repositories.RouteRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import co.edu.uniandes.dse.treeking.entities.RouteEntity;
+import co.edu.uniandes.dse.treeking.repositories.RouteRepository;
 
 @Service
 public class RouteService {
-    @Autowired
-    RouteRepository routeRepository;
+	@Autowired
+	RouteRepository routeRepository;
 
-    @Transactional
-    public List<RouteEntity> getRoutes() {
-        return routeRepository.findAll();
-    }
+	@Transactional
+	public List<RouteEntity> getRoutes() {
+		return routeRepository.findAll();
+	}
 
-    @Transactional
-    public RouteEntity getPrimerRoute() {
-        List<RouteEntity> rutas = routeRepository.findAll();
-        if ( rutas.isEmpty() ){
-            return rutas.get(0);
-        } else {
-            return null;
-        }
-    }
+	@Transactional
+	public RouteEntity getPrimerRoute() {
+		List<RouteEntity> rutas = routeRepository.findAll();
+		if (rutas.isEmpty()) {
+			return rutas.get(0);
+		} else {
+			return null;
+		}
+	}
 }
