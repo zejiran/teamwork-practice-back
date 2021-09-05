@@ -12,17 +12,17 @@ import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 @Service
 public class LocationService {
 	@Autowired
-	LocationRepository LocationRepository;
+	LocationRepository locationRepository;
 	
 	@Transactional
 	public List<LocationEntity> getLocations() {
-		return LocationRepository.findAll();
+		return locationRepository.findAll();
 	}
 	
 	@Transactional
 	public LocationEntity getPrimerLocation() {
-		List<LocationEntity> locaciones = LocationRepository.findAll();
-		if ( locaciones.size() > 0 ) {
+		List<LocationEntity> locaciones = locationRepository.findAll();
+		if ( locaciones.isEmpty() ) {
 			return locaciones.get( 0 );
 		} else {
 			return null;
