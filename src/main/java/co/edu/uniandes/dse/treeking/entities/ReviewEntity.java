@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,11 +20,12 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ReviewEntity extends BaseEntity {
 	@ElementCollection
 	private List<Integer> ratings = new ArrayList<>();
-	@OneToMany
-	private List<CommentEntity> reviews = new ArrayList<>();
+
+	@OneToMany(mappedBy = "comment", fetch = FetchType.EAGER)
+	private List<CommentEntity> comments = new ArrayList<>();
 
 	@PodamExclude
 	@ManyToOne
-	private RouteEntity review;
+	private RouteEntity route;
 
 }
