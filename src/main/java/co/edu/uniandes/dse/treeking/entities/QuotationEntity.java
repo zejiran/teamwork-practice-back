@@ -30,6 +30,6 @@ public class QuotationEntity extends BaseEntity {
 
 	@PodamExclude
 	@ManyToOne
-	private CalendarEntity quotation;
+	private CalendarEntity calendar;
 
 }
