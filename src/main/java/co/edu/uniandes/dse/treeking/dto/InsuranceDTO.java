@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class InsuranceDTO {
+	private Long id;
 	private String name;
 	private String conditions;
 	private String features;
