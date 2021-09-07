@@ -15,7 +15,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 @Getter
 @Setter
-public class ClientEntity extends BaseEntity {
+public class ClientEntity extends UserEntity {
 
 	@PodamExclude
 	@OneToOne(cascade = CascadeType.ALL)
