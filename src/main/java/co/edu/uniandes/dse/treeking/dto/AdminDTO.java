@@ -3,6 +3,6 @@ package co.edu.uniandes.dse.treeking.dto;
 import lombok.Data;
 
 @Data
-public class AdminDTO extends AdminDetailDTO{
+public class AdminDTO extends UserDTO{
 
 }

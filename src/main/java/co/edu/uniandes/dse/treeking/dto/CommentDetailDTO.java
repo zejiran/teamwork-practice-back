@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CommentDetailDTO {
+public class CommentDetailDTO extends CommentDTO{
     private List<CommentDTO> comments;
 }

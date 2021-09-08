@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class BlogDTO extends BlogDetailDTO{
-    //private List<PostDTO> posts;
+
 }

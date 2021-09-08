@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class AdminDetailDTO {
+public class AdminDetailDTO extends AdminDTO{
 
     private List<CommentDTO> comments;
     //private List<OutingDTO> outings;
