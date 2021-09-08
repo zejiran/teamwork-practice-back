@@ -19,7 +19,6 @@ import co.edu.uniandes.dse.treeking.services.EnterpriseService;
 /**
  * Clase que implementa el recurso "enterprises"
  *
- * @author ISIS2603
  */
 
 @RestController
