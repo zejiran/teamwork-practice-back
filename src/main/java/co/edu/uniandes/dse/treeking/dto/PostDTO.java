@@ -3,6 +3,6 @@ package co.edu.uniandes.dse.treeking.dto;
 import lombok.Data;
 
 @Data
-public class ComplementaryInformationDTO {
+public class PostDTO {
 	// TODO
 }
