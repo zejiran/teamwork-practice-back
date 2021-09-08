@@ -11,10 +11,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class AdminEntity extends UserEntity{ // TODO: extender de UserEntity
+public class AdminEntity extends UserEntity{
 
     @OneToMany
     private List<OutingEntity> outings;
     @OneToMany
     private List<CommentEntity> comments;
+
 }
