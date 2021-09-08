@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,29 +20,28 @@ import co.edu.uniandes.dse.treeking.entities.GuideEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
 @Import(GuideService.class)
 
 class GuideServiceTest {
-	
+
 	@Autowired
 	private GuideService guideService;
 
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	private PodamFactory factory = new PodamFactoryImpl();
 
 	private List<GuideEntity> guideList = new ArrayList<>();
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		clearData();
 		insertData();
-		
+
 	}
 
 	@Test
@@ -50,16 +49,16 @@ class GuideServiceTest {
 		List<GuideEntity> list = guideService.getGuides();
 		assertEquals(list.size(), guideList.size());
 	}
-	
+
 	private void clearData() {
-        entityManager.getEntityManager().createQuery("delete from GuideEntity").executeUpdate();
+		entityManager.getEntityManager().createQuery("delete from GuideEntity").executeUpdate();
 	}
-	
+
 	private void insertData() {
-        for (int i = 0; i < 3; i++) {
-                GuideEntity guideEntity = factory.manufacturePojo(GuideEntity.class);
-                entityManager.persist(guideEntity);
-                guideList.add(guideEntity);
-        }
-}
+		for (int i = 0; i < 3; i++) {
+			GuideEntity guideEntity = factory.manufacturePojo(GuideEntity.class);
+			entityManager.persist(guideEntity);
+			guideList.add(guideEntity);
+		}
+	}
 }
