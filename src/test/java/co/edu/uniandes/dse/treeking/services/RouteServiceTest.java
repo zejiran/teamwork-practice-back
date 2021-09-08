@@ -1,6 +1,11 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import co.edu.uniandes.dse.treeking.entities.RouteEntity;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,18 +15,14 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
+
+import co.edu.uniandes.dse.treeking.entities.RouteEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-
 /**
  * Pruebas de lógica de Route
+ * 
  * @author BalaclavaAM
  *
  */
@@ -30,17 +31,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Transactional
 @Import(RouteService.class)
 class RouteServiceTest {
-	
+
 	@Autowired
 	private RouteService routeService;
-	
+
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	private final PodamFactory factory = new PodamFactoryImpl();
-	
+
 	private final List<RouteEntity> listaRutas = new ArrayList<>();
-	
+
 	/**
 	 * Configuración inicial del test.
 	 */
@@ -49,11 +50,11 @@ class RouteServiceTest {
 		limpiarData();
 		insertarData();
 	}
-	
+
 	private void limpiarData() {
 		entityManager.getEntityManager().createQuery("delete from RouteEntity");
 	}
-	
+
 	private void insertarData() {
 		for (int i = 0; i < 3; i++) {
 			RouteEntity routeEntity = factory.manufacturePojo(RouteEntity.class);
@@ -61,6 +62,7 @@ class RouteServiceTest {
 			listaRutas.add(routeEntity);
 		}
 	}
+
 	/**
 	 * Test para consultar la lista de rutas
 	 */

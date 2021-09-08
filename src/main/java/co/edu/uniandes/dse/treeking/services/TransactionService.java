@@ -11,7 +11,7 @@ import co.edu.uniandes.dse.treeking.repositories.TransactionRepository;
 public class TransactionService {
 	@Autowired
 	private TransactionRepository transactionRepository;
-	
+
 	@Transactional
 	public List<TransactionEntity> getTransactions() {
 		return transactionRepository.findAll();

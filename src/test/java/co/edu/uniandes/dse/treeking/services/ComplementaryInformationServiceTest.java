@@ -1,10 +1,9 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import javax.transaction.Transactional;
 
@@ -26,50 +25,50 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(ComplementaryInformationService.class)
 class ComplementaryInformationServiceTest {
-	
+
 	@Autowired
-    private ComplementaryInformationService complementaryInformationService;
+	private ComplementaryInformationService complementaryInformationService;
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
-    private PodamFactory factory = new PodamFactoryImpl();
+	private PodamFactory factory = new PodamFactoryImpl();
 
-    private List<ComplementaryInformationEntity> ciList = new ArrayList<>();
+	private List<ComplementaryInformationEntity> ciList = new ArrayList<>();
+
 	@BeforeEach
-    void setUp() {
-            clearData();
-            insertData();
-    }
+	void setUp() {
+		clearData();
+		insertData();
+	}
 
-    /**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-            entityManager.getEntityManager().createQuery("delete from ComplementaryInformationEntity").executeUpdate();
-    }
+	/**
+	 * Limpia las tablas que están implicadas en la prueba.
+	 */
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from ComplementaryInformationEntity").executeUpdate();
+	}
 
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
-     */
-    private void insertData() {
-            for (int i = 0; i < 3; i++) {
-            		ComplementaryInformationEntity complementaryInformationEntity = factory.manufacturePojo(ComplementaryInformationEntity.class);
-                    entityManager.persist(complementaryInformationEntity);
-                    ciList.add(complementaryInformationEntity);
-            }
-    }
+	/**
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
+	private void insertData() {
+		for (int i = 0; i < 3; i++) {
+			ComplementaryInformationEntity complementaryInformationEntity = factory
+					.manufacturePojo(ComplementaryInformationEntity.class);
+			entityManager.persist(complementaryInformationEntity);
+			ciList.add(complementaryInformationEntity);
+		}
+	}
 
+	/**
+	 * Prueba para consultar la lista de Student.
+	 */
+	@Test
+	void testGetStudents() {
+		List<ComplementaryInformationEntity> list = complementaryInformationService.getComplementaryInformations();
+		assertEquals(list.size(), ciList.size());
 
+	}
 
-    /**
-     * Prueba para consultar la lista de Student.
-     */
-    @Test
-    void testGetStudents() {
-            List<ComplementaryInformationEntity> list = complementaryInformationService.getComplementaryInformations();
-            assertEquals(list.size(), ciList.size());
-
-    }
-	
 }

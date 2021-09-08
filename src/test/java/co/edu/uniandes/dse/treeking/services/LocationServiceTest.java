@@ -1,14 +1,14 @@
 package co.edu.uniandes.dse.treeking.services;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -17,14 +17,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.LocationEntity;
-
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
-
 /**
  * Pruebas de lógica de Location
+ * 
  * @author BalaclavaAM
  *
  */
@@ -33,17 +31,17 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(LocationService.class)
 class LocationServiceTest {
-	
+
 	@Autowired
 	private LocationService locationService;
-	
+
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	private PodamFactory factory = new PodamFactoryImpl();
-	
+
 	private List<LocationEntity> listadeLocaciones = new ArrayList<>();
-	
+
 	/**
 	 * Configuración inicial del test.
 	 */
@@ -52,11 +50,11 @@ class LocationServiceTest {
 		limpiarData();
 		insertarData();
 	}
-	
+
 	private void limpiarData() {
 		entityManager.getEntityManager().createQuery("delete from LocationEntity");
 	}
-	
+
 	private void insertarData() {
 		for (int i = 0; i < 3; i++) {
 			LocationEntity locationEntity = factory.manufacturePojo(LocationEntity.class);
@@ -64,6 +62,7 @@ class LocationServiceTest {
 			listadeLocaciones.add(locationEntity);
 		}
 	}
+
 	/**
 	 * Test para consultar la lista de locaciones
 	 */
@@ -73,7 +72,7 @@ class LocationServiceTest {
 		assertEquals(listadeLocaciones.size(), list.size());
 		for (LocationEntity entidad : list) {
 			boolean encontrao = false;
-			for (LocationEntity entidadGuardada : listadeLocaciones ) {
+			for (LocationEntity entidadGuardada : listadeLocaciones) {
 				if (entidad.getId().equals(entidadGuardada.getId())) {
 					encontrao = true;
 				}

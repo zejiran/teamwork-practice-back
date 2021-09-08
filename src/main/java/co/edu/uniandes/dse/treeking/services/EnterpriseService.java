@@ -13,7 +13,7 @@ import co.edu.uniandes.dse.treeking.repositories.EnterpriseRepository;
 public class EnterpriseService {
 	@Autowired
 	private EnterpriseRepository enterpriseRepository;
-	
+
 	@Transactional
 	public List<EnterpriseEntity> getEnterprises() {
 		return enterpriseRepository.findAll();

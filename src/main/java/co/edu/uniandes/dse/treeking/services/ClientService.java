@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uniandes.dse.treeking.repositories.ClientRepository;
 import co.edu.uniandes.dse.treeking.entities.ClientEntity;
+import co.edu.uniandes.dse.treeking.repositories.ClientRepository;
 
 @Service
 public class ClientService {
@@ -18,10 +18,11 @@ public class ClientService {
 
 	/**
 	 * Obtiene la lista de los registros Client
+	 * 
 	 * @return Colección de objetos ClientEntity
 	 */
 	@Transactional
-	public List<ClientEntity> getClients(){
+	public List<ClientEntity> getClients() {
 		return clientRepository.findAll();
 	}
 }

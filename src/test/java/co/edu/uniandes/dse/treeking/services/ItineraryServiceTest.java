@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,43 +25,42 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(ItineraryService.class)
 
-
 class ItineraryServiceTest {
 
 	@Autowired
-    private ItineraryService itineraryService;
+	private ItineraryService itineraryService;
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
-    private PodamFactory factory = new PodamFactoryImpl();
+	private PodamFactory factory = new PodamFactoryImpl();
 
-    private List<ItineraryEntity> itineraryList = new ArrayList<>();
+	private List<ItineraryEntity> itineraryList = new ArrayList<>();
 
 	@BeforeEach
 	void setUp() throws Exception {
 		clearData();
-        insertData();
+		insertData();
 	}
 
 	@Test
 	void testGetItineries() {
 		List<ItineraryEntity> list = itineraryService.getItineries();
-        assertEquals(list.size(), itineraryList.size());
+		assertEquals(list.size(), itineraryList.size());
 	}
-	
-	private void clearData() {
-        entityManager.getEntityManager().createQuery("delete from ItineraryEntity").executeUpdate();
-}
 
-/**
- * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
- */
-private void insertData() {
-        for (int i = 0; i < 3; i++) {
-                ItineraryEntity itineraryEntity = factory.manufacturePojo(ItineraryEntity.class);
-                entityManager.persist(itineraryEntity);
-                itineraryList.add(itineraryEntity);
-        }
-}
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from ItineraryEntity").executeUpdate();
+	}
+
+	/**
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
+	private void insertData() {
+		for (int i = 0; i < 3; i++) {
+			ItineraryEntity itineraryEntity = factory.manufacturePojo(ItineraryEntity.class);
+			entityManager.persist(itineraryEntity);
+			itineraryList.add(itineraryEntity);
+		}
+	}
 }
