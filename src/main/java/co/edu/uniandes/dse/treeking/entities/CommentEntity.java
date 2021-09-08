@@ -7,6 +7,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +17,6 @@ public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
     @OneToMany
-    private ArrayList<CommentEntity> comments;
+    private List<CommentEntity> comments;
 
 }
