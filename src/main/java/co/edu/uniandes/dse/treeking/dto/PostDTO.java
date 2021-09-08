@@ -1,8 +1,12 @@
 package co.edu.uniandes.dse.treeking.dto;
 
+import co.edu.uniandes.dse.treeking.entities.BlogEntity;
+import co.edu.uniandes.dse.treeking.entities.UserEntity;
 import lombok.Data;
 
 @Data
 public class PostDTO {
-	// TODO
+	private Integer ratings;
+	private BlogEntity blog;	
+	private UserEntity user;	
 }
