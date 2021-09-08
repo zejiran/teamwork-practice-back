@@ -6,6 +6,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BlogDTO extends BlogDetailDTO{
+public class BlogDTO {
 
 }
