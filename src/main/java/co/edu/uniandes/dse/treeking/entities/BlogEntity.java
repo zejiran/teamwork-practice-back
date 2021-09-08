@@ -3,12 +3,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @Getter
 @Setter
 public class BlogEntity extends BaseEntity{
-    //TODO: descomentar
-    // @OneToMany
-    // private ArrayList<PostEntity> blogPosts
+    @OneToMany
+    private List<PostEntity> post;
 }
