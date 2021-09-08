@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 public class RouteDetailDTO extends RouteDTO {
     private List<MultimediaDTO> multimediasDTO;
-    private List<ReviewDTO> reviewDTO;
+    private List<ReviewDTO> reviewsDTO;
     private List<LocationDTO> locationsDTOS;
 }
