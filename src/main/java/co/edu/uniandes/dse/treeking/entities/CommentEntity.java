@@ -16,6 +16,6 @@ public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
     @OneToMany
-    private ArrayList<CommentEntity> repleis;
+    private ArrayList<CommentEntity> comments;
 
 }
