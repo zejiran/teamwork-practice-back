@@ -8,5 +8,5 @@ import java.util.List;
 public class AdminDetailDTO extends AdminDTO{
 
     private List<CommentDTO> comments;
-    //private List<OutingDTO> outings;
+    private List<OutingDTO> outings;
 }
