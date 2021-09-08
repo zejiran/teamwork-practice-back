@@ -22,7 +22,7 @@ import co.edu.uniandes.dse.treeking.services.PostService;
  */
 
 @RestController
-@RequestMapping("/enterprises")
+@RequestMapping("/posts")
 public class PostController {
 
         @Autowired

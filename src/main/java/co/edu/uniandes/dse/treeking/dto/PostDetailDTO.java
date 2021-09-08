@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PostDetailDTO extends PostDTO {
-	private List<MultimediaDTO> multimedia = new ArrayList<>();
+	private List<MultimediaDTO> multimedias = new ArrayList<>();
 	private List<CommentDTO> comments = new ArrayList<>();	
 }

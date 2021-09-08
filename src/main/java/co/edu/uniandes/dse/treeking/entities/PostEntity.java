@@ -20,7 +20,7 @@ public class PostEntity extends BaseEntity {
 	
 	@PodamExclude
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> multimedia;
+	private List<MultimediaEntity> multimedias;
 	
 
 	@PodamExclude
