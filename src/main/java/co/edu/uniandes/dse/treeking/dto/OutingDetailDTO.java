@@ -1,14 +1,16 @@
 package co.edu.uniandes.dse.treeking.dto;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class OutingDetailDTO extends OutingDTO{
-	private ActivityDTO activities;
-	private GuideDTO guides;
+	private List<ActivityDTO> activities;
+	private List<GuideDTO> guides;
 	private ComplementaryInformationDTO complementaryInformation;
 	private ReviewDTO review;
-	private RouteDTO routes;
+	private List<RouteDTO> routes;
 }
