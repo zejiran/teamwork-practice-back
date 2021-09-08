@@ -16,10 +16,14 @@ public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
-    private List<CommentEntity> repleis = new ArrayList<>();
+    private List<CommentEntity> replies = new ArrayList<>();
 
     @PodamExclude
     @ManyToOne
     private CommentEntity comment;
+    
+    @PodamExclude
+    @ManyToOne
+    private PostEntity post;
 
 }

@@ -29,8 +29,8 @@ public class PostEntity extends BaseEntity {
 
 
 	@PodamExclude
-	@ManyToOne
-	private CommentEntity comment;
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+	private List<CommentEntity> comments;
 	
 	@PodamExclude
 	@ManyToOne
