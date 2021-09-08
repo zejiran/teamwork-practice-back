@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional
@@ -25,36 +26,36 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 class ActivityServiceTest {
 
 	@Autowired
-    private ActivityService activityService;
+	private ActivityService activityService;
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Autowired
+	private TestEntityManager entityManager;
 
-    private PodamFactory factory = new PodamFactoryImpl();
+	private PodamFactory factory = new PodamFactoryImpl();
 
-    private List<ActivityEntity> activityList = new ArrayList<>();
-	
+	private List<ActivityEntity> activityList = new ArrayList<>();
+
 	@BeforeEach
 	void setUp() throws Exception {
 		clearData();
-        insertData();
+		insertData();
 	}
 
 	@Test
 	void testGetActivities() {
 		List<ActivityEntity> list = activityService.getActivities();
-        assertEquals(list.size(), activityList.size());
+		assertEquals(list.size(), activityList.size());
 	}
-	
+
 	private void clearData() {
-        entityManager.getEntityManager().createQuery("delete from ActivityEntity").executeUpdate();
+		entityManager.getEntityManager().createQuery("delete from ActivityEntity").executeUpdate();
 	}
-	
+
 	private void insertData() {
-        for (int i = 0; i < 3; i++) {
-                ActivityEntity activityEntity = factory.manufacturePojo(ActivityEntity.class);
-                entityManager.persist(activityEntity);
-                activityList.add(activityEntity);
-        }
+		for (int i = 0; i < 3; i++) {
+			ActivityEntity activityEntity = factory.manufacturePojo(ActivityEntity.class);
+			entityManager.persist(activityEntity);
+			activityList.add(activityEntity);
+		}
 	}
 }

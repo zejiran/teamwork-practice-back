@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,15 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(QuotationService.class)
 class QuotationServiceTest {
-	
+
 	@Autowired
 	private QuotationService quotationService;
-	
+
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	private PodamFactory factory = new PodamFactoryImpl();
-	
+
 	private List<QuotationEntity> quotationList = new ArrayList<>();
 
 	@BeforeEach
@@ -41,29 +41,29 @@ class QuotationServiceTest {
 		clearData();
 		insertData();
 	}
-	
+
 	/**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-            entityManager.getEntityManager().createQuery("delete from QuotationEntity").executeUpdate();
-    }
-    
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
-     */
-    private void insertData() {
-        for (int i = 0; i < 3; i++) {
-            QuotationEntity quotationEntity = factory.manufacturePojo(QuotationEntity.class);
-            entityManager.persist(quotationEntity);
-            quotationList.add(quotationEntity);
-        }
-    }
+	 * Limpia las tablas que están implicadas en la prueba.
+	 */
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from QuotationEntity").executeUpdate();
+	}
+
+	/**
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
+	private void insertData() {
+		for (int i = 0; i < 3; i++) {
+			QuotationEntity quotationEntity = factory.manufacturePojo(QuotationEntity.class);
+			entityManager.persist(quotationEntity);
+			quotationList.add(quotationEntity);
+		}
+	}
 
 	@Test
 	void testGetQuotations() {
 		List<QuotationEntity> list = quotationService.getQuotations();
-        assertEquals(list.size(), quotationList.size());
+		assertEquals(list.size(), quotationList.size());
 	}
 
 }

@@ -1,5 +1,6 @@
 package co.edu.uniandes.dse.treeking.dto;
 
+
 import java.util.Date;
 
 import co.edu.uniandes.dse.treeking.enums.PaymentType;

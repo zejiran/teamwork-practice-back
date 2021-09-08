@@ -13,10 +13,9 @@ import co.edu.uniandes.dse.treeking.repositories.ComplementaryInformationReposit
 public class ComplementaryInformationService {
 	@Autowired
 	ComplementaryInformationRepository complementaryinformationRepository;
-    
 
-    @Transactional
-    public List<ComplementaryInformationEntity> getComplementaryInformations() {
-            return complementaryinformationRepository.findAll();
-    }
+	@Transactional
+	public List<ComplementaryInformationEntity> getComplementaryInformations() {
+		return complementaryinformationRepository.findAll();
+	}
 }

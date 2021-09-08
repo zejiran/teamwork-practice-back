@@ -2,7 +2,6 @@ package co.edu.uniandes.dse.treeking.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +17,7 @@ public class GuideEntity extends BaseEntity {
 	private Float rating;
 
 	private Integer age;
-	
+
 	@PodamExclude
 	@ManyToOne
 	private OutingEntity outing;

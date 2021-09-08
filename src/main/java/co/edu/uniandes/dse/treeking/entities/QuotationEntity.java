@@ -4,10 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import co.edu.uniandes.dse.treeking.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
-import co.edu.uniandes.dse.treeking.enums.Status;
 
 @Getter
 @Setter
@@ -28,9 +28,8 @@ public class QuotationEntity extends BaseEntity {
 	@ManyToOne
 	private OutingEntity outing;
 
-
 	@PodamExclude
 	@ManyToOne
-	private CalendarEntity quotation;
+	private CalendarEntity calendar;
 
 }

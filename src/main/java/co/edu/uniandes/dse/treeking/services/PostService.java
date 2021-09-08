@@ -11,9 +11,9 @@ import co.edu.uniandes.dse.treeking.repositories.PostRepository;
 public class PostService {
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Transactional
 	public List<PostEntity> getPosts() {
 		return postRepository.findAll();
-	}	
+	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -16,7 +15,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 @Getter
 @Setter
-public class ClientEntity extends BaseEntity {
+public class ClientEntity extends UserEntity {
 
 	@PodamExclude
 	@OneToOne(cascade = CascadeType.ALL)

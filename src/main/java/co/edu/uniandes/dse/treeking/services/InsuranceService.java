@@ -15,13 +15,14 @@ public class InsuranceService {
 
 	@Autowired
 	InsuranceRepository insuranceRepository;
-	
+
 	/**
-     * Obtiene la lista de los registros de Insurance.
-     * @return Colección de objetos de InsuranceEntity.
-     */
-    @Transactional
-    public List<InsuranceEntity> getInsurances() {
-            return insuranceRepository.findAll();
-    }
+	 * Obtiene la lista de los registros de Insurance.
+	 * 
+	 * @return Colección de objetos de InsuranceEntity.
+	 */
+	@Transactional
+	public List<InsuranceEntity> getInsurances() {
+		return insuranceRepository.findAll();
+	}
 }
