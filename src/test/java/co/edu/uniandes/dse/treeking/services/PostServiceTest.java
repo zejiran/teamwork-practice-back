@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @Transactional
 @Import(PostService.class)
 class PostServiceTest {
-	
+
 	@Autowired
 	private PostService postService;
 
@@ -59,9 +60,9 @@ class PostServiceTest {
 
 	@Test
 	void testGetPosts() {
-        List<PostEntity> posts = postService.getPosts();
-        assertEquals(postList.size(), posts.size());
-        
+		List<PostEntity> posts = postService.getPosts();
+		assertEquals(postList.size(), posts.size());
+
 		for (PostEntity entity : posts) {
 			boolean found = false;
 			for (PostEntity storedEntity : postList)

@@ -14,11 +14,10 @@ public class ItineraryService {
 
 	@Autowired
 	ItineraryRepository itineraryRepository;
-	
+
 	@Transactional
 	public List<ItineraryEntity> getItineries() {
-        return itineraryRepository.findAll();
-}
+		return itineraryRepository.findAll();
+	}
 
-	
 }

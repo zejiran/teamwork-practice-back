@@ -5,7 +5,6 @@ import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,14 +15,14 @@ public class CommentEntity extends BaseEntity{
     private String text;
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
-    private List<CommentEntity> replies = new ArrayList<>();
+    private List<CommentEntity> comments;
 
     @PodamExclude
     @ManyToOne
+    @JoinColumn
     private CommentEntity comment;
     
     @PodamExclude
     @ManyToOne
     private PostEntity post;
-
 }

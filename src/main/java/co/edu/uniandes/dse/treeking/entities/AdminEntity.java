@@ -5,10 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-public class AdminEntity extends BaseEntity{ // TODO: extender de UserEntity
+public class AdminEntity extends UserEntity{
+
+    @OneToMany
+    private List<OutingEntity> outings;
+    @OneToMany
+    private List<CommentEntity> comments;
 
 }

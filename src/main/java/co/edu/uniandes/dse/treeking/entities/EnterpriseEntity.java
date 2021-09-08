@@ -16,7 +16,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Getter
 @Setter
 @Entity
-public class EnterpriseEntity extends BaseEntity {
+public class EnterpriseEntity extends ClientEntity {
 
 	@PodamExclude
 	@OneToOne

@@ -1,5 +1,8 @@
 package co.edu.uniandes.dse.treeking.dto;
 
-public class CommentDTO {
+import lombok.Data;
 
+@Data
+public class CommentDTO {
+    private String text;
 }

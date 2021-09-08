@@ -1,6 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,41 +28,42 @@ class OutingServiceTest {
 
 	@Autowired
 	private OutingService outingService;
-	
+
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	private PodamFactory factory = new PodamFactoryImpl();
-	
+
 	private List<OutingEntity> outingList = new ArrayList<>();
+
 	@BeforeEach
 	void setUp() throws Exception {
 		clearData();
 		insertData();
 	}
-	
+
 	/**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-            entityManager.getEntityManager().createQuery("delete from OutingEntity").executeUpdate();
-    }
-    
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
-     */
-    private void insertData() {
-        for (int i = 0; i < 3; i++) {
-            OutingEntity outingEntity = factory.manufacturePojo(OutingEntity.class);
-            entityManager.persist(outingEntity);
-            outingList.add(outingEntity);
-        }
-    }
+	 * Limpia las tablas que están implicadas en la prueba.
+	 */
+	private void clearData() {
+		entityManager.getEntityManager().createQuery("delete from OutingEntity").executeUpdate();
+	}
+
+	/**
+	 * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+	 */
+	private void insertData() {
+		for (int i = 0; i < 3; i++) {
+			OutingEntity outingEntity = factory.manufacturePojo(OutingEntity.class);
+			entityManager.persist(outingEntity);
+			outingList.add(outingEntity);
+		}
+	}
 
 	@Test
 	void testGetOutings() {
 		List<OutingEntity> list = outingService.getOutings();
-        assertEquals(list.size(), outingList.size());
+		assertEquals(list.size(), outingList.size());
 	}
 
 }
