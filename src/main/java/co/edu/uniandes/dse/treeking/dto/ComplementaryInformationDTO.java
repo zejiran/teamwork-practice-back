@@ -13,8 +13,8 @@ public class ComplementaryInformationDTO {
 
 	private String recomendation;
 	
-	private MultimediaEntity homeImage;
+	private MultimediaDTO homeImage;
 	
-	private OutingEntity outing;
+	private OutingDTO outing;
 	
 }
