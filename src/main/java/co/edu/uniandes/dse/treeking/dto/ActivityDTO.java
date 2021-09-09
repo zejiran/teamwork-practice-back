@@ -2,7 +2,7 @@ package co.edu.uniandes.dse.treeking.dto;
 
 import java.time.LocalDateTime;
 
-import co.edu.uniandes.dse.treeking.entities.OutingEntity;
+
 import lombok.Data;
 
 @Data
