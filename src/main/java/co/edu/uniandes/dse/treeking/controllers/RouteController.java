@@ -1,7 +1,8 @@
-package co.edu.uniandes.dse.treeking.entities;
+package co.edu.uniandes.dse.treeking.controllers;
 
-import co.edu.uniandes.dse.treeking.dto.LocationDTO;
-import co.edu.uniandes.dse.treeking.services.LocationService;
+import co.edu.uniandes.dse.treeking.dto.RouteDTO;
+import co.edu.uniandes.dse.treeking.entities.RouteEntity;
+import co.edu.uniandes.dse.treeking.services.RouteService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/locations")
-public class LocationController {
+@RequestMapping("/routes")
+public class RouteController {
 
     @Autowired
-    private LocationService locationService;
+    private RouteService routeService;
 
     @Autowired
     private ModelMapper modelMapper;
 
     @GetMapping
     @ResponseStatus(code= HttpStatus.OK)
-    public List<LocationDTO> findAll() {
-        List<LocationEntity> locations = locationService.getLocations();
-        return modelMapper.map(locations, new TypeToken<List<LocationDTO>>(){}.getType());
+    public List<RouteDTO> findAll() {
+        List<RouteEntity> routes = routeService.getRoutes();
+        return modelMapper.map(routes, new TypeToken<List<RouteDTO>>(){}.getType());
     }
 }
