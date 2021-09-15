@@ -237,6 +237,66 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					<execution>
+						<id>integration-tests-guide</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run .\collections\GuideTests.postman_collection.json -e .\collections\EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-activity</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								 run .\collections\ActivityTests.postman_collection.json -e .\collections\EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-complementary-information</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								 run .\collections\ComplementaryInformationTests.postman_collection.json -e .\collections\EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-itinerary</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								 run .\collections\ItineraryTests.postman_collection.json -e .\collections\EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>

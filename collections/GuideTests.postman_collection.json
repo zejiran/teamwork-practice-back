@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "f97a2e2b-724e-4f11-961e-3e03062f5682",
+		"name": "GuideTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los guias",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests['No error was found when getting all guides '] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/guides",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"guides"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
