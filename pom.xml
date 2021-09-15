@@ -128,7 +128,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/User Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+								run collections/UserTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -143,7 +143,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/Multimedia Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+								run collections/MultimediaTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -158,7 +158,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/Person Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+								run collections/PersonTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -173,7 +173,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/Natural Person Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+								run collections/NaturalPerson Tests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
