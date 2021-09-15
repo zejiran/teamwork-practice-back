@@ -173,7 +173,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/NaturalPerson Tests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+								run collections/NaturalPersonTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -182,3 +182,4 @@
 		</plugins>
 	</build>
 </project>
+
