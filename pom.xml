@@ -86,21 +86,6 @@
 						</goals>
 					</execution>
 					<execution>
-						<id>integration-tests-treeking-endpoints</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>
-								newman
-							</executable>
-							<commandlineArgs>
-								run collections/Treeking.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<execution>
 						<id>post-integration-test</id>
 						<goals>
 							<goal>stop</goal>
@@ -124,6 +109,73 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>integration-tests-user</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/User Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-multimedia</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/Multimedia Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-person</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/Person Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-natural-person</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/Natural Person Tests.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
