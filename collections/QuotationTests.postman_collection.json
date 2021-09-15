@@ -23,12 +23,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/api/quotations",
+					"raw": "http://{{ip}}:{{port}}/api/quotations",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
 					],
-					"port": "{{puerto}}",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"quotations"
