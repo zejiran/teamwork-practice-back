@@ -163,6 +163,66 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>integration-tests-client</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/ClientTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-insurance</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/InsuranceTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-quotation</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/QuotationTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-outing</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/OutingTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
 						<id>integration-tests-natural-person</id>
 						<phase>integration-test</phase>
 						<goals>
