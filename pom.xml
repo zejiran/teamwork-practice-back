@@ -69,7 +69,7 @@
 						<profile>integration-tests</profile>
 					</profiles>
 					<arguments>
-						<argument>--server.port=8999</argument>
+						<argument>--server.port=8080</argument>
 					</arguments>
 					<excludes>
 						<exclude>
@@ -77,13 +77,28 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				</configuration>
+				</configuration>	
 				<executions>
 					<execution>
 						<id>pre-integration-test</id>
 						<goals>
 							<goal>start</goal>
 						</goals>
+					</execution>
+					<execution>
+						<id>integration-tests-treeking-endpoints</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/Treeking.postman_collection.json -e collections/Environment\ Treeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
 					</execution>
 					<execution>
 						<id>post-integration-test</id>
