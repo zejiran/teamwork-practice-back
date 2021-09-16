@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "a37f9232-6bb4-4a1d-83e2-ac99ac397b25",
+		"name": "Comment Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"tests[\"No genera un error en obtener todos los clientes\"] = responseCode.code == 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/comments",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
