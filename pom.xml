@@ -327,8 +327,8 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
-						<execution>
-						<id>enterprise-tests-post</id>
+					<execution>
+						<id>enterprise-tests-enterprise</id>
 						<phase>integration-test</phase>
 						<goals>
 							<goal>exec</goal>

@@ -22,12 +22,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/api/transactions/",
+					"raw": "http://{{ip}}:{{port}}/api/transactions/",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
 					],
-					"port": "{{puerto}}",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"transactions",
