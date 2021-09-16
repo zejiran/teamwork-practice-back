@@ -353,7 +353,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/ReviewTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+								run collections/ReviewTest.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -368,7 +368,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/AdminTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+								run collections/AdminTest.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -383,7 +383,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/BlogTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+								run collections/BlogTest.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -398,7 +398,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/CommentTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+								run collections/CommentTest.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
