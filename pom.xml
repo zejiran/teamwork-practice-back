@@ -342,6 +342,66 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					<execution>
+						<id>integration-tests-review</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/ReviewTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-admin</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/AdminTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-blog</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/BlogTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-comment</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/CommentTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
