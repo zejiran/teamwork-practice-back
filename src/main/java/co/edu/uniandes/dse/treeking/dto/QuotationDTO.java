@@ -10,4 +10,5 @@ public class QuotationDTO {
 	private Float totalCost;
 	private Status status;
 	private OutingDTO outing;
+	
 }
