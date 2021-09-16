@@ -297,6 +297,51 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					<execution>
+						<id>integration-tests-post</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/PostTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-tests-transaction</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/TransactionsTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
+						<execution>
+						<id>enterprise-tests-post</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/EnterpriseTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+							</commandlineArgs>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
