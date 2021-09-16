@@ -323,7 +323,7 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/TransactionsTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+								run collections/TransactionTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
 							</commandlineArgs>
 						</configuration>
 					</execution>
