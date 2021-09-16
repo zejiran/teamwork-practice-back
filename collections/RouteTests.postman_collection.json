@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "a2b9b3dc-fd42-4c2a-aa7f-becd8b793f21",
+		"name": "Route Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all routes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"tests[\"No genera error obtener todas las rutas\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/routes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

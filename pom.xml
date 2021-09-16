@@ -338,7 +338,52 @@
 								newman
 							</executable>
 							<commandlineArgs>
-								run collections/EnterpriseTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json 
+								run collections/EnterpriseTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>calendar-tests-calendar</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/CalendarTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>location-tests-calendar</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/LocationTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>route-tests-calendar</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>
+								newman
+							</executable>
+							<commandlineArgs>
+								run collections/RouteTests.postman_collection.json -e collections/EnvironmentTreeking.postman_environment.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
