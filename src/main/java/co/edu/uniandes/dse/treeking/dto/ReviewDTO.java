@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class ReviewDTO{
     private CommentDTO comment;
-    private Integer rating;
+    private Integer score;
+    private RouteDTO route;
 }

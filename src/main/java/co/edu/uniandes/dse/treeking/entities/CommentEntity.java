@@ -13,6 +13,9 @@ import java.util.List;
 @Setter
 public class CommentEntity extends BaseEntity{
     private String text;
+    private Integer likes;
+    private Integer dislikes;
+
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<CommentEntity> comments;
