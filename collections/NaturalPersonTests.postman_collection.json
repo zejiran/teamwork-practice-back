@@ -35,7 +35,7 @@
 					]
 				}
 			},
-			"response": []
+			"response": [{"user":"peperez.hola","password":"asdfTER12","mail":"peperez@gmail.com","calendar":null,"person":{"name":"pepe","idNumber":"10022","idType":"CC","address":"Calle 13"}}]
 		}
 	],
 	"event": [

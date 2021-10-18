@@ -34,7 +34,7 @@
 					]
 				}
 			},
-			"response": []
+			"response": [{"fileName":"grabacion_salida","mediaType":"VIDEO","extension":"mp4","route":null,"post":null,"complementaryInformation":null}]
 		}
 	]
 }
