@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "ddf50da2-ef2e-40de-9676-e9289a3c37e6",
+		"name": "ActivityTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obtener todos las actividades",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests['No error was found when getting all activities '] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/activities",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

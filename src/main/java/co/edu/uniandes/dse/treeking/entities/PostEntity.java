@@ -20,16 +20,17 @@ public class PostEntity extends BaseEntity {
 
 	@PodamExclude
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> multimedia;
+	private List<MultimediaEntity> multimedias;
 
 	@PodamExclude
 	@ManyToOne
 	private BlogEntity blog;
 
 	@PodamExclude
-	@ManyToOne
-	private CommentEntity comment;
 
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+	private List<CommentEntity> comments;
+	
 	@PodamExclude
 	@ManyToOne
 	private UserEntity user;

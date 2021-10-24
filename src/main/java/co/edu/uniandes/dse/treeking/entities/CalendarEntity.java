@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class CalendarEntity extends BaseEntity {
+public class  CalendarEntity extends BaseEntity {
 	@OneToMany(mappedBy = "calendar", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private List<QuotationEntity> history = new ArrayList<>();
 }

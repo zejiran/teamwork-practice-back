@@ -25,5 +25,8 @@ public class CommentEntity extends BaseEntity{
     @ManyToOne
     @JoinColumn
     private CommentEntity comment;
-
+    
+    @PodamExclude
+    @ManyToOne
+    private PostEntity post;
 }

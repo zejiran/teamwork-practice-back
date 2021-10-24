@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "1088ff0a-5b2d-4fa5-bc28-bdf0aef23407",
+		"name": "Quotation Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las cotizaciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"tests[\"No genera un error en obtener todas las cotizaciones\"] = responseCode.code == 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/quotations",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"quotations"
+					]
+				}
+			},
+			"response": [{"id":100,"participants":1,"totalCost":500000.0,"status":1,"outing":{"id":100,"name":"Conoce la magia del Parque Tayrona","date":"2011-09-10","place":"Parque Natural Tayrona","participationCost":500000,"itinerary":{"id":100,"lodging":"Equipaje, estadia con desayuno","transportation":"Viaje por autobus","outing":null}}}]
+		}
+	]
+}

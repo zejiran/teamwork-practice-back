@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "4531f39f-ce0d-4267-a229-d14bd364b8bf",
+		"name": "ItineraryTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obtener todos los itinerarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests['No error was found when getting all complementary Itineraries'] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/itineraries",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"itineraries"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
