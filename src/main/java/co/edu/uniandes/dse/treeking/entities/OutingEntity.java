@@ -1,15 +1,10 @@
 package co.edu.uniandes.dse.treeking.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import co.edu.uniandes.dse.treeking.podam.DateStrategy;
 import lombok.Getter;
@@ -21,7 +16,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Setter
 @Entity
 public class OutingEntity extends BaseEntity {
-	private String name;
+	private String name; //el nombre no beria ir solo en la ruta?
 
 	@Temporal(TemporalType.DATE)
 	@PodamStrategyValue(DateStrategy.class)
@@ -32,8 +27,8 @@ public class OutingEntity extends BaseEntity {
 	private Integer participationCost;
 
 	@PodamExclude
-	@OneToMany(mappedBy = "outing", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<RouteEntity> routes;
+	@ManyToOne
+	private RouteEntity route; // la relación estaba al revés
 
 	@PodamExclude
 	@OneToOne(mappedBy = "outing")
@@ -44,19 +39,15 @@ public class OutingEntity extends BaseEntity {
 	private ItineraryEntity itinerary;
 
 	@PodamExclude
-	@OneToOne
-	private ReviewEntity review;
-
-	@PodamExclude
 	@OneToMany(mappedBy = "outing")
 	private List<ActivityEntity> activities;
 
-	@PodamExclude
-	@OneToMany
-	private List<GuideEntity> guides;
+	@ManyToOne
+	private GuideEntity guide; //considero que solo debería tener un guia, si pudiesen haber mas, seria manyToMany
 
 	@PodamExclude
 	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
-	private List<QuotationEntity> quotation;
+	private List<QuotationEntity> quotations;
+
 
 }

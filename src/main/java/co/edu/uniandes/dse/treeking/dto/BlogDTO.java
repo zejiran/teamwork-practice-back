@@ -7,5 +7,5 @@ import java.util.List;
 
 @Data
 public class BlogDTO {
-
+    private UserDTO user;
 }

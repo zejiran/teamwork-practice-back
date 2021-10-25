@@ -15,6 +15,6 @@ public class ComplementaryInformationDTO {
 	
 	private MultimediaDTO homeImage;
 	
-	private OutingDetailDTO outing;
+	private OutingDetailDTO outing; // no creo que sea necesario
 	
 }

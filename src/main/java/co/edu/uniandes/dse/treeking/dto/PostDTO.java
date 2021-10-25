@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class PostDTO {
 	private Integer ratings;
-	private BlogEntity blog;	
-	private UserEntity user;	
+	// deberia llamar al DTO en vez de al entity y sobra
+	// sobra si esta en el comment
+	private CommentDTO commentDTO;
 }

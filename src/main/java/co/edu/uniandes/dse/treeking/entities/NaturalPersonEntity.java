@@ -11,7 +11,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Getter
 @Setter
 public class NaturalPersonEntity extends ClientEntity {
-	@PodamExclude
+
 	@OneToOne
 	private PersonEntity person;
 }

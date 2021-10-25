@@ -1,10 +1,13 @@
 package co.edu.uniandes.dse.treeking.entities;
 
+import co.edu.uniandes.dse.treeking.podam.DateStrategy;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -17,6 +20,10 @@ public class CommentEntity extends BaseEntity{
     private Integer likes;
     private Integer dislikes;
 
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date date;
+
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<CommentEntity> comments;
@@ -25,8 +32,8 @@ public class CommentEntity extends BaseEntity{
     @ManyToOne
     @JoinColumn
     private CommentEntity comment;
-    
-    @PodamExclude
+
     @ManyToOne
-    private PostEntity post;
+    private UserEntity user;
+
 }

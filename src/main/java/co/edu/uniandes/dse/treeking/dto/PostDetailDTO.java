@@ -10,5 +10,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class PostDetailDTO extends PostDTO {
 	private List<MultimediaDTO> multimedias = new ArrayList<>();
-	private List<CommentDTO> comments = new ArrayList<>();	
+
 }

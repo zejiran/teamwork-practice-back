@@ -14,6 +14,6 @@ public class GuideDTO {
 
 	private Integer age;
 	
-	private OutingDetailDTO outing;
+	//no deberia estar
 	
 }

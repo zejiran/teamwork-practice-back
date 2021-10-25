@@ -26,6 +26,10 @@ public class MultimediaEntity extends BaseEntity {
 	private PostEntity post;
 
 	@PodamExclude
+	@ManyToOne
+	private ReviewEntity review;
+
+	@PodamExclude
 	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
 }

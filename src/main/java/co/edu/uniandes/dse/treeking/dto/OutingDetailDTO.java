@@ -2,6 +2,7 @@ package co.edu.uniandes.dse.treeking.dto;
 
 import java.util.List;
 
+import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,8 +10,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class OutingDetailDTO extends OutingDTO{
 	private List<ActivityDTO> activities;
-	private List<GuideDTO> guides;
+	private List<QuotationDTO> quotations;
 	private ComplementaryInformationDTO complementaryInformation;
-	private ReviewDTO review;
-	private List<RouteDTO> routes;
+
 }

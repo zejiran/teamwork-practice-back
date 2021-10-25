@@ -18,6 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class RouteEntity extends BaseEntity {
 
+	private String name; // creo que debería tener un nombre
 	private Difficulty difficulty;
 	private Integer estimatedDuration;
 
@@ -25,16 +26,14 @@ public class RouteEntity extends BaseEntity {
 	@OneToMany(mappedBy = "map", fetch = FetchType.LAZY)
 	private List<LocationEntity> locations = new ArrayList<>();
 
-	@PodamExclude
-	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
-	private List<ReviewEntity> reviews = new ArrayList<>();
+	//creería que es mejor dejarle la lista a outing
 
 	@PodamExclude
 	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
 	private List<MultimediaEntity> medias = new ArrayList<>();
 
 	@PodamExclude
-	@ManyToOne
-	private OutingEntity outing;
+	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+	private List<OutingEntity> outings;  // la relación estaba al revés
 
 }

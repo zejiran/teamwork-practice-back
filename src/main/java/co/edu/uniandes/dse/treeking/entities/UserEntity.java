@@ -2,11 +2,7 @@ package co.edu.uniandes.dse.treeking.entities;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +17,7 @@ public class UserEntity extends BaseEntity {
 	protected String password;
 	protected String mail;
 
-	@PodamExclude
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<PostEntity> posts;
+	@OneToOne
+	private BlogEntity blog; //en vez de la lista de post que tenga el blog que tiene la lista
+
 }

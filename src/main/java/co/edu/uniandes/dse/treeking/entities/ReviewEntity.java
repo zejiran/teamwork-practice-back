@@ -3,11 +3,7 @@ package co.edu.uniandes.dse.treeking.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +22,10 @@ public class ReviewEntity extends BaseEntity {
 
 	@PodamExclude
 	@ManyToOne
-	private RouteEntity route;
+	private QuotationEntity quotation;
+
+	@PodamExclude
+	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
+	private List<MultimediaEntity> multimedias;
 
 }

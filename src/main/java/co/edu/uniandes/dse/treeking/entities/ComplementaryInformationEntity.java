@@ -16,8 +16,7 @@ public class ComplementaryInformationEntity extends BaseEntity {
 
 	private String recomendation;
 
-	@PodamExclude
-	@OneToOne(mappedBy = "complementaryInformation")
+	@OneToOne(mappedBy = "complementaryInformation") //necesitas mappedBy?
 	private MultimediaEntity homeImage;
 
 	@PodamExclude
