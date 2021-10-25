@@ -14,6 +14,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PostEntity extends BaseEntity {
 
 	private Integer ratings;
+	
+	private String title;
 
 	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private CommentEntity comment;
