@@ -19,7 +19,6 @@ public class TransactionEntity extends BaseEntity {
 
 	private PaymentType payment;
 	private Integer value;
-
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 

@@ -17,6 +17,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PostEntity extends BaseEntity {
 
 	private Integer ratings;
+	
+	private String title;
 
 	@PodamExclude
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
