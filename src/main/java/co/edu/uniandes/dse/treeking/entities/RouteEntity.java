@@ -3,10 +3,7 @@ package co.edu.uniandes.dse.treeking.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import co.edu.uniandes.dse.treeking.enums.Difficulty;
 import lombok.Getter;
@@ -23,10 +20,9 @@ public class RouteEntity extends BaseEntity {
 	private Integer estimatedDuration;
 
 	@PodamExclude
-	@OneToMany(mappedBy = "map", fetch = FetchType.LAZY)
-	private List<LocationEntity> locations = new ArrayList<>();
+	@OneToMany(mappedBy = "map", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<LocationEntity> locations;
 
-	//creería que es mejor dejarle la lista a outing
 
 	@PodamExclude
 	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)

@@ -15,7 +15,7 @@ public class PostEntity extends BaseEntity {
 
 	private Integer ratings;
 
-	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private CommentEntity comment;
 
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)

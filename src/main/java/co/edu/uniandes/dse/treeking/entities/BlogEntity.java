@@ -15,6 +15,6 @@ public class BlogEntity extends BaseEntity{
     @OneToOne
     private UserEntity user;
 
-    @OneToMany(mappedBy = "blog", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostEntity> posts;
 }

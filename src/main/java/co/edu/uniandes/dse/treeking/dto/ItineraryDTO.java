@@ -15,5 +15,5 @@ public class ItineraryDTO {
 
 	private String transportation;
 
-	private OutingDTO outing; //TODO esto sobra
+	//esto sobra
 }

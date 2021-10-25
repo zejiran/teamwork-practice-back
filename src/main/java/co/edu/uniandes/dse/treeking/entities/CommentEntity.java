@@ -25,7 +25,7 @@ public class CommentEntity extends BaseEntity{
     private Date date;
 
     @PodamExclude
-    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<CommentEntity> comments;
 
     @PodamExclude

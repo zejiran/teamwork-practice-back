@@ -18,5 +18,5 @@ public class ActivityDTO {
 
 	private Integer minutes;
 	
-	private OutingDetailDTO outing;
+	//sobra
 }
