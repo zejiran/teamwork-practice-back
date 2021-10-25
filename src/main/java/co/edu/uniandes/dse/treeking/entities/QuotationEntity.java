@@ -25,7 +25,7 @@ public class QuotationEntity extends BaseEntity {
 
 	private Status status;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private ReviewEntity review;
 
 	@PodamExclude

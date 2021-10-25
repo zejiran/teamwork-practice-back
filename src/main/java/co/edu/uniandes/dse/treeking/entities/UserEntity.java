@@ -17,7 +17,7 @@ public class UserEntity extends BaseEntity {
 	protected String password;
 	protected String mail;
 
-	@OneToOne
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private BlogEntity blog; //en vez de la lista de post que tenga el blog que tiene la lista
 
 }

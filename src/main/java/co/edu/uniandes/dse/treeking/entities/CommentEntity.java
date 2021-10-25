@@ -33,6 +33,7 @@ public class CommentEntity extends BaseEntity{
     @JoinColumn
     private CommentEntity comment;
 
+    @PodamExclude
     @ManyToOne
     private UserEntity user;
 

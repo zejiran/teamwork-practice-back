@@ -1,6 +1,8 @@
 package co.edu.uniandes.dse.treeking.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
@@ -16,7 +18,7 @@ public class ComplementaryInformationEntity extends BaseEntity {
 
 	private String recomendation;
 
-	@OneToOne(mappedBy = "complementaryInformation") //necesitas mappedBy?
+	@OneToOne(mappedBy = "complementaryInformation", fetch = FetchType.LAZY, cascade = CascadeType.ALL) //necesitas mappedBy?
 	private MultimediaEntity homeImage;
 
 	@PodamExclude

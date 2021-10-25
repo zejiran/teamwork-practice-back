@@ -42,7 +42,7 @@ public class OutingEntity extends BaseEntity {
 	@OneToMany(mappedBy = "outing")
 	private List<ActivityEntity> activities;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private GuideEntity guide; //considero que solo debería tener un guia, si pudiesen haber mas, seria manyToMany
 
 	@PodamExclude

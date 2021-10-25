@@ -15,6 +15,9 @@ public class PostEntity extends BaseEntity {
 
 	private Integer ratings;
 
+	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private CommentEntity comment;
+
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
 	private List<MultimediaEntity> multimedias;
 
@@ -23,7 +26,6 @@ public class PostEntity extends BaseEntity {
 	private BlogEntity blog;
 
 
-	@OneToOne( fetch = FetchType.LAZY)
-	private CommentEntity comment;
+
 
 }
