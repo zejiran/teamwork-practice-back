@@ -22,10 +22,9 @@ public class ReviewEntity extends BaseEntity {
 
 	@PodamExclude
 	@ManyToOne
-	private QuotationEntity quotation;
+	private RouteEntity route;
 
-	@PodamExclude
-	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> multimedias;
+	@OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private ContMultimediaEntity container;
 
 }

@@ -26,15 +26,6 @@ public class CommentEntity extends BaseEntity{
 
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<CommentEntity> comments;
-
-    @PodamExclude
-    @ManyToOne
-    @JoinColumn
-    private CommentEntity comment;
-
-    @PodamExclude
-    @ManyToOne
-    private UserEntity user;
+    private List<ReplyEntity> comments;
 
 }

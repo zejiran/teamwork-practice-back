@@ -17,23 +17,17 @@ public class QuotationEntity extends BaseEntity {
 
 	private Integer participants;
 
-	@PodamExclude
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private InsuranceEntity insurance;
 
 	private Integer totalCost;
 
 	private Status status;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private ReviewEntity review;
-
-	@PodamExclude
-	@ManyToOne
-	private OutingEntity outing;
+	@ManyToMany
+	private List<OutingEntity> outings;
 
 	@PodamExclude
 	@ManyToOne
 	private CalendarEntity calendar;
-
 }

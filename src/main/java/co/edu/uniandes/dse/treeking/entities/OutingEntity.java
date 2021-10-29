@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 public class OutingEntity extends BaseEntity {
-	private String name; //el nombre no beria ir solo en la ruta?
+	private String name;
 
 	@Temporal(TemporalType.DATE)
 	@PodamStrategyValue(DateStrategy.class)
@@ -25,26 +25,25 @@ public class OutingEntity extends BaseEntity {
 	private Integer participationCost;
 
 	@PodamExclude
-	@ManyToOne
-	private RouteEntity route; // la relación estaba al revés
-
-	@PodamExclude
-	@OneToOne(mappedBy = "outing")
-	private ComplementaryInformationEntity complementaryInformation;
+	@ManyToMany
+	private List<RouteEntity> routes;
 
 	@PodamExclude
 	@OneToOne
+	private ComplementaryInformationEntity complementaryInformation;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private ItineraryEntity itinerary;
 
 	@PodamExclude
 	@OneToMany(mappedBy = "outing")
 	private List<ActivityEntity> activities;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private GuideEntity guide; //considero que solo debería tener un guia, si pudiesen haber mas, seria manyToMany
+	@ManyToMany(mappedBy = "outings",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<GuideEntity> guides; //considero que solo debería tener un guia, si pudiesen haber mas, seria manyToMany
 
-	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
+	@PodamExclude
+	@ManyToMany(mappedBy = "outings", fetch = FetchType.LAZY)
 	private List<QuotationEntity> quotations;
-
 
 }

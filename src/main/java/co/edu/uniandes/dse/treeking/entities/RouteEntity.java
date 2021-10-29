@@ -15,21 +15,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class RouteEntity extends BaseEntity {
 
-	private String name; // creo que debería tener un nombre
+	private String name;
 	private Difficulty difficulty;
 	private Integer estimatedDuration;
 
-	@PodamExclude
 	@OneToMany(mappedBy = "map", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<LocationEntity> locations;
 
+	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+	private List<ReviewEntity> reviews = new ArrayList<>();
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private ContMultimediaEntity container;
 
 	@PodamExclude
-	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> medias = new ArrayList<>();
-
-	@PodamExclude
-	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
-	private List<OutingEntity> outings;  // la relación estaba al revés
+	@ManyToMany(mappedBy = "routes", fetch = FetchType.LAZY)
+	private List<OutingEntity> outings;
 
 }
