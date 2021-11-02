@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -64,6 +66,17 @@ class OutingServiceTest {
 	void testGetOutings() {
 		List<OutingEntity> list = outingService.getOutings();
 		assertEquals(list.size(), outingList.size());
+	}
+	
+	@Test
+	void testGetOuting() throws EntityNotFoundException{
+		OutingEntity outingEntity = outingList.get(0);
+		OutingEntity outing = outingService.getOuting(outingEntity.getId());
+		assertNotNull(outing);
+		assertEquals(outing.getId(), outingEntity.getId());
+		assertEquals(outing.getDate(), outingEntity.getDate());
+		assertEquals(outing.getPlace(), outingEntity.getPlace());
+		assertEquals(outing.getParticipationCost(), outingEntity.getParticipationCost());
 	}
 
 }
