@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.ClientEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -67,6 +69,17 @@ class ClientServiceTest {
 	void testGetClients() {
 		List<ClientEntity> list = clientService.getClients();
 		assertEquals(list.size(), clientList.size());
+	}
+	
+	@Test
+	void testGetClient() throws EntityNotFoundException{
+		ClientEntity clientEntity = clientList.get(0);
+		ClientEntity client = clientService.getClient(clientEntity.getId());
+		assertNotNull(client);
+		assertEquals(client.getId(), clientEntity.getId());
+		assertEquals(client.getUser(), clientEntity.getUser());
+		assertEquals(client.getPassword(), clientEntity.getPassword());
+		assertEquals(client.getMail(), clientEntity.getMail());
 	}
 
 }
