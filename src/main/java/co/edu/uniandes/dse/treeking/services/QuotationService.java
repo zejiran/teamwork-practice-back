@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
-import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 
 import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
 import co.edu.uniandes.dse.treeking.repositories.QuotationRepository;
@@ -40,7 +39,7 @@ public class QuotationService {
 	 * @throws IllegalOperationException
 	 */
 	@Transactional
-	public QuotationEntity getQuotation(Long quotationId) throws EntityNotFoundException, IllegalOperationException {
+	public QuotationEntity getQuotation(Long quotationId) throws EntityNotFoundException {
 		Optional<QuotationEntity> quotationEntity = quotationRepository.findById(quotationId);
 		if (quotationEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.QUOTATION_NOT_FOUND);
