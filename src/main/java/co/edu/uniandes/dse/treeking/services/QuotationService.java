@@ -43,7 +43,7 @@ public class QuotationService {
 		Optional<QuotationEntity> quotationEntity = quotationRepository.findById(quotationId);
 		if (quotationEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.QUOTATION_NOT_FOUND);
-		}else {
+		} else {
 			return quotationEntity.get();
 		}
 	}
