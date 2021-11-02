@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -64,6 +67,18 @@ class QuotationServiceTest {
 	void testGetQuotations() {
 		List<QuotationEntity> list = quotationService.getQuotations();
 		assertEquals(list.size(), quotationList.size());
+	}
+	
+	
+	@Test
+	void testGetQuotation() throws EntityNotFoundException, IllegalOperationException{
+		QuotationEntity quotationEntity = quotationList.get(0);
+		QuotationEntity quotation = quotationService.getQuotation(quotationEntity.getId());
+		assertNotNull(quotation);
+		assertEquals(quotation.getId(), quotationEntity.getId());
+		assertEquals(quotation.getParticipants(), quotationEntity.getParticipants());
+		assertEquals(quotation.getTotalCost(), quotationEntity.getTotalCost());
+		assertEquals(quotation.getStatus(), quotationEntity.getStatus());
 	}
 
 }
