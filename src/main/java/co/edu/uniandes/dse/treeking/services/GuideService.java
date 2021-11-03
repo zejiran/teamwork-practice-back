@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.GuideEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import co.edu.uniandes.dse.treeking.repositories.GuideRepository;
 
 @Service
@@ -21,17 +23,12 @@ public class GuideService {
 	}
 
 	@Transactional
-	public GuideEntity getGuide(Long id) {
-		return null;
-
+	public GuideEntity getGuide(Long id) throws EntityNotFoundException {
+		GuideEntity guide = guideRepository.findById(id).orElse(null);
+		if(guide == null) {
+			throw new EntityNotFoundException(ErrorMessage.GUIDE_NOT_FOUND);
+		}
+		return guide;
 	}
-
-	@Transactional
-	public void updateGuide(Long id, GuideEntity guide) {
-	}
-
-	@Transactional
-	public void deleteGuide() {
-
-	}
+	
 }
