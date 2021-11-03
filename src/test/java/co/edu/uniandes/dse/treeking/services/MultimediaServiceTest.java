@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,16 @@ class MultimediaServiceTest {
 	void testGetMultimedias() {
 		List<MultimediaEntity> list = multimediaService.getMultimedias();
 		assertEquals(list.size(), multimediaList.size());
+	}
 
+	/**
+	 * Test for getting Multimedia.
+	 */
+	@Test
+	void testGetMultimedia() {
+		MultimediaEntity multimediaEntity = multimediaList.get(0);
+		MultimediaEntity multimedia = multimediaService.getMultimedia(multimediaEntity.getId());
+		assertNotNull(multimedia);
+		assertEquals(multimedia.getId(), multimediaEntity.getId());
 	}
 }
