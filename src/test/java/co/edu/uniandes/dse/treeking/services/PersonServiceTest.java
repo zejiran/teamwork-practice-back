@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,16 @@ class PersonServiceTest {
 	void testGetPersons() {
 		List<PersonEntity> list = personService.getPersons();
 		assertEquals(list.size(), personList.size());
+	}
 
+	/**
+	 * Test for getting Person.
+	 */
+	@Test
+	void testGetPerson() {
+		PersonEntity personEntity = personList.get(0);
+		PersonEntity person = personService.getPerson(personEntity.getId());
+		assertEquals(person.getId(), personEntity.getId());
+		assertNotNull(person);
 	}
 }
