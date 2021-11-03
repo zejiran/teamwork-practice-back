@@ -1,7 +1,12 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +20,7 @@ import co.edu.uniandes.dse.treeking.repositories.ReviewRepository;
  *
  * @author ISIS2603
  */
-
+@Slf4j
 @Service
 public class ReviewService {
 
@@ -30,5 +35,15 @@ public class ReviewService {
 	@Transactional
 	public List<ReviewEntity> getReviews() {
 		return reviewRepository.findAll();
+	}
+
+	@Transactional
+	public ReviewEntity getReview(Long reviewId) throws EntityNotFoundException {
+		log.info("Inicia proceso de consultar la review con id = {0}", reviewId);
+		Optional<ReviewEntity> ReviewEntity = reviewRepository.findById(reviewId);
+		if (ReviewEntity.isEmpty())
+			throw new EntityNotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
+		log.info("Termina proceso de consultar la review con id = {0}", reviewId);
+		return ReviewEntity.get();
 	}
 }
