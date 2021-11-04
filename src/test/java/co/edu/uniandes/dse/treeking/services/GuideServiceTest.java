@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.GuideEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -50,6 +52,15 @@ class GuideServiceTest {
 		assertEquals(list.size(), guideList.size());
 	}
 
+	@Test
+	void testGetGuide() throws EntityNotFoundException {
+		GuideEntity guideEntity = guideList.get(0);
+		GuideEntity entity = guideService.getGuide(guideEntity.getId());
+		assertNotNull(entity);
+		assertEquals(guideEntity.getId(),entity.getId());
+		assertEquals(guideEntity.getAge(), entity.getAge());
+		assertEquals(guideEntity.getRating(), entity.getRating());
+	}
 	private void clearData() {
 		entityManager.getEntityManager().createQuery("delete from GuideEntity").executeUpdate();
 	}

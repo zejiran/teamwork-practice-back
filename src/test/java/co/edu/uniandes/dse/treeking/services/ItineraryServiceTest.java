@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.ItineraryEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -47,6 +49,16 @@ class ItineraryServiceTest {
 	void testGetItineries() {
 		List<ItineraryEntity> list = itineraryService.getItineries();
 		assertEquals(list.size(), itineraryList.size());
+	}
+	
+	@Test
+	void testGetItinerary() throws EntityNotFoundException {
+		ItineraryEntity itineraryEntity = itineraryList.get(0);
+		ItineraryEntity entity = itineraryService.getItinerary(itineraryEntity.getId());
+		assertNotNull(entity);
+		assertEquals(itineraryEntity.getId(), entity.getId());
+		assertEquals(itineraryEntity.getLodging(), entity.getLodging());
+		assertEquals(itineraryEntity.getTransportation(), itineraryEntity.getTransportation());
 	}
 
 	private void clearData() {
