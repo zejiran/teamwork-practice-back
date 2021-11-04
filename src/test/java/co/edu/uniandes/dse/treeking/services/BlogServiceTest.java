@@ -1,12 +1,15 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.entities.BlogEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +19,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -72,9 +74,18 @@ class BlogServiceTest {
 	 * Prueba para consultar la lista de Student.
 	 */
 	@Test
-	void testGetStudents() {
+	void testGetBlogs() {
 		List<BlogEntity> list = blogService.getBlogs();
 		assertEquals(list.size(), blogList.size());
 
 	}
+	@Test
+	void testGetBlog() throws EntityNotFoundException {
+		BlogEntity entity = blogList.get(0);
+		BlogEntity resultEntity = blogService.getBlog(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+	}
+
+
 }
