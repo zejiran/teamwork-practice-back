@@ -68,6 +68,7 @@ class PostServiceTest {
 			for (PostEntity storedEntity : postList)
 				if (entity.getId().equals(storedEntity.getId())) {
 					found = true;
+					break;
 				}
 			assertTrue(found);
 		}
@@ -80,7 +81,7 @@ class PostServiceTest {
 		assertNotNull(resultEntity);
 		assertEquals(postEntity.getId(), resultEntity.getId());
 		assertEquals(postEntity.getBlog(), resultEntity.getBlog());
-		assertEquals(postEntity.getComment(), resultEntity.getContainer());
-		assertEquals(postEntity.getRatings(), resultEntity.getTitle());
+		assertEquals(postEntity.getTitle(), resultEntity.getTitle());
+		assertEquals(postEntity.getRatings(), resultEntity.getRatings());
 	}
 }

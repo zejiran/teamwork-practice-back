@@ -9,8 +9,6 @@ public final class ErrorMessage {
 
 	public static final String QUOTATION_NOT_FOUND = "The quotation with the given ID was not found";
 
-	public static final String POST_NOT_FOUND = "The post with the given ID was not found";
-	
 	public static final String INSURANCE_NOT_FOUND = "The insurance with the given ID was not found";
 
 	public static final String OUTING_NOT_FOUND = "The outing with the given ID was not found";
