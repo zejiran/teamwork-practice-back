@@ -1,8 +1,11 @@
 package co.edu.uniandes.dse.treeking.exceptions;
 
 public final class ErrorMessage {
+
+	public static final String ENTERPRISE_NOT_FOUND = "The enterprise with the given id was not found";
+
 	public static final String TRANSACTION_NOT_FOUND = "The transaction with the given id was not found";
-  
+
 	public static final String QUOTATION_NOT_FOUND = "The quotation with the given ID was not found";
 
 	public static final String INSURANCE_NOT_FOUND = "The insurance with the given ID was not found";
