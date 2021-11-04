@@ -85,6 +85,7 @@ class NaturalPersonServiceTest {
 		NaturalPersonEntity naturalPersonEntity = naturalPersonList.get(0);
 		NaturalPersonEntity naturalPerson = naturalPersonService.getNaturalPerson(naturalPersonEntity.getId());
 		assertEquals(naturalPerson.getId(), naturalPersonEntity.getId());
+		assertEquals(naturalPerson.getPerson(),naturalPersonEntity.getPerson());
 		assertNotNull(naturalPerson);
 	}
 }

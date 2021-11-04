@@ -86,5 +86,9 @@ class UserServiceTest {
 		UserEntity user = userService.getUser(userEntity.getId());
 		assertNotNull(user);
 		assertEquals(user.getId(), userEntity.getId());
+		assertEquals(userEntity.getUser(), user.getUser());
+		assertEquals(userEntity.getPassword(), user.getPassword());
+		assertEquals(userEntity.getMail(), user.getMail());
+
 	}
 }

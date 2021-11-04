@@ -86,5 +86,8 @@ class MultimediaServiceTest {
 		MultimediaEntity multimedia = multimediaService.getMultimedia(multimediaEntity.getId());
 		assertNotNull(multimedia);
 		assertEquals(multimedia.getId(), multimediaEntity.getId());
+		assertEquals(multimedia.getFileName(),multimediaEntity.getFileName());
+		assertEquals(multimedia.getExtension(),multimediaEntity.getExtension());
+		assertEquals(multimedia.getMediaType(),multimediaEntity.getMediaType());
 	}
 }
