@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.MultimediaEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import co.edu.uniandes.dse.treeking.repositories.MultimediaRepository;
 
 /**
@@ -26,5 +28,21 @@ public class MultimediaService {
 	@Transactional
 	public List<MultimediaEntity> getMultimedias() {
 		return multimediaRepository.findAll();
+	}
+
+	/**
+	 * Obtains the Multimedia register by id.
+	 *
+	 * @param id Identifier of the Multimedia register.
+	 * @return Instance that coincides with the identifier.
+	 * @throws Exception If the identifier does not exist.
+	 */
+	@Transactional
+	public MultimediaEntity getMultimedia(Long id) throws EntityNotFoundException {
+		MultimediaEntity multimedia = multimediaRepository.findById(id).orElse(null);
+		if (multimedia == null) {
+			throw new EntityNotFoundException(ErrorMessage.MULTIMEDIA_NOT_FOUND);
+		}
+		return multimedia;
 	}
 }

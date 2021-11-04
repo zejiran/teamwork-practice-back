@@ -83,5 +83,4 @@ class PostServiceTest {
 		assertEquals(postEntity.getComment(), resultEntity.getContainer());
 		assertEquals(postEntity.getRatings(), resultEntity.getTitle());
 	}
-
 }
