@@ -27,8 +27,8 @@ public class CalendarService {
 		return calendarRepository.findAll();
 	}
 
-	public CalendarEntity getCalendarById(Integer id) throws EntityNotFoundException {
-		Optional<CalendarEntity> calendarEntity = Optional.of(calendarRepository.getById(Long.valueOf(id)));
+	public CalendarEntity getCalendarById(Long id) throws EntityNotFoundException {
+		Optional<CalendarEntity> calendarEntity = calendarRepository.findById(id);
 		if (calendarEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.ROUTE_NOT_FOUND);
 		}

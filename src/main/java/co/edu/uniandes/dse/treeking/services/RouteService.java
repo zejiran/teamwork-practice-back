@@ -33,8 +33,8 @@ public class RouteService {
 			return null;
 		}
 	}
-	public RouteEntity getRouteById(Integer id) throws EntityNotFoundException {
-		Optional<RouteEntity> routeEntity = Optional.of(routeRepository.getById(Long.valueOf(id)));
+	public RouteEntity getRouteById(Long id) throws EntityNotFoundException {
+		Optional<RouteEntity> routeEntity = routeRepository.findById(id);
 		if (routeEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.ROUTE_NOT_FOUND);
 		}
