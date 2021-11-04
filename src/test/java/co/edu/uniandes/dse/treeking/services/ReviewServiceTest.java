@@ -1,12 +1,15 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -77,4 +80,15 @@ class ReviewServiceTest {
 		assertEquals(list.size(), reviewList.size());
 
 	}
+
+	@Test
+	void testGetReview() throws EntityNotFoundException {
+		ReviewEntity entity = reviewList.get(0);
+		ReviewEntity resultEntity = reviewService.getReview(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getScore(), resultEntity.getScore());
+		assertEquals(entity.getRoute(), resultEntity.getRoute());
+	}
+
 }

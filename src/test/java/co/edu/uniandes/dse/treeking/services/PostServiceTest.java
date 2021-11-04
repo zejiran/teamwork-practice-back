@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.PostEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -72,5 +72,15 @@ class PostServiceTest {
 			assertTrue(found);
 		}
 	}
-
+	
+	@Test
+	void testGetPost() throws EntityNotFoundException {
+		PostEntity postEntity = postList.get(0);
+		PostEntity resultEntity = postService.getPost(postEntity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(postEntity.getId(), resultEntity.getId());
+		assertEquals(postEntity.getBlog(), resultEntity.getBlog());
+		assertEquals(postEntity.getComment(), resultEntity.getContainer());
+		assertEquals(postEntity.getRatings(), resultEntity.getTitle());
+	}
 }

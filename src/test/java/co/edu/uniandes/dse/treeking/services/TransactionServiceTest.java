@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -71,6 +71,18 @@ class TransactionServiceTest {
 				}
 			assertTrue(found);
 		}
+	}
+	
+	@Test
+	void testGetTransaction() throws EntityNotFoundException {
+		TransactionEntity transactionEntity = transactionList.get(0);
+		TransactionEntity resultEntity = transactionService.getTransaction(transactionEntity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(transactionEntity.getId(), resultEntity.getId());
+		assertEquals(transactionEntity.getClient(), resultEntity.getClient());
+		assertEquals(transactionEntity.getCreationDate(), resultEntity.getCreationDate());
+		assertEquals(transactionEntity.getPayment(), resultEntity.getPayment());
+		assertEquals(transactionEntity.getValue(), resultEntity.getValue());
 	}
 
 }
