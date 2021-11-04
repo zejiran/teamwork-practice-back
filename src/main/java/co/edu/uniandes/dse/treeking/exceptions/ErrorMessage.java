@@ -17,6 +17,14 @@ public class ErrorMessage {
 	
 	public static final String ITINERARY_NOT_FOUND = "The itinerary with the given ID was not found";
 
+	public static final String MULTIMEDIA_NOT_FOUND = "The multimedia with the given ID was not found";
+
+	public static final String NATURAL_PERSON_NOT_FOUND = "The natural person with the given ID was not found";
+
+	public static final String PERSON_NOT_FOUND = "The person with the given ID was not found";
+
+	public static final String USER_NOT_FOUND = "The user with the given ID was not found";
+
 	private ErrorMessage() {
 		throw new IllegalStateException("Utility class");
 	}
