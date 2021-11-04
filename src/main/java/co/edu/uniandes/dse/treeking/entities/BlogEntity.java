@@ -11,5 +11,5 @@ import java.util.List;
 @Setter
 public class BlogEntity extends BaseEntity{
     @OneToMany
-    private List<PostEntity> post;
+    private List<PostEntity> posts;
 }
