@@ -1,11 +1,10 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniandes.dse.treeking.entities.CalendarEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,9 +19,11 @@ import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Pruebas de lógica de Location
- * 
+ *
  * @author BalaclavaAM
  *
  */
@@ -75,10 +76,23 @@ class LocationServiceTest {
 			for (LocationEntity entidadGuardada : listadeLocaciones) {
 				if (entidad.getId().equals(entidadGuardada.getId())) {
 					encontrao = true;
+					break;
 				}
 			}
 			assertTrue(encontrao);
 		}
 	}
+
+	@Test
+	void testGetLocation() throws EntityNotFoundException {
+		LocationEntity entity = listadeLocaciones.get(0);
+		LocationEntity resultEntity = locationService.getLocationById(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getLatitude(), resultEntity.getLatitude());
+		assertEquals(entity.getLongitude(), resultEntity.getLongitude());
+		assertEquals(entity.getMap(), resultEntity.getMap());
+	}
+
 
 }
