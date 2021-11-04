@@ -80,8 +80,6 @@ class PostServiceTest {
 		assertNotNull(resultEntity);
 		assertEquals(postEntity.getId(), resultEntity.getId());
 		assertEquals(postEntity.getBlog(), resultEntity.getBlog());
-		assertEquals(postEntity.getComment(), resultEntity.getContainer());
-		assertEquals(postEntity.getRatings(), resultEntity.getTitle());
 	}
 
 }
