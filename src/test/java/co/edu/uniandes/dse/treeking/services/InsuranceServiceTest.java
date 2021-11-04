@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.InsuranceEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -69,4 +71,15 @@ class InsuranceServiceTest {
 		assertEquals(list.size(), insuranceList.size());
 	}
 
+	@Test
+	void testGetInsurance() throws EntityNotFoundException {
+		InsuranceEntity insuranceEntity = insuranceList.get(0);
+		InsuranceEntity insurance = insuranceService.getInsurance(insuranceEntity.getId());
+		assertNotNull(insurance);
+		assertEquals(insuranceEntity.getId(), insurance.getId());
+		assertEquals(insuranceEntity.getFeatures(), insurance.getFeatures());
+		assertEquals(insuranceEntity.getConditions(), insurance.getConditions());
+		assertEquals(insuranceEntity.getName(), insurance.getName());
+		assertEquals(insuranceEntity.getPrice(), insurance.getPrice());
+	}
 }
