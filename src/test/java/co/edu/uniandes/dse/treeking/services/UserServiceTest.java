@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -80,7 +81,7 @@ class UserServiceTest {
 	 * Test for getting User.
 	 */
 	@Test
-	void testGetUser() {
+	void testGetUser() throws EntityNotFoundException {
 		UserEntity userEntity = userList.get(0);
 		UserEntity user = userService.getUser(userEntity.getId());
 		assertNotNull(user);

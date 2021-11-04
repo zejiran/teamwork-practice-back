@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -80,7 +81,7 @@ class MultimediaServiceTest {
 	 * Test for getting Multimedia.
 	 */
 	@Test
-	void testGetMultimedia() {
+	void testGetMultimedia() throws EntityNotFoundException {
 		MultimediaEntity multimediaEntity = multimediaList.get(0);
 		MultimediaEntity multimedia = multimediaService.getMultimedia(multimediaEntity.getId());
 		assertNotNull(multimedia);
