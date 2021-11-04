@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,13 +63,21 @@ class ComplementaryInformationServiceTest {
 	}
 
 	/**
-	 * Prueba para consultar la lista de Student.
+	 * Prueba para consultar la lista de ComplementaryInformation.
 	 */
 	@Test
-	void testGetStudents() {
+	void testGetComplementaryInformations() {
 		List<ComplementaryInformationEntity> list = complementaryInformationService.getComplementaryInformations();
 		assertEquals(list.size(), ciList.size());
-
+	}
+	@Test
+	void testGetComplementaryInformation() {
+		ComplementaryInformationEntity ciEntity = ciList.get(0);
+		ComplementaryInformationEntity entity = complementaryInformationService.getComplementaryInformation(ciEntity.getId());
+		assertNotNull(entity);
+		assertEquals(entity.getId(), ciEntity.getId());
+		assertEquals(entity.getDescription(), ciEntity.getDescription());
+		assertEquals(entity.getRecomendation(), ciEntity.getRecomendation());
 	}
 
 }
