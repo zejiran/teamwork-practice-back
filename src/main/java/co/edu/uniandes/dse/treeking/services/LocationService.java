@@ -1,7 +1,10 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,5 +30,13 @@ public class LocationService {
 		} else {
 			return null;
 		}
+	}
+
+	public LocationEntity getLocationById(Long LocationId) throws EntityNotFoundException {
+		Optional<LocationEntity> locationEntity = locationRepository.findById(LocationId);
+		if (locationEntity.isEmpty()){
+			throw new EntityNotFoundException(ErrorMessage.LOCATION_NOT_FOUND);
+		}
+		return locationEntity.get();
 	}
 }

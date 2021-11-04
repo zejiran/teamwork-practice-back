@@ -1,11 +1,9 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.uniandes.dse.treeking.entities.CalendarEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -67,9 +67,18 @@ class CalendarServiceTest {
 			for (CalendarEntity entidadGuardada : listadeCalendarios) {
 				if (entidad.getId().equals(entidadGuardada.getId())) {
 					encontrao = true;
+					break;
 				}
 			}
 			assertTrue(encontrao);
 		}
+	}
+
+	@Test
+	void testGetCalendar() throws EntityNotFoundException {
+		CalendarEntity entity = listadeCalendarios.get(0);
+		CalendarEntity resultEntity = calendarService.getCalendarById(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
 	}
 }

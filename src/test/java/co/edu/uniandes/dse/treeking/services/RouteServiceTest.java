@@ -1,11 +1,9 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.uniandes.dse.treeking.entities.RouteEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Pruebas de lógica de Route
@@ -75,9 +75,20 @@ class RouteServiceTest {
 			for (RouteEntity entidadGuardada : listaRutas)
 				if (entidad.getId().equals(entidadGuardada.getId())) {
 					encontrao = true;
+					break;
 				}
 			assertTrue(encontrao);
 		}
 	}
 
+	@Test
+	void testGetRoute() throws EntityNotFoundException {
+		RouteEntity entity = listaRutas.get(0);
+		RouteEntity resultEntity = routeService.getRouteById(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getDifficulty(), resultEntity.getDifficulty());
+		assertEquals(entity.getEstimatedDuration(), resultEntity.getEstimatedDuration());
+		assertEquals(entity.getOuting(), resultEntity.getOuting());
+	}
 }
