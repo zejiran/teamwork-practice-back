@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.exceptions;
 
 public final class ErrorMessage {
+	public static final String POST_NOT_FOUND = "The post with the given id was not found";
 
 	public static final String ENTERPRISE_NOT_FOUND = "The enterprise with the given id was not found";
 
@@ -35,4 +36,4 @@ public final class ErrorMessage {
 	private ErrorMessage() {
 		throw new IllegalStateException("Utility class");
 	}
-}
+}  
