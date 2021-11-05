@@ -35,6 +35,92 @@
 				}
 			},
 			"response": [{"fileName":"grabacion_salida","mediaType":"VIDEO","extension":"mp4","route":null,"post":null,"complementaryInformation":null}]
+		},
+		{
+			"name": "Get multimedia by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error en el get multimedia\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/multimedias/100",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"multimedias",
+						"100"
+					]
+				}
+			},
+			"response": {"fileName":"grabacion_salida","mediaType":"VIDEO","extension":"mp4","route":null,"post":null,"complementaryInformation":null}
+		},
+		{
+			"name": "Get not found multimedia by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia obtener un multimedia con un id que no existe\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The multimedia with the given ID was not found\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/multimedias/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"multimedias",
+						"0"
+					]
+				}
+			}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
