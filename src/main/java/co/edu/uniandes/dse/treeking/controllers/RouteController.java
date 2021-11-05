@@ -31,6 +31,7 @@ public class RouteController {
         return modelMapper.map(routes, new TypeToken<List<RouteDTO>>(){}.getType());
     }
 
+
     @GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public RouteDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
