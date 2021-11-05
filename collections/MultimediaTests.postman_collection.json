@@ -34,7 +34,7 @@
 					]
 				}
 			},
-			"response": [{"fileName":"grabacion_salida","mediaType":"VIDEO","extension":"mp4","route":null,"post":null,"complementaryInformation":null}]
+			"response": []
 		},
 		{
 			"name": "Get multimedia by ID",
@@ -68,7 +68,7 @@
 					]
 				}
 			},
-			"response": {"fileName":"grabacion_salida","mediaType":"VIDEO","extension":"mp4","route":null,"post":null,"complementaryInformation":null}
+			"response": []
 		},
 		{
 			"name": "Get not found multimedia by ID",
@@ -100,7 +100,8 @@
 						"0"
 					]
 				}
-			}
+			},
+			"response": []
 		}
 	],
 	"event": [

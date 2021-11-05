@@ -34,7 +34,7 @@
 					]
 				}
 			},
-			"response": [{"id":32,"user":"prt.777","password":"ddd","mail":"prt@gmail.com"},{"id":100,"user":"peperez.hola","password":"asdfTER12","mail":"peperez@gmail.com"}]
+			"response": []
 		},
 		{
 			"name": "Get user by ID",
@@ -68,7 +68,7 @@
 					]
 				}
 			},
-			"response": {"id":100,"user":"peperez.hola","password":"asdfTER12","mail":"peperez@gmail.com"}
+			"response": []
 		},
 		{
 			"name": "Get not found user by ID",
@@ -100,7 +100,8 @@
 						"0"
 					]
 				}
-			}
+			},
+			"response": []
 		}
 	],
 	"event": [

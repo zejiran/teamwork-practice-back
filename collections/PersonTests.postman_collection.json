@@ -34,7 +34,7 @@
 					]
 				}
 			},
-			"response": [{"id":100,"name":"pepe"}]
+			"response": []
 		},
 		{
 			"name": "Get person by ID",
@@ -68,7 +68,7 @@
 					]
 				}
 			},
-			"response": {"id":100,"name":"pepe","idNumber":"10022","idType":"CC","address":"Calle 13"}
+			"response": []
 		},
 		{
 			"name": "Get not found person by ID",
@@ -100,7 +100,8 @@
 						"0"
 					]
 				}
-			}
+			},
+			"response": []
 		}
 	],
 	"event": [
