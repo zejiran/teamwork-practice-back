@@ -38,7 +38,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener seguro por ID",
+			"name": "Obtener seguro por ID not found",
 			"event": [
 				{
 					"listen": "test",
@@ -65,6 +65,40 @@
 						"api",
 						"insurances",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener seguro por ID found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error en el get insurance\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/insurances/100",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"insurances",
+						"100"
 					]
 				}
 			},
