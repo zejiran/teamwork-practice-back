@@ -36,7 +36,7 @@ public class OutingEntity extends BaseEntity {
 	private List<RouteEntity> routes;
 
 	@PodamExclude
-	@OneToOne(mappedBy = "outing")
+	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
 
 	@PodamExclude
