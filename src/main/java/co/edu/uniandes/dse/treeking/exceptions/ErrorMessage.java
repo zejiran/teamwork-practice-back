@@ -35,7 +35,7 @@ public final class ErrorMessage {
 
 	public static final String COMMENT_NOT_FOUND = "The comment with the given ID was not found";
 
-	public static final String BLOG_NOT_FOUND = "The blog whit the given ID was not found";
+	public static final String BLOG_NOT_FOUND = "The blog with the given ID was not found";
 
 	public static final String REVIEW_NOT_FOUND = "The review whit the given ID was not found";
   
