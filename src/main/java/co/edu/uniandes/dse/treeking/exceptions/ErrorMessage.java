@@ -37,7 +37,7 @@ public final class ErrorMessage {
 
 	public static final String BLOG_NOT_FOUND = "The blog with the given ID was not found";
 
-	public static final String REVIEW_NOT_FOUND = "The review whit the given ID was not found";
+	public static final String REVIEW_NOT_FOUND = "The review with the given ID was not found";
   
   public static final String LOCATION_NOT_FOUND = "The location with the given ID was not found";
   
