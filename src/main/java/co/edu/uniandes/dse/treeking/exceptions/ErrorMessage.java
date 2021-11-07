@@ -19,7 +19,7 @@ public final class ErrorMessage {
 
 	public static final String COMPLEMENTARYINFORMATION_NOT_FOUND = "The complementary information with the given ID was not found";
 	
-	public static final String GUIDE_NOT_FOUND = "The guIDe with the given ID was not found";
+	public static final String GUIDE_NOT_FOUND = "The guide with the given ID was not found";
 	
 	public static final String ITINERARY_NOT_FOUND = "The itinerary with the given ID was not found";
 
