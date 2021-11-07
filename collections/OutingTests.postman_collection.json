@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "377c70e4-a785-4642-bb60-6ee471694351",
+		"_postman_id": "5b575fcb-d113-46df-95ae-275d1f7f5611",
 		"name": "Outing Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -35,7 +35,40 @@
 					]
 				}
 			},
-			"response": [{"id":100,"name":"Conoce la magia del Parque Tayrona","date":"2011-09-10","place":"Parque Natural Tayrona","participationCost":500000,"itinerary":{"id":100,"lodging":"Equipaje, estadia con desayuno","transportation":"Viaje por autobus","outing":null}}]
+			"response": []
+		},
+		{
+			"name": "Obtener salida por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia obtener un outing con un id que no existe\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The outing with the given ID was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/outings/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"outings",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
