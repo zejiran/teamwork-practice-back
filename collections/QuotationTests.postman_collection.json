@@ -38,7 +38,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener cotización por id",
+			"name": "Obtener cotización por id not found",
 			"event": [
 				{
 					"listen": "test",
@@ -65,6 +65,40 @@
 						"api",
 						"quotations",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cotización por id found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error en el get quotations\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/quotations/100",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"quotations",
+						"100"
 					]
 				}
 			},
