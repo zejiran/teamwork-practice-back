@@ -38,7 +38,7 @@
 			"response": []
 		},
 		{
-			"name": "Obtener cliente por ID",
+			"name": "Obtener cliente por ID not found",
 			"event": [
 				{
 					"listen": "test",
@@ -67,6 +67,15 @@
 						"1"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cliente por ID found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}
