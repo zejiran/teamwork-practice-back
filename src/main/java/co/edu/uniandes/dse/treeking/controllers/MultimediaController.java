@@ -7,12 +7,15 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.treeking.dto.MultimediaDTO;
+import co.edu.uniandes.dse.treeking.dto.MultimediaDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.MultimediaEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.MultimediaService;
 
 /**
@@ -41,5 +44,18 @@ public class MultimediaController {
 		List<MultimediaEntity> multimedias = multimediaService.getMultimedias();
 		return modelMapper.map(multimedias, new TypeToken<List<MultimediaDTO>>() {
 		}.getType());
+	}
+
+	/**
+	 * Search and return the multimedia with the given id at the URL.
+	 *
+	 * @param id Identifier of the searched multimedia
+	 * @return JSON {@link MultimediaDetailDTO} - The searched multimedia.
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public MultimediaDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		MultimediaEntity multimediaEntity = multimediaService.getMultimedia(id);
+		return modelMapper.map(multimediaEntity, MultimediaDetailDTO.class);
 	}
 }
