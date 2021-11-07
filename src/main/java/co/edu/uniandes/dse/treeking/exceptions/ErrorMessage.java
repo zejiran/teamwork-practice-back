@@ -31,7 +31,7 @@ public final class ErrorMessage {
 
 	public static final String USER_NOT_FOUND = "The user with the given ID was not found";
 
-	public static final String ADMIN_NOT_FOUND = "The admin whit the given ID was not found";
+	public static final String ADMIN_NOT_FOUND = "The admin with the given ID was not found";
 
 	public static final String COMMENT_NOT_FOUND = "The comment whit the given ID was not found";
 
