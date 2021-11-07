@@ -7,12 +7,15 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.treeking.dto.NaturalPersonDTO;
+import co.edu.uniandes.dse.treeking.dto.NaturalPersonDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.NaturalPersonEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.NaturalPersonService;
 
 /**
@@ -41,5 +44,18 @@ public class NaturalPersonController {
 		List<NaturalPersonEntity> naturalPersons = naturalPersonService.getNaturalPersons();
 		return modelMapper.map(naturalPersons, new TypeToken<List<NaturalPersonDTO>>() {
 		}.getType());
+	}
+
+	/**
+	 * Search and return the natural person with the given id at the URL.
+	 *
+	 * @param id Identifier of the searched natural person
+	 * @return JSON {@link NaturalPersonDetailDTO} - The searched natural person.
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public NaturalPersonDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		NaturalPersonEntity naturalPersonEntity = naturalPersonService.getNaturalPerson(id);
+		return modelMapper.map(naturalPersonEntity, NaturalPersonDetailDTO.class);
 	}
 }

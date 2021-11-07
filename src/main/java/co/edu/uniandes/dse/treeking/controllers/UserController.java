@@ -7,12 +7,15 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.treeking.dto.UserDTO;
+import co.edu.uniandes.dse.treeking.dto.UserDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.UserEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.UserService;
 
 /**
@@ -41,5 +44,18 @@ public class UserController {
 		List<UserEntity> users = userService.getUsers();
 		return modelMapper.map(users, new TypeToken<List<UserDTO>>() {
 		}.getType());
+	}
+
+	/**
+	 * Search and return the user with the given id at the URL.
+	 *
+	 * @param id Identifier of the searched user
+	 * @return JSON {@link UserDetailDTO} - The searched user.
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public UserDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		UserEntity userEntity = userService.getUser(id);
+		return modelMapper.map(userEntity, UserDetailDTO.class);
 	}
 }
