@@ -8,5 +8,5 @@ public class ReviewDTO{
     private Long id;
     private CommentDTO comment;
     private Integer score;
-    private QuotationDTO quotation;
+    
 }
