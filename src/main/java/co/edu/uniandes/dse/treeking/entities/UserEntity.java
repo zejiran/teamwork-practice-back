@@ -14,7 +14,7 @@ public class UserEntity extends BaseEntity {
 	protected String password;
 	protected String mail;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private BlogEntity blog;
 
 }

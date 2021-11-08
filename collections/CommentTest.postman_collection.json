@@ -63,7 +63,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/comments/100",
+					"raw": "http://{{ip}}:{{port}}/api/comments/12",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -72,7 +72,7 @@
 					"path": [
 						"api",
 						"comments",
-						"100"
+						"12"
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un comment de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del comment deseado por la URL de la petición.\n\n**Código http esperado: 200**"

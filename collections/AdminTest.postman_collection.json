@@ -63,7 +63,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/admins/100",
+					"raw": "http://{{ip}}:{{port}}/api/admins/32",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -72,7 +72,7 @@
 					"path": [
 						"api",
 						"admins",
-						"100"
+						"32"
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un admin de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del admin deseado por la URL de la petición.\n\n**Código http esperado: 200**"

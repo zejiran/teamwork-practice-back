@@ -63,7 +63,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/reviews/100",
+					"raw": "http://{{ip}}:{{port}}/api/reviews/45",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -72,7 +72,7 @@
 					"path": [
 						"api",
 						"reviews",
-						"100"
+						"45"
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un review de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del review deseado por la URL de la petición.\n\n**Código http esperado: 200**"

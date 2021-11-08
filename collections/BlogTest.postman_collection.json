@@ -63,7 +63,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/blogs/100",
+					"raw": "http://{{ip}}:{{port}}/api/blogs/2",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -72,7 +72,7 @@
 					"path": [
 						"api",
 						"blogs",
-						"100"
+						"2"
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un blog de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del blog deseado por la URL de la petición.\n\n**Código http esperado: 200**"
