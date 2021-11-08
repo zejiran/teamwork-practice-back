@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class BlogEntity extends BaseEntity{
-
+  
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostEntity> posts;
 }

@@ -14,6 +14,5 @@ public class ComplementaryInformationDTO{
 	
 	private MultimediaDTO homeImage;
 	
-	// no creo que sea necesario
 	
 }

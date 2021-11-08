@@ -1,12 +1,14 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,6 +78,17 @@ class AdminServiceTest {
 		List<AdminEntity> list = adminService.getAdmins();
 		assertEquals(list.size(), adminList.size());
 
+	}
+
+	@Test
+	void testGetAdmin() throws EntityNotFoundException {
+		AdminEntity entity = adminList.get(0);
+		AdminEntity resultEntity = adminService.getAdmin(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getUser(), resultEntity.getUser());
+		assertEquals(entity.getPassword(), resultEntity.getPassword());
+		assertEquals(entity.getMail(), resultEntity.getMail());
 	}
 
 }

@@ -9,4 +9,5 @@ public class UserDTO {
 	private String password;
 	private String mail;
 	private BlogDTO blog;
+
 }

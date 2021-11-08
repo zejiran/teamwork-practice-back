@@ -1,12 +1,14 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,6 +75,20 @@ class UserServiceTest {
 	void testGetUsers() {
 		List<UserEntity> list = userService.getUsers();
 		assertEquals(list.size(), userList.size());
+	}
+
+	/**
+	 * Test for getting User.
+	 */
+	@Test
+	void testGetUser() throws EntityNotFoundException {
+		UserEntity userEntity = userList.get(0);
+		UserEntity user = userService.getUser(userEntity.getId());
+		assertNotNull(user);
+		assertEquals(user.getId(), userEntity.getId());
+		assertEquals(userEntity.getUser(), user.getUser());
+		assertEquals(userEntity.getPassword(), user.getPassword());
+		assertEquals(userEntity.getMail(), user.getMail());
 
 	}
 }

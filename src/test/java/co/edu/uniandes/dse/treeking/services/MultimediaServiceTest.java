@@ -1,12 +1,14 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,6 +75,19 @@ class MultimediaServiceTest {
 	void testGetMultimedias() {
 		List<MultimediaEntity> list = multimediaService.getMultimedias();
 		assertEquals(list.size(), multimediaList.size());
+	}
 
+	/**
+	 * Test for getting Multimedia.
+	 */
+	@Test
+	void testGetMultimedia() throws EntityNotFoundException {
+		MultimediaEntity multimediaEntity = multimediaList.get(0);
+		MultimediaEntity multimedia = multimediaService.getMultimedia(multimediaEntity.getId());
+		assertNotNull(multimedia);
+		assertEquals(multimedia.getId(), multimediaEntity.getId());
+		assertEquals(multimedia.getFileName(),multimediaEntity.getFileName());
+		assertEquals(multimedia.getExtension(),multimediaEntity.getExtension());
+		assertEquals(multimedia.getMediaType(),multimediaEntity.getMediaType());
 	}
 }

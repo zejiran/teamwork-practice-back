@@ -7,12 +7,16 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.uniandes.dse.treeking.dto.PostDetailDTO;
 import co.edu.uniandes.dse.treeking.dto.TransactionDTO;
+import co.edu.uniandes.dse.treeking.entities.PostEntity;
 import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.TransactionService;
 
 
@@ -42,4 +46,18 @@ public class TransactionController {
                 return modelMapper.map(transactions, new TypeToken<List<TransactionDTO>>() {
                 }.getType());
         }
+        
+    	/**
+    	 * Busca el transaction con el id asociado recibido en la URL y lo devuelve.
+    	 *
+    	 * @param transactionId Identificador del transaction que se esta buscando. Este debe ser una
+    	 *               cadena de dígitos.
+    	 * @return JSON {@link TransactionDTO} - El transaction buscado
+    	 */
+    	@GetMapping(value = "/{id}")
+    	@ResponseStatus(code = HttpStatus.OK)
+    	public TransactionDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+    		TransactionEntity transactionEntity = transactionService.getTransaction(id);
+    		return modelMapper.map(transactionEntity, TransactionDTO.class);
+    	}
 }  

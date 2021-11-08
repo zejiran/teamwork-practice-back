@@ -15,7 +15,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class RouteEntity extends BaseEntity {
 
-	private String name;
+
+	private String routeName;
+
 	private Difficulty difficulty;
 	private Integer estimatedDuration;
 

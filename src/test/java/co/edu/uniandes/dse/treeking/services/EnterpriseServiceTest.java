@@ -1,7 +1,6 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -71,6 +71,21 @@ class EnterpriseServiceTest {
 				}
 			assertTrue(found);
 		}
+	}
+
+	@Test
+	void testGetEnterprise() throws EntityNotFoundException {
+		EnterpriseEntity enterpriseEntity = enterpriseList.get(0);
+		EnterpriseEntity resultEntity = enterpriseService.getEnterprise(enterpriseEntity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(enterpriseEntity.getId(), resultEntity.getId());
+		assertEquals(enterpriseEntity.getCalendar(), resultEntity.getCalendar());
+		assertEquals(enterpriseEntity.getMail(), resultEntity.getMail());
+		assertEquals(enterpriseEntity.getPassword(), resultEntity.getPassword());
+		assertEquals(enterpriseEntity.getPosts(), resultEntity.getPosts());
+		assertEquals(enterpriseEntity.getRepresentative(), resultEntity.getRepresentative());
+		assertEquals(enterpriseEntity.getTransactions(), resultEntity.getTransactions());
+		assertEquals(enterpriseEntity.getUser(), resultEntity.getUser());
 	}
 
 }

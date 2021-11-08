@@ -1,12 +1,15 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import co.edu.uniandes.dse.treeking.entities.CommentEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -75,6 +78,17 @@ class CommentServiceTest {
 	void testGetComments() {
 		List<CommentEntity> list = commentService.getComments();
 		assertEquals(list.size(), commentList.size());
-
 	}
+
+	@Test
+	void testGetComment() throws EntityNotFoundException {
+		CommentEntity entity = commentList.get(0);
+		CommentEntity resultEntity = commentService.getComment(entity.getId());
+		assertNotNull(resultEntity);
+		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getText(), resultEntity.getText());
+		assertEquals(entity.getLikes(), resultEntity.getLikes());
+		assertEquals(entity.getDislikes(), resultEntity.getDislikes());
+	}
+
 }

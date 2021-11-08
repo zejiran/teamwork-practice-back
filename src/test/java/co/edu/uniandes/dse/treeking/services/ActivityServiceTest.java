@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
+import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -45,6 +47,16 @@ class ActivityServiceTest {
 	void testGetActivities() {
 		List<ActivityEntity> list = activityService.getActivities();
 		assertEquals(list.size(), activityList.size());
+	}
+	
+	@Test
+	void testGetActivity() {
+		ActivityEntity activityEntity = activityList.get(0);
+		ActivityEntity entity = activityService.getActivity(activityEntity.getId());
+		assertNotNull(entity);
+		assertEquals(entity.getId(), activityEntity.getId());
+		assertEquals(entity.getDescription(), activityEntity.getDescription());
+		assertEquals(entity.getMinutes(), activityEntity.getMinutes());
 	}
 
 	private void clearData() {
