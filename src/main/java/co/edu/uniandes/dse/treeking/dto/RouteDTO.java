@@ -7,7 +7,6 @@ import lombok.Data;
 public class RouteDTO {
 
     private String routeName;
-
 	private Difficulty difficulty;
     private Float estimatedDuration;
 }
