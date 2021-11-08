@@ -10,5 +10,4 @@ public class MultimediaDTO {
 	private String extension;
 	// esto no deberia estar en el DTO es solo algo para la persistencia
 	// esto no deberia estar en el DTO
-	// esto no deberia estar en el DTO
 }
