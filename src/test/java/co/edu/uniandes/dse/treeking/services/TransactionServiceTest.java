@@ -65,8 +65,6 @@ class TransactionServiceTest {
 
 		for (TransactionEntity entity : transactions) {
 			boolean found = false;
-			System.out.println(entity.getId());
-			System.out.println(entity.getValue());
 			for (TransactionEntity storedEntity : transactionList)
 				if (entity.getId().equals(storedEntity.getId())) {
 					found = true;
