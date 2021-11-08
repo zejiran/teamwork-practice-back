@@ -12,6 +12,4 @@ public class OutingDTO {
 	private String place;
 	private Integer participationCost;
 	private ItineraryDTO itinerary;
-	private RouteDTO route;
-	private GuideDTO guide;
 }

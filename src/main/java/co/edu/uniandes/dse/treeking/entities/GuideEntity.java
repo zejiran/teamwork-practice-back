@@ -6,7 +6,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -16,7 +15,8 @@ public class GuideEntity extends BaseEntity {
 
 	private String name;
 
-	private Integer point; //el total
+	private Integer point;
+
 	private Integer reviews;
 
 	private Integer age;

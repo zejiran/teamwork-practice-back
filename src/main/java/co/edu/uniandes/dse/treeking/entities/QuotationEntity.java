@@ -1,14 +1,14 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import javax.persistence.*;
-
 import co.edu.uniandes.dse.treeking.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -24,10 +24,10 @@ public class QuotationEntity extends BaseEntity {
 
 	private Status status;
 
-	@ManyToMany
-	private List<OutingEntity> outings;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private OutingEntity outing;
 
 	@PodamExclude
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private CalendarEntity calendar;
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class ContMultimediaEntity extends BaseEntity {
+public class FilesContainerEntity extends BaseEntity {
     @ManyToMany(mappedBy = "containers", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<MultimediaEntity> multimedia;
+    private List<MultimediaEntity> files;
 }

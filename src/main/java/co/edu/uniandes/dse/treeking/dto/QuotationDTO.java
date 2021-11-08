@@ -1,5 +1,6 @@
 package co.edu.uniandes.dse.treeking.dto;
 
+import co.edu.uniandes.dse.treeking.entities.InsuranceEntity;
 import lombok.Data;
 import co.edu.uniandes.dse.treeking.enums.Status;
 
@@ -10,6 +11,4 @@ public class QuotationDTO {
 	private Float totalCost;
 	private Status status;
 	private OutingDTO outing;
-	private ReviewDTO review;
-	
 }

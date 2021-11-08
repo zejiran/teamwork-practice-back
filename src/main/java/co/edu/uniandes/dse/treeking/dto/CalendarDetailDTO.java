@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class CalendarDetailDTO extends CalendarDTO {
     private List<QuotationDTO> history;

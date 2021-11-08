@@ -26,7 +26,7 @@ public class RouteEntity extends BaseEntity {
 	private List<ReviewEntity> reviews = new ArrayList<>();
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	private ContMultimediaEntity container;
+	private FilesContainerEntity container;
 
 	@PodamExclude
 	@ManyToMany(mappedBy = "routes", fetch = FetchType.LAZY)

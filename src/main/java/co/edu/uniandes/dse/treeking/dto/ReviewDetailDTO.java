@@ -1,11 +1,11 @@
 package co.edu.uniandes.dse.treeking.dto;
 
-import co.edu.uniandes.dse.treeking.entities.MultimediaEntity;
+import co.edu.uniandes.dse.treeking.entities.FilesContainerEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class ReviewDetailDTO extends ReviewDTO{
-    List<MultimediaEntity> multimedias;
+    private FilesContainerEntity container;
 }

@@ -16,9 +16,11 @@ import java.util.List;
 @Setter
 public class CommentEntity extends BaseEntity{
 
+
     private String text;
     private Integer likes;
     private Integer dislikes;
+    private String username;
 
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
@@ -26,6 +28,9 @@ public class CommentEntity extends BaseEntity{
 
     @PodamExclude
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ReplyEntity> comments;
+    private List<CommentEntity> replies;
 
+    @PodamExclude
+    @ManyToOne
+    private CommentEntity comment;
 }

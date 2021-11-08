@@ -40,10 +40,10 @@ public class OutingEntity extends BaseEntity {
 	private List<ActivityEntity> activities;
 
 	@ManyToMany(mappedBy = "outings",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<GuideEntity> guides; //considero que solo debería tener un guia, si pudiesen haber mas, seria manyToMany
+	private List<GuideEntity> guides;
 
 	@PodamExclude
-	@ManyToMany(mappedBy = "outings", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
 	private List<QuotationEntity> quotations;
 
 }

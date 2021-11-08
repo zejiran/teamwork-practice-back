@@ -2,8 +2,6 @@ package co.edu.uniandes.dse.treeking.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import co.edu.uniandes.dse.treeking.enums.FileType;
 import lombok.Getter;
@@ -22,7 +20,7 @@ public class MultimediaEntity extends BaseEntity {
 
 	@PodamExclude
 	@ManyToMany
-	private List<ContMultimediaEntity> containers;
+	private List<FilesContainerEntity> containers;
 
 
 }

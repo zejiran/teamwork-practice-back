@@ -2,18 +2,20 @@ package co.edu.uniandes.dse.treeking.dto;
 
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class GuideDTO {
 
 	private Long id;
-	
+
 	private String name;
 
-	private Float rating;
+	private Integer point;
+
+	private Integer reviews;
 
 	private Integer age;
-	
-	//no deberia estar
-	
+
 }
