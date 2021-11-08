@@ -90,6 +90,5 @@ class RouteServiceTest {
 		assertEquals(entity.getRouteName(), resultEntity.getRouteName());
 		assertEquals(entity.getDifficulty(), resultEntity.getDifficulty());
 		assertEquals(entity.getEstimatedDuration(), resultEntity.getEstimatedDuration());
-		assertEquals(entity.getOuting(), resultEntity.getOuting());
 	}
 }

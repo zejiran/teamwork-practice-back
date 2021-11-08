@@ -15,7 +15,7 @@ public class GuideEntity extends BaseEntity {
 
 	private String name;
 
-	private Integer point;
+	private Integer points;
 
 	private Integer reviews;
 

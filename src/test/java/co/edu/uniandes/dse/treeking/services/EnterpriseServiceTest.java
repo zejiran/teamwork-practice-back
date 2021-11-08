@@ -68,6 +68,7 @@ class EnterpriseServiceTest {
 			for (EnterpriseEntity storedEntity : enterpriseList)
 				if (entity.getId().equals(storedEntity.getId())) {
 					found = true;
+					break;
 				}
 			assertTrue(found);
 		}
@@ -82,7 +83,7 @@ class EnterpriseServiceTest {
 		assertEquals(enterpriseEntity.getCalendar(), resultEntity.getCalendar());
 		assertEquals(enterpriseEntity.getMail(), resultEntity.getMail());
 		assertEquals(enterpriseEntity.getPassword(), resultEntity.getPassword());
-		assertEquals(enterpriseEntity.getPosts(), resultEntity.getPosts());
+		assertEquals(enterpriseEntity.getBlog(), resultEntity.getBlog());
 		assertEquals(enterpriseEntity.getRepresentative(), resultEntity.getRepresentative());
 		assertEquals(enterpriseEntity.getTransactions(), resultEntity.getTransactions());
 		assertEquals(enterpriseEntity.getUser(), resultEntity.getUser());

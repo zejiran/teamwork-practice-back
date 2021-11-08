@@ -12,7 +12,7 @@ public class GuideDTO {
 
 	private String name;
 
-	private Integer point;
+	private Integer points;
 
 	private Integer reviews;
 
