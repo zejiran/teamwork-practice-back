@@ -21,7 +21,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/"
+				"url": "http://{{ip}}:{{port}}/api/enterprises/"
 			},
 			"response": []
 		},
@@ -50,7 +50,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/{{new_id_b}}",
+				"url": "http://{{ip}}:{{port}}/api/enterprises/100",
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del enterprise deseado por la URL de la petición.\n\n**Código http esperado: 200**"
 			},
 			"response": []
@@ -72,7 +72,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/0",
+				"url": "http://{{ip}}:{{port}}/api/enterprises/0",
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /enterprise/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []

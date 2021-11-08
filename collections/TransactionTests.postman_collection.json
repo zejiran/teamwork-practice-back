@@ -21,7 +21,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/transactions/"
+				"url": "http://{{ip}}:{{port}}/api/transactions/"
 			},
 			"response": []
 		},
@@ -50,7 +50,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://{{ip}}:{{puerto}}/api/transactions/{{new_id_b}}",
+				"url": "http://{{ip}}:{{port}}/api/transactions/100",
 				"description": "**Release: Paso-5**\n\nConsulta un transaction de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del transaction deseado por la URL de la petición.\n\n**Código http esperado: 200**"
 			},
 			"response": []
@@ -72,7 +72,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/transactions/0",
+				"url": "http://{{ip}}:{{port}}/api/transactions/0",
 				"description": "**Release: Paso-5**\n\nConsulta un transaction que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /transaction/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []
