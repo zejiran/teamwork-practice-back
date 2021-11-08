@@ -8,5 +8,4 @@ public class UserDTO {
 	private String user;
 	private String password;
 	private String mail;
-	private BlogDTO blog;
 }
