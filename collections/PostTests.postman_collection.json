@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "aa43934a-5bf1-4020-b5ed-068118344fee",
+		"_postman_id": "db8d2318-079c-40dd-a65d-fd98b54b3151",
 		"name": "Post Tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -21,19 +21,59 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://{{ip}}:{{port}/api/posts/",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"posts",
-						""
-					]
+				"url": "http://{{ip}}:{{puerto}}/api/posts/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
 				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://{{ip}}:{{puerto}}/api/posts/{{new_id_b}}",
+				"description": "**Release: Paso-5**\n\nConsulta un post de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del post deseado por la URL de la petición.\n\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a non-existent post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The post with the given id was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://{{ip}}:{{puerto}}/api/posts/0",
+				"description": "**Release: Paso-5**\n\nConsulta un post que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /post/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []
 		}
