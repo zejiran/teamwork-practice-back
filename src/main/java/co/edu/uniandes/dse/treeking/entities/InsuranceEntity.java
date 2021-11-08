@@ -13,5 +13,4 @@ public class InsuranceEntity extends BaseEntity {
 	private String conditions;
 	private String name;
 	private Integer price;
-
 }
