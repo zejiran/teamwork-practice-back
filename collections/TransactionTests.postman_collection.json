@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "331944a9-579e-4e41-80f4-42396e067845",
+		"_postman_id": "294a5b7e-98b1-486b-8bd5-324cee09c8ce",
 		"name": "Transactions Tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -21,7 +21,19 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{port}}/api/transactions/"
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/transactions/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"transactions",
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -50,7 +62,19 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://{{ip}}:{{port}}/api/transactions/100",
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/transactions/7",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"transactions",
+						"7"
+					]
+				},
 				"description": "**Release: Paso-5**\n\nConsulta un transaction de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del transaction deseado por la URL de la petición.\n\n**Código http esperado: 200**"
 			},
 			"response": []
@@ -63,7 +87,7 @@
 					"script": {
 						"exec": [
 							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
-							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The transaction with the given id was not found\");"
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The transaction with the given ID was not found\");"
 						],
 						"type": "text/javascript"
 					}
@@ -72,7 +96,19 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{port}}/api/transactions/0",
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/transactions/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"transactions",
+						"0"
+					]
+				},
 				"description": "**Release: Paso-5**\n\nConsulta un transaction que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /transaction/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []
