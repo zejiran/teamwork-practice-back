@@ -19,13 +19,4 @@ public class LocationService {
 		return locationRepository.findAll();
 	}
 
-	@Transactional
-	public LocationEntity getPrimerLocation() {
-		List<LocationEntity> locaciones = locationRepository.findAll();
-		if (locaciones.isEmpty()) {
-			return locaciones.get(0);
-		} else {
-			return null;
-		}
-	}
 }

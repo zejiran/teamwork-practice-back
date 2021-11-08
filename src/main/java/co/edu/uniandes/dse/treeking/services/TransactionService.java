@@ -12,7 +12,7 @@ import co.edu.uniandes.dse.treeking.repositories.TransactionRepository;
 @Service
 public class TransactionService {
 	@Autowired
-	private TransactionRepository transactionRepository;
+	TransactionRepository transactionRepository;
 
 	@Transactional
 	public List<TransactionEntity> getTransactions() {

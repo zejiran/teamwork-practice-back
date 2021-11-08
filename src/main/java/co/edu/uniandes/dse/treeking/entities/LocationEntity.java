@@ -12,8 +12,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class LocationEntity extends BaseEntity {
 
-	private Float latitude;
-	private Float longitude;
+	private Double latitude;
+	private Double longitude;
 
 	@PodamExclude
 	@ManyToOne
