@@ -22,6 +22,6 @@ public class GuideEntity extends BaseEntity {
 	private Integer age;
 
 	@PodamExclude
-	@ManyToMany() //un guia puede ir a varios outings
+	@ManyToMany()
 	private List<OutingEntity> outings;
 }
