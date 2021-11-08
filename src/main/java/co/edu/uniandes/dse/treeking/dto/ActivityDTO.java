@@ -18,5 +18,4 @@ public class ActivityDTO {
 
 	private Integer minutes;
 	
-	//sobra
 }
