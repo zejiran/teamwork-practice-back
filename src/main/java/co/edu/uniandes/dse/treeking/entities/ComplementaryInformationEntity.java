@@ -20,7 +20,4 @@ public class ComplementaryInformationEntity extends BaseEntity {
 	@OneToOne(mappedBy = "complementaryInformation")
 	private MultimediaEntity homeImage;
 
-	@PodamExclude
-	@OneToOne
-	private OutingEntity outing;
 }

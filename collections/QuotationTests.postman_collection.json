@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1088ff0a-5b2d-4fa5-bc28-bdf0aef23407",
+		"_postman_id": "6ab2f35c-1a4a-45ec-8252-011caa73c7d0",
 		"name": "Quotation Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -32,6 +32,73 @@
 					"path": [
 						"api",
 						"quotations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cotización por id not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se deberia obtener un quotation con un id que no existe\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The quotation with the given ID was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/quotations/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"quotations",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cotización por id found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error en el get quotations\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/quotations/100",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"quotations",
+						"100"
 					]
 				}
 			},
