@@ -35,6 +35,40 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "obtener un guia por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\"console.log(responseBody);\",\r",
+							"\"var data = JSON.parse(responseBody);\",\r",
+							"\"tests[\\\"No genera error en el Get\\\"] = responseCode.code === 200;\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/guides/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"guides",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

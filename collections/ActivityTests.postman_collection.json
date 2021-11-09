@@ -35,6 +35,40 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "obtener una actividad por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\"console.log(responseBody);\",\r",
+							"\"var data = JSON.parse(responseBody);\",\r",
+							"\"tests[\\\"No genera error en el Get\\\"] = responseCode.code === 200;\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/activities/1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"activities",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

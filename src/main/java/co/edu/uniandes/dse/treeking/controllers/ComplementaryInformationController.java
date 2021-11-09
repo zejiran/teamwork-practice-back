@@ -7,12 +7,14 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uniandes.dse.treeking.dto.ComplementaryInformationDTO;
 import co.edu.uniandes.dse.treeking.entities.ComplementaryInformationEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.ComplementaryInformationService;
 
 
@@ -34,4 +36,10 @@ public class ComplementaryInformationController {
         }.getType());
 	}
 	
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public ComplementaryInformationDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		ComplementaryInformationEntity ciEntity = complementaryinformationService.getComplementaryInformation(id);
+		return modelMapper.map(ciEntity, ComplementaryInformationDTO.class);
+	}
 }
