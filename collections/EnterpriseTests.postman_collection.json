@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "ca46d5bf-e755-4c3c-bb86-5d9661d08fb0",
+		"_postman_id": "1e90852e-fe72-495e-8d00-933e30c296a9",
 		"name": "Enterprise Tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -21,7 +21,19 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/"
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/enterprises/",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"enterprises",
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -50,7 +62,19 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/{{new_id_b}}",
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/enterprises/100",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"enterprises",
+						"100"
+					]
+				},
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del enterprise deseado por la URL de la petición.\n\n**Código http esperado: 200**"
 			},
 			"response": []
@@ -63,7 +87,7 @@
 					"script": {
 						"exec": [
 							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
-							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The enterprise with the given id was not found\");"
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The enterprise with the given ID was not found\");"
 						],
 						"type": "text/javascript"
 					}
@@ -72,7 +96,19 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://{{ip}}:{{puerto}}/api/enterprises/0",
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/enterprises/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"enterprises",
+						"0"
+					]
+				},
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /enterprise/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []

@@ -9,8 +9,8 @@ import lombok.Data;
 
 @Data
 public class TransactionDTO {
+	private Long id;
 	private PaymentType payment;
 	private Integer value;
 	private Date creationDate;
-	private ClientDTO client;
 }

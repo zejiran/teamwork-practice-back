@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Obtener todos los admins",
+			"name": "Get all admins",
 			"event": [
 				{
 					"listen": "test",
@@ -34,6 +34,82 @@
 						"admins"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/admins/32",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"admins",
+						"32"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nConsulta un admin de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del admin deseado por la URL de la petición.\n\n**Código http esperado: 200**"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a non-existent admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"The admin with the given ID was not found\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/admins/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"admins",
+						"0"
+					]
+				},
+				"description": "**Release: Paso-5**\n\nConsulta un admin que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /admin/0 no existe.\".\n\n**Código http esperado: 404**"
 			},
 			"response": []
 		}

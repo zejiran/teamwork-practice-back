@@ -4,9 +4,10 @@ package co.edu.uniandes.dse.treeking.dto;
 
 
 import lombok.Data;
-
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class ItineraryDTO {
 
 	private Long id;
@@ -15,5 +16,4 @@ public class ItineraryDTO {
 
 	private String transportation;
 
-	private OutingDTO outing;
 }

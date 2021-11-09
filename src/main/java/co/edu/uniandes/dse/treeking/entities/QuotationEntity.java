@@ -1,13 +1,14 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 import co.edu.uniandes.dse.treeking.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -16,20 +17,17 @@ public class QuotationEntity extends BaseEntity {
 
 	private Integer participants;
 
-	@PodamExclude
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private InsuranceEntity insurance;
 
 	private Integer totalCost;
 
 	private Status status;
 
-	@PodamExclude
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private OutingEntity outing;
 
 	@PodamExclude
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private CalendarEntity calendar;
-
 }

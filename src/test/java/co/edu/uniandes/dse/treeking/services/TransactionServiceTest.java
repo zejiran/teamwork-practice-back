@@ -68,6 +68,7 @@ class TransactionServiceTest {
 			for (TransactionEntity storedEntity : transactionList)
 				if (entity.getId().equals(storedEntity.getId())) {
 					found = true;
+					break;
 				}
 			assertTrue(found);
 		}
