@@ -15,7 +15,7 @@ public class ComplementaryInformationEntity extends BaseEntity {
 
 	private String description;
 
-	private String recommendation;
+	private String recomendation;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private MultimediaEntity homeImage;
