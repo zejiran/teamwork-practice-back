@@ -1,11 +1,6 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,20 +15,15 @@ public class PostEntity extends BaseEntity {
 	
 	private String title;
 
-	@PodamExclude
-	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-	private List<MultimediaEntity> multimedias;
+	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private CommentEntity comment;
+
+	@OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private FilesContainerEntity container;
+
 
 	@PodamExclude
 	@ManyToOne
 	private BlogEntity blog;
 
-	@PodamExclude
-
-	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-	private List<CommentEntity> comments;
-	
-	@PodamExclude
-	@ManyToOne
-	private UserEntity user;
 }

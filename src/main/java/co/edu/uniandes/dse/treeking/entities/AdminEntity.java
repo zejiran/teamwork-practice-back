@@ -16,6 +16,6 @@ public class AdminEntity extends UserEntity{
     @OneToMany
     private List<OutingEntity> outings;
     @OneToMany
-    private List<CommentEntity> comments;
+    private List<CommentEntity> replies;
 
 }

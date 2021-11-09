@@ -30,6 +30,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -41,6 +42,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 @Data
 @MappedSuperclass
+@EqualsAndHashCode()
 public abstract class BaseEntity {
 
 	@PodamExclude

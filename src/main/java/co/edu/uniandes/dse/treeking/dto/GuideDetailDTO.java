@@ -7,6 +7,6 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class ClientDetailDTO extends ClientDTO {
-	protected List<TransactionDTO> transactions;
+public class GuideDetailDTO extends GuideDTO{
+    private List<OutingDTO> outings;
 }
