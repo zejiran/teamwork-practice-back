@@ -8,7 +8,4 @@ public class MultimediaDTO {
 	private String fileName;
 	private FileType mediaType;
 	private String extension;
-	private RouteDTO route;
-	private PostDTO post;
-	private ComplementaryInformationDTO complementaryInformation;
 }

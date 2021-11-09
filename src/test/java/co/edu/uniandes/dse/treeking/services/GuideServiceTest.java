@@ -59,7 +59,9 @@ class GuideServiceTest {
 		assertNotNull(entity);
 		assertEquals(guideEntity.getId(),entity.getId());
 		assertEquals(guideEntity.getAge(), entity.getAge());
-		assertEquals(guideEntity.getRating(), entity.getRating());
+		assertEquals(guideEntity.getPoints(), entity.getPoints());
+		assertEquals(guideEntity.getName(), guideEntity.getName());
+		assertEquals(guideEntity.getReviews(), guideEntity.getReviews());
 	}
 	private void clearData() {
 		entityManager.getEntityManager().createQuery("delete from GuideEntity").executeUpdate();

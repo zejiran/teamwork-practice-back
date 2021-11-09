@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class LocationDTO {
-    private float latitude;
-    private float longitude;
+    private Double latitude;
+    private Double longitude;
 }

@@ -1,8 +1,5 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
 import lombok.Getter;
@@ -17,11 +14,14 @@ public class ReviewEntity extends BaseEntity {
 
 	private Integer score;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private CommentEntity comment;
 
 	@PodamExclude
 	@ManyToOne
 	private RouteEntity route;
+
+	@OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private FilesContainerEntity container;
 
 }

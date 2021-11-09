@@ -1,21 +1,14 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import co.edu.uniandes.dse.treeking.podam.DateStrategy;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,31 +25,25 @@ public class OutingEntity extends BaseEntity {
 	private Integer participationCost;
 
 	@PodamExclude
-	@OneToMany(mappedBy = "outing", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
+	@ManyToMany
 	private List<RouteEntity> routes;
 
 	@PodamExclude
 	@OneToOne
 	private ComplementaryInformationEntity complementaryInformation;
 
-	@PodamExclude
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private ItineraryEntity itinerary;
-
-	@PodamExclude
-	@OneToOne
-	private ReviewEntity review;
 
 	@PodamExclude
 	@OneToMany(mappedBy = "outing")
 	private List<ActivityEntity> activities;
 
-	@PodamExclude
-	@OneToMany
+	@ManyToMany(mappedBy = "outings",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<GuideEntity> guides;
 
 	@PodamExclude
 	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
-	private List<QuotationEntity> quotation;
+	private List<QuotationEntity> quotations;
 
 }

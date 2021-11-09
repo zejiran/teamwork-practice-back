@@ -1,13 +1,14 @@
 package co.edu.uniandes.dse.treeking.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 
 import co.edu.uniandes.dse.treeking.enums.FileType;
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,14 +19,8 @@ public class MultimediaEntity extends BaseEntity {
 	private String extension;
 
 	@PodamExclude
-	@ManyToOne
-	private RouteEntity route;
+	@ManyToMany
+	private List<FilesContainerEntity> containers;
 
-	@PodamExclude
-	@ManyToOne
-	private PostEntity post;
 
-	@PodamExclude
-	@OneToOne
-	private ComplementaryInformationEntity complementaryInformation;
 }
