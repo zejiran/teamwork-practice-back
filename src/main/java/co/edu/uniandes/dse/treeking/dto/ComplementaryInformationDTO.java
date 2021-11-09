@@ -10,7 +10,7 @@ public class ComplementaryInformationDTO{
 
 	private String description;
 
-	private String recomendation;
+	private String recommendation;
 	
 	private MultimediaDTO homeImage;
 	
