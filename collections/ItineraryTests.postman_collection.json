@@ -43,9 +43,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"\"console.log(responseBody);\",\r",
-							"\"var data = JSON.parse(responseBody);\",\r",
-							"\"tests[\\\"No genera error en el Get\\\"] = responseCode.code === 200;\""
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error en el get itinerary\"] = responseCode.code === 200;"
 						],
 						"type": "text/javascript"
 					}
