@@ -6,5 +6,5 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class QuotationDetailDTO extends QuotationDTO{
-	private InsuranceDTO insurance; //esto deberia ir en el DTO
+	private InsuranceDTO insurance;
 }
