@@ -1,12 +1,15 @@
 package co.edu.uniandes.dse.treeking.dto;
 
-import co.edu.uniandes.dse.treeking.entities.PostEntity;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class CommentDTO {
+    private Long id;
     private String text;
     private Integer likes;
     private Integer dislikes;
-    private PostEntity post;
+    private Date date;
+    private String username;
 }

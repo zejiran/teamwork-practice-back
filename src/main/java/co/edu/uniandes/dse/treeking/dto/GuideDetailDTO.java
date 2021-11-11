@@ -3,10 +3,10 @@ package co.edu.uniandes.dse.treeking.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class PersonDetailDTO extends PersonDTO {
-	private String idNumber;
-	private String idType;
-	private String address;
+public class GuideDetailDTO extends GuideDTO{
+    private List<OutingDTO> outings;
 }

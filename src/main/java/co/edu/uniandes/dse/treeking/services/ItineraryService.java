@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +25,11 @@ public class ItineraryService {
 	
 	@Transactional
 	public ItineraryEntity getItinerary(long id) throws EntityNotFoundException {
-		ItineraryEntity itinerary =itineraryRepository.findById(id).orElse(null);
+		Optional<ItineraryEntity> itinerary =itineraryRepository.findById(id);
 		if (itinerary == null) {
 			throw new EntityNotFoundException(ErrorMessage.ITINERARY_NOT_FOUND);
 		}
-		return itinerary;
+		return itinerary.get();
 	}
 	
 }

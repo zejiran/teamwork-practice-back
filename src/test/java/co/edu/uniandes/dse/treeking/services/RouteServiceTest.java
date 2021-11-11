@@ -87,8 +87,8 @@ class RouteServiceTest {
 		RouteEntity resultEntity = routeService.getRouteById(entity.getId());
 		assertNotNull(resultEntity);
 		assertEquals(entity.getId(), resultEntity.getId());
+		assertEquals(entity.getRouteName(), resultEntity.getRouteName());
 		assertEquals(entity.getDifficulty(), resultEntity.getDifficulty());
 		assertEquals(entity.getEstimatedDuration(), resultEntity.getEstimatedDuration());
-		assertEquals(entity.getOuting(), resultEntity.getOuting());
 	}
 }

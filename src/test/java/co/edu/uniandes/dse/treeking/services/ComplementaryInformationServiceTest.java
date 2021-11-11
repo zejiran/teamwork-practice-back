@@ -77,7 +77,7 @@ class ComplementaryInformationServiceTest {
 		assertNotNull(entity);
 		assertEquals(entity.getId(), ciEntity.getId());
 		assertEquals(entity.getDescription(), ciEntity.getDescription());
-		assertEquals(entity.getRecomendation(), ciEntity.getRecomendation());
+		assertEquals(entity.getRecommendation(), ciEntity.getRecommendation());
 	}
 
 }
