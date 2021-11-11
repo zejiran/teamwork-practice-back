@@ -8,7 +8,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class RouteDetailDTO extends RouteDTO {
-    private List<MultimediaDTO> multimediasDTO;
-    private List<ReviewDTO> reviewsDTO;
-    private List<LocationDTO> locationsDTOS;
+    private List<MultimediaDTO> medias;
+    private List<ReviewDTO> reviews;
+    private List<LocationDTO> locations;
 }

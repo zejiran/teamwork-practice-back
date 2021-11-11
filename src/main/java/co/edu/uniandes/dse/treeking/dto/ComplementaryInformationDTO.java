@@ -15,6 +15,4 @@ public class ComplementaryInformationDTO {
 	
 	private MultimediaDTO homeImage;
 	
-	private OutingDetailDTO outing;
-	
 }

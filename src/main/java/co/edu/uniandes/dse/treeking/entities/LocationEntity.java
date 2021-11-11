@@ -13,6 +13,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class LocationEntity extends BaseEntity {
 
 	private Integer idLocation;
+	private String locationName;
 	private Float latitude;
 	private Float longitude;
 
