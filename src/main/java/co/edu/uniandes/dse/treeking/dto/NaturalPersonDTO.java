@@ -7,5 +7,4 @@ import lombok.EqualsAndHashCode;
 @Data
 public class NaturalPersonDTO extends ClientDTO {
 	private Long id;
-	private PersonDTO person;
 }

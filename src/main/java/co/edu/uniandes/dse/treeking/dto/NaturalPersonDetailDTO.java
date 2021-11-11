@@ -6,5 +6,5 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class NaturalPersonDetailDTO extends NaturalPersonDTO {
-
+	private PersonDTO person;
 }
