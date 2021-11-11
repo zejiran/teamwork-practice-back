@@ -10,10 +10,9 @@ public class PostDTO {
 	private Long id;
 
 	private Integer ratings;
-	
+
 	private String title;
 
 	private CommentDTO commentDTO;
-
 
 }

@@ -8,5 +8,5 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Data
 public class CalendarDetailDTO extends CalendarDTO {
-    private List<QuotationDTO> history;
+	private List<QuotationDTO> history;
 }

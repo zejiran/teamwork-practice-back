@@ -1,9 +1,10 @@
 package co.edu.uniandes.dse.treeking.dto;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class EnterpriseDTO extends ClientDTO{
+@EqualsAndHashCode(callSuper = false)
+public class EnterpriseDTO extends ClientDTO {
 	private PersonDTO representative;
 }

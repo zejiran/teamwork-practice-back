@@ -7,6 +7,6 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class BlogDetailDTO extends BlogDTO{
-    private List<PostDTO> posts;
+public class BlogDetailDTO extends BlogDTO {
+	private List<PostDTO> posts;
 }

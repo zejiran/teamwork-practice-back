@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class QuotationDetailDTO extends QuotationDTO{
+@EqualsAndHashCode(callSuper = false)
+public class QuotationDetailDTO extends QuotationDTO {
 	private InsuranceDTO insurance;
 }

@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class OutingDetailDTO extends OutingDTO{
+@EqualsAndHashCode(callSuper = false)
+public class OutingDetailDTO extends OutingDTO {
 	private List<ActivityDTO> activities;
 	private ComplementaryInformationDTO complementaryInformation;
 	private List<GuideEntity> guides;

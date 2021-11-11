@@ -6,6 +6,6 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class ReviewDetailDTO extends ReviewDTO{
-    private FilesContainerEntity container;
+public class ReviewDetailDTO extends ReviewDTO {
+	private FilesContainerEntity container;
 }
