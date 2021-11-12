@@ -23,17 +23,16 @@ import co.edu.uniandes.dse.treeking.services.ItineraryService;
 public class ItineraryController {
 
 	@Autowired
-    private ItineraryService itineraryService;
+	private ItineraryService itineraryService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<ActivityDTO> findAll() {
-            List<ItineraryEntity> itineraries = itineraryService.getItineries();
-            return modelMapper.map(itineraries, new TypeToken<List<ItineraryDTO>>() {
-            }.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ActivityDTO> findAll() {
+		List<ItineraryEntity> itineraries = itineraryService.getItineries();
+		return modelMapper.map(itineraries, new TypeToken<List<ItineraryDTO>>() {
+		}.getType());
+	}
 }

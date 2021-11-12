@@ -26,10 +26,10 @@ public class GuideService {
 	@Transactional
 	public GuideEntity getGuide(Long id) throws EntityNotFoundException {
 		Optional<GuideEntity> guide = guideRepository.findById(id);
-		if(guide == null) {
+		if (guide == null) {
 			throw new EntityNotFoundException(ErrorMessage.GUIDE_NOT_FOUND);
 		}
 		return guide.get();
 	}
-	
+
 }

@@ -1,4 +1,5 @@
 package co.edu.uniandes.dse.treeking.controllers;
+
 import co.edu.uniandes.dse.treeking.dto.ReviewDTO;
 import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
 import co.edu.uniandes.dse.treeking.services.ReviewService;
@@ -17,18 +18,17 @@ import java.util.List;
 @RequestMapping("/reviews")
 public class ReviewController {
 
-    @Autowired
-    private ReviewService reviewService;
+	@Autowired
+	private ReviewService reviewService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<ReviewDTO> findAll() {
-        List<ReviewEntity> reviews = reviewService.getReviews();
-        return modelMapper.map(reviews, new TypeToken<List<ReviewDTO>>() {
-        }.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ReviewDTO> findAll() {
+		List<ReviewEntity> reviews = reviewService.getReviews();
+		return modelMapper.map(reviews, new TypeToken<List<ReviewDTO>>() {
+		}.getType());
+	}
 }

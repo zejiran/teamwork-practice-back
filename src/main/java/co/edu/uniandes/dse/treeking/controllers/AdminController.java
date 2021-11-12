@@ -1,6 +1,5 @@
 package co.edu.uniandes.dse.treeking.controllers;
 
-
 import co.edu.uniandes.dse.treeking.dto.AdminDTO;
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
 import co.edu.uniandes.dse.treeking.services.AdminService;
@@ -19,18 +18,17 @@ import java.util.List;
 @RequestMapping("/admins")
 public class AdminController {
 
-    @Autowired
-    private AdminService adminService;
+	@Autowired
+	private AdminService adminService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<AdminDTO> findAll() {
-        List<AdminEntity> admins = adminService.getAdmins();
-        return modelMapper.map(admins, new TypeToken<List<AdminDTO>>() {
-        }.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<AdminDTO> findAll() {
+		List<AdminEntity> admins = adminService.getAdmins();
+		return modelMapper.map(admins, new TypeToken<List<AdminDTO>>() {
+		}.getType());
+	}
 }

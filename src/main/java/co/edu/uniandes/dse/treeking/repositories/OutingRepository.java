@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 
 @Repository
-public interface OutingRepository extends JpaRepository<OutingEntity, Long>{
+public interface OutingRepository extends JpaRepository<OutingEntity, Long> {
 
 }

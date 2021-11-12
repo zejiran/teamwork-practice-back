@@ -22,11 +22,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Setter
 @Entity
 public class EnterpriseEntity extends BaseEntity {
-	
+
 	protected String user;
 	protected String password;
 	protected String mail;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private CalendarEntity calendar;
 
@@ -36,7 +36,7 @@ public class EnterpriseEntity extends BaseEntity {
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private BlogEntity blog;
-	
+
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	protected PersonEntity representative;
 }

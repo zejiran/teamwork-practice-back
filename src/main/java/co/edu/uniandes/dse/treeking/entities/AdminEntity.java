@@ -1,6 +1,5 @@
 package co.edu.uniandes.dse.treeking.entities;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,11 +10,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class AdminEntity extends UserEntity{
+public class AdminEntity extends UserEntity {
 
-    @OneToMany
-    private List<OutingEntity> outings;
-    @OneToMany
-    private List<CommentEntity> replies;
+	@OneToMany
+	private List<OutingEntity> outings;
+	@OneToMany
+	private List<CommentEntity> replies;
 
 }

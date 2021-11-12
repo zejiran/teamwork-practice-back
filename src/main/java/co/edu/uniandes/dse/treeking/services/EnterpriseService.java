@@ -21,19 +21,20 @@ public class EnterpriseService {
 	public List<EnterpriseEntity> getEnterprises() {
 		return enterpriseRepository.findAll();
 	}
-	
+
 	/**
 	 * Obtiene los datos de una instancia de Enterprise a partir de su ID.
 	 *
 	 * @param enterpriseId Identificador de la instancia a consultar
-	 * @return Instancia de EnterpriseEntity con los datos del Enterprise consultado.
-	 */	
+	 * @return Instancia de EnterpriseEntity con los datos del Enterprise
+	 *         consultado.
+	 */
 	@Transactional
 	public EnterpriseEntity getEnterprise(Long enterpriseId) throws EntityNotFoundException {
-	    Optional<EnterpriseEntity> enterpriseEntity = enterpriseRepository.findById(enterpriseId);
-	    if (enterpriseEntity.isEmpty())
-	        throw new EntityNotFoundException(ErrorMessage.ENTERPRISE_NOT_FOUND);
-	    return enterpriseEntity.get();
+		Optional<EnterpriseEntity> enterpriseEntity = enterpriseRepository.findById(enterpriseId);
+		if (enterpriseEntity.isEmpty())
+			throw new EntityNotFoundException(ErrorMessage.ENTERPRISE_NOT_FOUND);
+		return enterpriseEntity.get();
 	}
-	
+
 }

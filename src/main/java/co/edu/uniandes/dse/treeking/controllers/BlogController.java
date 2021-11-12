@@ -1,4 +1,5 @@
 package co.edu.uniandes.dse.treeking.controllers;
+
 import co.edu.uniandes.dse.treeking.dto.BlogDTO;
 import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.services.BlogService;
@@ -17,18 +18,17 @@ import java.util.List;
 @RequestMapping("/blogs")
 public class BlogController {
 
-    @Autowired
-    private BlogService blogService;
+	@Autowired
+	private BlogService blogService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<BlogDTO> findAll() {
-        List<BlogEntity> blogs = blogService.getBlogs();
-        return modelMapper.map(blogs, new TypeToken<List<BlogDTO>>() {
-        }.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<BlogDTO> findAll() {
+		List<BlogEntity> blogs = blogService.getBlogs();
+		return modelMapper.map(blogs, new TypeToken<List<BlogDTO>>() {
+		}.getType());
+	}
 }

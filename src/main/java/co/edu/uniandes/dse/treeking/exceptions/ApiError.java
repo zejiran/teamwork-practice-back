@@ -13,20 +13,19 @@ import lombok.Data;
 @Data
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.CUSTOM, property = "error", visible = true)
 @JsonTypeIdResolver(LowerCaseClassNameResolver.class)
-public
-class ApiError {
+public class ApiError {
 
-    private HttpStatus status;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private LocalDateTime timestamp;
-    private String message;
+	private HttpStatus status;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+	private LocalDateTime timestamp;
+	private String message;
 
-    private ApiError() {
-        timestamp = LocalDateTime.now();
-    }
+	private ApiError() {
+		timestamp = LocalDateTime.now();
+	}
 
-    public ApiError(HttpStatus status) {
-        this();
-        this.status = status;
-    }
+	public ApiError(HttpStatus status) {
+		this();
+		this.status = status;
+	}
 }

@@ -28,15 +28,16 @@ public class InsuranceService {
 	public List<InsuranceEntity> getInsurances() {
 		return insuranceRepository.findAll();
 	}
-	
+
 	/**
 	 * Obtiene la instancia Insurance relacionada al id pasado por parametro
+	 * 
 	 * @param insuranceId Identificador de la instancia que se quiere encontrar
 	 * @return Instancia que coincide con el numero de identificador
 	 * @throws EntityNotFoundException
 	 */
 	@Transactional
-	public InsuranceEntity getInsurance(Long insuranceId) throws EntityNotFoundException{
+	public InsuranceEntity getInsurance(Long insuranceId) throws EntityNotFoundException {
 		Optional<InsuranceEntity> insuranceEntity = insuranceRepository.findById(insuranceId);
 		if (insuranceEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.INSURANCE_NOT_FOUND);

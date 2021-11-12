@@ -1,11 +1,11 @@
 package co.edu.uniandes.dse.treeking.repositories;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
 
 @Repository
-public interface AdminRepository extends JpaRepository<AdminEntity, Long>{
+public interface AdminRepository extends JpaRepository<AdminEntity, Long> {
 
 }
-

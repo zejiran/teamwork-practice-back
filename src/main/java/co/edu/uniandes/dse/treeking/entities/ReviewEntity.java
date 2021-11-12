@@ -21,7 +21,7 @@ public class ReviewEntity extends BaseEntity {
 	@ManyToOne
 	private RouteEntity route;
 
-	@OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private FilesContainerEntity container;
 
 }

@@ -18,18 +18,17 @@ import java.util.List;
 @RequestMapping("/comments")
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+	@Autowired
+	private CommentService commentService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<CommentDTO> findAll() {
-        List<CommentEntity> comments = commentService.getComments();
-        return modelMapper.map(comments, new TypeToken<List<CommentDTO>>() {
-        }.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<CommentDTO> findAll() {
+		List<CommentEntity> comments = commentService.getComments();
+		return modelMapper.map(comments, new TypeToken<List<CommentDTO>>() {
+		}.getType());
+	}
 }

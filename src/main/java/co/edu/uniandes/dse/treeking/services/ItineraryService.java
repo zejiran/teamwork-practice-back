@@ -22,14 +22,14 @@ public class ItineraryService {
 	public List<ItineraryEntity> getItineries() {
 		return itineraryRepository.findAll();
 	}
-	
+
 	@Transactional
 	public ItineraryEntity getItinerary(long id) throws EntityNotFoundException {
-		Optional<ItineraryEntity> itinerary =itineraryRepository.findById(id);
+		Optional<ItineraryEntity> itinerary = itineraryRepository.findById(id);
 		if (itinerary == null) {
 			throw new EntityNotFoundException(ErrorMessage.ITINERARY_NOT_FOUND);
 		}
 		return itinerary.get();
 	}
-	
+
 }
