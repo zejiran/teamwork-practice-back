@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class FilesContainerDetailDTO extends FilesContainerDTO {
-    private List<MultimediaEntity> files;
+	private List<MultimediaEntity> files;
 }

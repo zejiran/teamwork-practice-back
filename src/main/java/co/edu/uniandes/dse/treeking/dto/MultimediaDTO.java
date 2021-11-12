@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class MultimediaDTO {
+	private Long id;
 	private String fileName;
-	private FileType mediaType;
-	private String extension;
 }

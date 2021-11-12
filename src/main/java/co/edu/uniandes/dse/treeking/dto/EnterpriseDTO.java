@@ -1,9 +1,11 @@
 package co.edu.uniandes.dse.treeking.dto;
+
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class EnterpriseDTO extends ClientDTO{
+public class EnterpriseDTO {
+	private Long id;
+	private String user;
 	private PersonDTO representative;
+	private CalendarDTO calendar;
 }

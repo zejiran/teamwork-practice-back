@@ -7,6 +7,6 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class CommentDetailDTO extends CommentDTO{
-    private List<CommentDTO> comments;
+public class CommentDetailDTO extends CommentDTO {
+	private List<CommentDTO> comments;
 }
