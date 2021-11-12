@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AdminDetailDTO extends AdminDTO {
-
-	private List<CommentDTO> comments;
-	private List<OutingDTO> outings;
+public class AdminDetailDTO extends AdminDTO{
+    private String password;
+    private List<CommentDTO> comments;
+    private List<OutingDTO> outings;
 }

@@ -10,25 +10,32 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
 @Getter
 @Setter
-public class CommentEntity extends BaseEntity {
+public class CommentEntity extends BaseEntity{
 
-	private String text;
-	private Integer likes;
-	private Integer dislikes;
-	private String username;
+    private String text;
+    private Integer likes;
+    private Integer dislikes;
 
-	@Temporal(TemporalType.DATE)
-	@PodamStrategyValue(DateStrategy.class)
-	private Date date;
+    @ManyToOne
+    private AdminEntity admin;
+    @ManyToOne
+    private EnterpriseEntity enterprise;
+    @ManyToOne
+    private NaturalPersonEntity naturalPerson;
 
-	@PodamExclude
-	@OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<CommentEntity> replies;
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date date;
 
-	@PodamExclude
-	@ManyToOne
-	private CommentEntity comment;
+    @PodamExclude
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<CommentEntity> replies;
+
+    @PodamExclude
+    @ManyToOne
+    private CommentEntity comment;
 }
