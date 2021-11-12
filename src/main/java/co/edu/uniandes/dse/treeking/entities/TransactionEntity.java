@@ -25,4 +25,8 @@ public class TransactionEntity extends BaseEntity {
 	@PodamExclude
 	@ManyToOne
 	private ClientEntity client;
+	
+	@PodamExclude
+	@ManyToOne
+	private EnterpriseEntity enterprise;
 }
