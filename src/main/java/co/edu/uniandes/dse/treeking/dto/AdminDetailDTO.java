@@ -9,6 +9,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class AdminDetailDTO extends AdminDTO{
     private String password;
-    private List<CommentDTO> comments;
+    private List<CommentDTO> replies;
     private List<OutingDTO> outings;
 }
