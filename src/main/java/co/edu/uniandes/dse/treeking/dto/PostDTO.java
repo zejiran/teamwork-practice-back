@@ -10,6 +10,6 @@ public class PostDTO {
 
 	private String title;
 
-	private CommentDTO commentDTO;
+	private CommentDTO comment;
 
 }
