@@ -46,6 +46,7 @@ public class OutingEntity extends BaseEntity {
 	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
 	private List<QuotationEntity> quotations;
 
+	@PodamExclude
     @ManyToOne
     private AdminEntity admin;
 
