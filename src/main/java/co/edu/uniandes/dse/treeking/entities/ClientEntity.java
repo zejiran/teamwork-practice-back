@@ -15,7 +15,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 @Getter
 @Setter
-public class ClientEntity extends UserEntity {
+public class ClientEntity extends BaseEntity {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private CalendarEntity calendar;
