@@ -17,8 +17,7 @@ public class AdminEntity extends BaseEntity{
     private String user;
     private String password;
     private String mail;
-    @OneToMany
+    @OneToMany(mappedBy = "admin", fetch = FetchType.LAZY)
     private List<OutingEntity> outings;
-    @OneToMany(mappedBy = "admin", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CommentEntity> replies;
+
 }

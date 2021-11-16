@@ -19,13 +19,9 @@ public class CommentEntity extends BaseEntity{
     private String text;
     private Integer likes;
     private Integer dislikes;
-
-    @ManyToOne
-    private AdminEntity admin;
-    @ManyToOne
-    private EnterpriseEntity enterprise;
-    @ManyToOne
-    private NaturalPersonEntity naturalPerson;
+    private String userType;
+    private String userID;
+    private String username;
 
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)

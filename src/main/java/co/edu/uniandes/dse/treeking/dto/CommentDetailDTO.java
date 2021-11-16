@@ -8,10 +8,10 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class CommentDetailDTO extends CommentDTO{
-    private AdminDTO admin;
-    private EnterpriseDTO enterprise;
-    private NaturalPersonDTO naturalPerson;
+public class CommentDetailDTO extends CommentDTO {
+    private String userID;
+    private String userType;
+    private String username;
     private Date date;
     private List<CommentDTO> replies;
 }
