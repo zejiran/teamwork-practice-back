@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -90,4 +91,24 @@ class MultimediaServiceTest {
 		assertEquals(multimedia.getExtension(),multimediaEntity.getExtension());
 		assertEquals(multimedia.getMediaType(),multimediaEntity.getMediaType());
 	}
+	
+	
+//	/**
+//	 * Test for getting Multimedia.
+//	 */
+//	@Test
+//	public MultimediaEntity testAddMultimedia(Long authorId, Long bookId) throws EntityNotFoundException {
+//	    Optional < MultimediaEntity > authorEntity = authorRepository.findById(authorId);
+//	    Optional < BookEntity > bookEntity = bookRepository.findById(bookId);
+//
+//	    if (authorEntity.isEmpty())
+//	        throw new EntityNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);
+//
+//	    if (bookEntity.isEmpty())
+//	        throw new EntityNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
+//
+//	    bookEntity.get().getAuthors().add(authorEntity.get());
+//	    log.info("Termina proceso de asociarle un libro al autor con id = {0}", authorId);
+//	    return bookEntity.get();
+//	}
 }
