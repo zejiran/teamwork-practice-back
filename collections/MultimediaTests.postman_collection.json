@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5bdd85a0-0e80-4e24-8d6e-bdf0de38b446",
+		"_postman_id": "30cd9e54-35ee-479b-a9d5-803dcbe3e3e9",
 		"name": "Multimedia Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -100,6 +100,15 @@
 						"0"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Multimedia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}
