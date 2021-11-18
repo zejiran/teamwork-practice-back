@@ -5,6 +5,8 @@ import co.edu.uniandes.dse.treeking.dto.AdminDTO;
 import co.edu.uniandes.dse.treeking.dto.AdminDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.services.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -39,4 +41,28 @@ public class AdminController {
         AdminEntity entity = adminService.getAdmin(id);
         return modelMapper.map(entity, AdminDetailDTO.class);
     }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public AdminDTO create(@RequestBody AdminDTO adminDTO) {
+        AdminEntity adminEntity = adminService.createAdmin(modelMapper.map(adminDTO, AdminEntity.class));
+        return modelMapper.map(adminEntity, AdminDTO.class);
+    }
+
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public AdminDTO update(@PathVariable("id") Long id, @RequestBody AdminDTO AdminDTO)
+            throws EntityNotFoundException {
+        AdminEntity adminEntity = adminService.updateAdmin(id, modelMapper.map(AdminDTO, AdminEntity.class));
+        return modelMapper.map(adminEntity, AdminDTO.class);
+    }
+
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+        adminService.deleteAdmin(id);
+    }
+
 }
