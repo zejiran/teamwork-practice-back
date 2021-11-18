@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd2716d8-ad54-41b9-a259-1676f0b30f11",
+		"_postman_id": "3880f516-fa7f-4ccc-8709-5cc361340c7f",
 		"name": "User Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -55,7 +55,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/users/100",
+					"raw": "http://{{ip}}:{{port}}/api/users/32",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -64,7 +64,7 @@
 					"path": [
 						"api",
 						"users",
-						"100"
+						"32"
 					]
 				}
 			},

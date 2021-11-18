@@ -19,7 +19,6 @@ import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.TransactionService;
 
-
 /**
  * Clase que implementa el recurso "transactions"
  *
@@ -29,35 +28,35 @@ import co.edu.uniandes.dse.treeking.services.TransactionService;
 @RequestMapping("/transactions")
 public class TransactionController {
 
-        @Autowired
-        private TransactionService transactionService;
+	@Autowired
+	private TransactionService transactionService;
 
-        @Autowired
-        private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-        /**
-         * Busca y devuelve todas las transacciones que existen en la aplicacion.
-         *
-         */
-        @GetMapping
-        @ResponseStatus(code = HttpStatus.OK)
-        public List<TransactionDTO> findAll() {
-                List<TransactionEntity> transactions = transactionService.getTransactions();
-                return modelMapper.map(transactions, new TypeToken<List<TransactionDTO>>() {
-                }.getType());
-        }
-        
-    	/**
-    	 * Busca el transaction con el id asociado recibido en la URL y lo devuelve.
-    	 *
-    	 * @param transactionId Identificador del transaction que se esta buscando. Este debe ser una
-    	 *               cadena de dígitos.
-    	 * @return JSON {@link TransactionDTO} - El transaction buscado
-    	 */
-    	@GetMapping(value = "/{id}")
-    	@ResponseStatus(code = HttpStatus.OK)
-    	public TransactionDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
-    		TransactionEntity transactionEntity = transactionService.getTransaction(id);
-    		return modelMapper.map(transactionEntity, TransactionDTO.class);
-    	}
-}  
+	/**
+	 * Busca y devuelve todas las transacciones que existen en la aplicacion.
+	 *
+	 */
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<TransactionDTO> findAll() {
+		List<TransactionEntity> transactions = transactionService.getTransactions();
+		return modelMapper.map(transactions, new TypeToken<List<TransactionDTO>>() {
+		}.getType());
+	}
+
+	/**
+	 * Busca el transaction con el id asociado recibido en la URL y lo devuelve.
+	 *
+	 * @param transactionId Identificador del transaction que se esta buscando. Este
+	 *                      debe ser una cadena de dígitos.
+	 * @return JSON {@link TransactionDTO} - El transaction buscado
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public TransactionDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		TransactionEntity transactionEntity = transactionService.getTransaction(id);
+		return modelMapper.map(transactionEntity, TransactionDTO.class);
+	}
+}

@@ -23,34 +23,36 @@ import co.edu.uniandes.dse.treeking.services.QuotationService;
 public class QuotationController {
 	@Autowired
 	private QuotationService quotationService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	/**
-     * Busca y devuelve todos las cotizaciones que existen en la aplicacion.
-     *
-     * @return JSONArray {@link QuotationDTO} - Las cotizaciones encontradas en la
-     *         aplicación. Si no hay ninguno retorna una lista vacía.
-     */
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<QuotationDTO> findAll() {
-            List<QuotationEntity> quotations = quotationService.getQuotations();
-            return modelMapper.map(quotations, new TypeToken<List<QuotationDTO>>() {
-            }.getType());
-    }
-    
-    /**
-     * Busca el detalle de una instancia de Quotation según su identificador
-     * @param id Identificador del detalle de la instancia de Quotation que se quiere buscar
-     * @return Detalle de Quotation
-     * @throws EntityNotFoundException
-     */
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public QuotationDetailDTO findOne (@PathVariable("id") Long id) throws EntityNotFoundException {
-    	QuotationEntity quotationEntity = quotationService.getQuotation(id);
-    	return modelMapper.map(quotationEntity, QuotationDetailDTO.class);
-    }
+	 * Busca y devuelve todos las cotizaciones que existen en la aplicacion.
+	 *
+	 * @return JSONArray {@link QuotationDTO} - Las cotizaciones encontradas en la
+	 *         aplicación. Si no hay ninguno retorna una lista vacía.
+	 */
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<QuotationDTO> findAll() {
+		List<QuotationEntity> quotations = quotationService.getQuotations();
+		return modelMapper.map(quotations, new TypeToken<List<QuotationDTO>>() {
+		}.getType());
+	}
+
+	/**
+	 * Busca el detalle de una instancia de Quotation según su identificador
+	 * 
+	 * @param id Identificador del detalle de la instancia de Quotation que se
+	 *           quiere buscar
+	 * @return Detalle de Quotation
+	 * @throws EntityNotFoundException
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public QuotationDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		QuotationEntity quotationEntity = quotationService.getQuotation(id);
+		return modelMapper.map(quotationEntity, QuotationDetailDTO.class);
+	}
 }

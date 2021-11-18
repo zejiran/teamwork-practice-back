@@ -18,24 +18,24 @@ import java.util.List;
 @RequestMapping("/routes")
 public class RouteController {
 
-    @Autowired
-    private RouteService routeService;
+	@Autowired
+	private RouteService routeService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    @GetMapping
-    @ResponseStatus(code= HttpStatus.OK)
-    public List<RouteDTO> findAll() {
-        List<RouteEntity> routes = routeService.getRoutes();
-        return modelMapper.map(routes, new TypeToken<List<RouteDTO>>(){}.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<RouteDTO> findAll() {
+		List<RouteEntity> routes = routeService.getRoutes();
+		return modelMapper.map(routes, new TypeToken<List<RouteDTO>>() {
+		}.getType());
+	}
 
-
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public RouteDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
-        RouteEntity route = routeService.getRouteById(id);
-        return modelMapper.map(route, RouteDetailDTO.class);
-    }
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public RouteDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
+		RouteEntity route = routeService.getRouteById(id);
+		return modelMapper.map(route, RouteDetailDTO.class);
+	}
 }

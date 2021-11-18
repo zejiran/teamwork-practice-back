@@ -17,24 +17,25 @@ import co.edu.uniandes.dse.treeking.entities.ComplementaryInformationEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.ComplementaryInformationService;
 
-
 @RestController
 @RequestMapping("/complementaryinformations")
 public class ComplementaryInformationController {
 
 	@Autowired
 	private ComplementaryInformationService complementaryinformationService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<ComplementaryInformationDTO> findAll(){
-		List<ComplementaryInformationEntity> complementaryinformations = complementaryinformationService.getComplementaryInformations();
+	public List<ComplementaryInformationDTO> findAll() {
+		List<ComplementaryInformationEntity> complementaryinformations = complementaryinformationService
+				.getComplementaryInformations();
 		return modelMapper.map(complementaryinformations, new TypeToken<List<ComplementaryInformationDTO>>() {
-        }.getType());
+		}.getType());
 	}
+
 	
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
@@ -42,4 +43,5 @@ public class ComplementaryInformationController {
 		ComplementaryInformationEntity ciEntity = complementaryinformationService.getComplementaryInformation(id);
 		return modelMapper.map(ciEntity, ComplementaryInformationDTO.class);
 	}
+
 }

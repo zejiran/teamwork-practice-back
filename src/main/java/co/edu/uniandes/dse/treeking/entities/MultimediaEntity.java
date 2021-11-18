@@ -22,5 +22,4 @@ public class MultimediaEntity extends BaseEntity {
 	@ManyToMany
 	private List<FilesContainerEntity> containers;
 
-
 }

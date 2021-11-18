@@ -1,6 +1,5 @@
 package co.edu.uniandes.dse.treeking.dto;
 
-
 import java.util.Date;
 
 import co.edu.uniandes.dse.treeking.enums.PaymentType;
@@ -13,4 +12,5 @@ public class TransactionDTO {
 	private PaymentType payment;
 	private Integer value;
 	private Date creationDate;
+	private String username;
 }

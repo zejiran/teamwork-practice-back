@@ -44,5 +44,6 @@ public class ItineraryController {
 	public ItineraryDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
 		ItineraryEntity itineraryEntity = itineraryService.getItinerary(id);
 		return modelMapper.map(itineraryEntity, ItineraryDTO.class);
+
 	}
 }

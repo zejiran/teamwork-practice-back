@@ -34,7 +34,7 @@ public class LocationService {
 
 	public LocationEntity getLocationById(Long LocationId) throws EntityNotFoundException {
 		Optional<LocationEntity> locationEntity = locationRepository.findById(LocationId);
-		if (locationEntity.isEmpty()){
+		if (locationEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.LOCATION_NOT_FOUND);
 		}
 		return locationEntity.get();

@@ -19,10 +19,18 @@ public class TransactionEntity extends BaseEntity {
 
 	private PaymentType payment;
 	private Integer value;
+	private String userType;
+	private String userID;
+	private String username;
+
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 
 	@PodamExclude
 	@ManyToOne
-	private ClientEntity client;
+	private NaturalPersonEntity client;
+
+	@PodamExclude
+	@ManyToOne
+	private EnterpriseEntity enterprise;
 }

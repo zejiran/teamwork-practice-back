@@ -14,13 +14,13 @@ public final class ErrorMessage {
 	public static final String OUTING_NOT_FOUND = "The outing with the given ID was not found";
 
 	public static final String CLIENT_NOT_FOUND = "The client with the given ID was not found";
-	
+
 	public static final String ACTIVITY_NOT_FOUND = "The activity with the given ID was not found";
 
 	public static final String COMPLEMENTARYINFORMATION_NOT_FOUND = "The complementary information with the given ID was not found";
-	
+
 	public static final String GUIDE_NOT_FOUND = "The guide with the given ID was not found";
-	
+
 	public static final String ITINERARY_NOT_FOUND = "The itinerary with the given ID was not found";
 
 	public static final String MULTIMEDIA_NOT_FOUND = "The multimedia with the given ID was not found";
@@ -38,14 +38,14 @@ public final class ErrorMessage {
 	public static final String BLOG_NOT_FOUND = "The blog with the given ID was not found";
 
 	public static final String REVIEW_NOT_FOUND = "The review with the given ID was not found";
-  
-  public static final String LOCATION_NOT_FOUND = "The location with the given ID was not found";
-  
-  public static final String ROUTE_NOT_FOUND = "The route with the given ID was not found";
-  
-  public static final String CALENDAR_NOT_FOUND = "The calendar with the given name was not found";
+
+	public static final String LOCATION_NOT_FOUND = "The location with the given ID was not found";
+
+	public static final String ROUTE_NOT_FOUND = "The route with the given ID was not found";
+
+	public static final String CALENDAR_NOT_FOUND = "The calendar with the given name was not found";
 
 	private ErrorMessage() {
 		throw new IllegalStateException("Utility class");
 	}
-}  
+}

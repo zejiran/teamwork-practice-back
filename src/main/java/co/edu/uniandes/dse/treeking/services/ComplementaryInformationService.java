@@ -21,10 +21,10 @@ public class ComplementaryInformationService {
 	public List<ComplementaryInformationEntity> getComplementaryInformations() {
 		return complementaryinformationRepository.findAll();
 	}
-	
+
 	@Transactional
-	public ComplementaryInformationEntity getComplementaryInformation(long id) throws EntityNotFoundException{
-		ComplementaryInformationEntity ci =complementaryinformationRepository.findById(id).orElse(null);
+	public ComplementaryInformationEntity getComplementaryInformation(long id) throws EntityNotFoundException {
+		ComplementaryInformationEntity ci = complementaryinformationRepository.findById(id).orElse(null);
 		if (ci == null) {
 			throw new EntityNotFoundException(ErrorMessage.COMPLEMENTARYINFORMATION_NOT_FOUND);
 		}

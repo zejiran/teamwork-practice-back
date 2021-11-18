@@ -29,10 +29,10 @@ public class QuotationService {
 	public List<QuotationEntity> getQuotations() {
 		return quotationRepository.findAll();
 	}
-	
-	
+
 	/**
 	 * Obtiene una instancia de Quotation asociada a determinado quotationId
+	 * 
 	 * @param quotationId Identificador de la instancia de Quotation
 	 * @return La entidad Quotation asociada a quotationId
 	 * @throws EntityNotFoundException

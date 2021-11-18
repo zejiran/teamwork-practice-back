@@ -19,6 +19,8 @@ public class CommentEntity extends BaseEntity{
     private String text;
     private Integer likes;
     private Integer dislikes;
+    private String userType;
+    private String userID;
     private String username;
 
     @Temporal(TemporalType.DATE)

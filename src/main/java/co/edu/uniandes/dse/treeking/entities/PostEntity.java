@@ -12,15 +12,14 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PostEntity extends BaseEntity {
 
 	private Integer ratings;
-	
+
 	private String title;
 
-	@OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private CommentEntity comment;
 
-	@OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private FilesContainerEntity container;
-
 
 	@PodamExclude
 	@ManyToOne

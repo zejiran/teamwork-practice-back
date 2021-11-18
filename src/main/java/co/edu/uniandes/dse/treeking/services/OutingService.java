@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.repositories.OutingRepository;
 
 @Service
@@ -28,20 +29,33 @@ public class OutingService {
 	public List<OutingEntity> getOutings() {
 		return outingRepository.findAll();
 	}
-	
+
 	/**
 	 * Obtiene los datos de una instancia Outing a través de su id
+	 * 
 	 * @param outingId Identificar de la instancia a consultar
 	 * @return Instancia de Outing que coincide con id pasado por parametro.
 	 * @throws IllegalOperationException
 	 * @throws EntityNotFoundException
 	 */
 	@Transactional
-	public OutingEntity getOuting(Long outingId) throws EntityNotFoundException{
+	public OutingEntity getOuting(Long outingId) throws EntityNotFoundException {
 		Optional<OutingEntity> outingEntity = outingRepository.findById(outingId);
 		if (outingEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.OUTING_NOT_FOUND);
 		}
 		return outingEntity.get();
+	}
+	
+	/**
+	 * Crea una salida en la persistencia.
+	 *
+	 * @param outingEntity La entidad que representa la salida a persistir.
+	 * @return La entidad de la salida luego de persistirla.
+	 * @throws IllegalOperationException Si la salida a persistir ya existe.
+	 */
+	@Transactional
+	public OutingEntity createOuting(OutingEntity outingEntity) throws IllegalOperationException {
+		return outingRepository.save(outingEntity);
 	}
 }

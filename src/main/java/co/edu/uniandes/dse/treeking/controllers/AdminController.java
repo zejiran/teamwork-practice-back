@@ -3,10 +3,7 @@ package co.edu.uniandes.dse.treeking.controllers;
 
 import co.edu.uniandes.dse.treeking.dto.AdminDTO;
 import co.edu.uniandes.dse.treeking.dto.AdminDetailDTO;
-import co.edu.uniandes.dse.treeking.dto.MultimediaDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
-import co.edu.uniandes.dse.treeking.entities.AdminEntity;
-import co.edu.uniandes.dse.treeking.entities.MultimediaEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.AdminService;
 import org.modelmapper.ModelMapper;

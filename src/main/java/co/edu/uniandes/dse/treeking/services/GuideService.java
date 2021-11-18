@@ -1,6 +1,7 @@
 package co.edu.uniandes.dse.treeking.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +25,11 @@ public class GuideService {
 
 	@Transactional
 	public GuideEntity getGuide(Long id) throws EntityNotFoundException {
-		GuideEntity guide = guideRepository.findById(id).orElse(null);
-		if(guide == null) {
+		Optional<GuideEntity> guide = guideRepository.findById(id);
+		if (guide == null) {
 			throw new EntityNotFoundException(ErrorMessage.GUIDE_NOT_FOUND);
 		}
-		return guide;
+		return guide.get();
 	}
-	
+
 }

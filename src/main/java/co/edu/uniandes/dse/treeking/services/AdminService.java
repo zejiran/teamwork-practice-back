@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
 import co.edu.uniandes.dse.treeking.repositories.AdminRepository;
 
-
-
 /**
  * Clase que implementa los servicios de la lógica de la entidad Admin.Para
  * esto, se conecta a la clase que maneja la persistencia AdminRepository.
@@ -48,7 +46,5 @@ public class AdminService {
 		log.info("Termina proceso de consultar el libro con id = {0}", AdminId);
 		return AdminEntity.get();
 	}
-
-	
 
 }
