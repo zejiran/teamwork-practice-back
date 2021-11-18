@@ -77,9 +77,7 @@ class ClientServiceTest {
 		ClientEntity client = clientService.getClient(clientEntity.getId());
 		assertNotNull(client);
 		assertEquals(client.getId(), clientEntity.getId());
-		assertEquals(client.getUser(), clientEntity.getUser());
-		assertEquals(client.getPassword(), clientEntity.getPassword());
-		assertEquals(client.getMail(), clientEntity.getMail());
+		
 	}
 
 }

@@ -24,34 +24,36 @@ import co.edu.uniandes.dse.treeking.services.OutingService;
 public class OutingController {
 	@Autowired
 	private OutingService outingService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	/**
-     * Busca y devuelve todos las salidas que existen en la aplicacion.
-     *
-     * @return JSONArray {@link OutingDTO} - Las salidas encontradas en la
-     *         aplicación. Si no hay ninguno retorna una lista vacía.
-     */
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<OutingDTO> findAll() {
-            List<OutingEntity> outings = outingService.getOutings();
-            return modelMapper.map(outings, new TypeToken<List<OutingDTO>>() {
-            }.getType());
-    }
-    
-    /**
-     * Busca el detalle de una instancia de Outing según su identificador
-     * @param id Identificador del detalle de la instancia de Outing que se quiere buscar
-     * @return Detalle de Outing
-     * @throws EntityNotFoundException
-     */
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public OutingDetailDTO findOne (@PathVariable("id") Long id) throws EntityNotFoundException {
-    	OutingEntity outingEntity = outingService.getOuting(id);
-    	return modelMapper.map(outingEntity, OutingDetailDTO.class);
-    }
+	 * Busca y devuelve todos las salidas que existen en la aplicacion.
+	 *
+	 * @return JSONArray {@link OutingDTO} - Las salidas encontradas en la
+	 *         aplicación. Si no hay ninguno retorna una lista vacía.
+	 */
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<OutingDTO> findAll() {
+		List<OutingEntity> outings = outingService.getOutings();
+		return modelMapper.map(outings, new TypeToken<List<OutingDTO>>() {
+		}.getType());
+	}
+
+	/**
+	 * Busca el detalle de una instancia de Outing según su identificador
+	 * 
+	 * @param id Identificador del detalle de la instancia de Outing que se quiere
+	 *           buscar
+	 * @return Detalle de Outing
+	 * @throws EntityNotFoundException
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public OutingDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		OutingEntity outingEntity = outingService.getOuting(id);
+		return modelMapper.map(outingEntity, OutingDetailDTO.class);
+	}
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
 
 @Repository
-public interface QuotationRepository extends JpaRepository<QuotationEntity, Long>{
+public interface QuotationRepository extends JpaRepository<QuotationEntity, Long> {
 
 }

@@ -18,18 +18,18 @@ import org.modelmapper.TypeToken;
 @RestController
 @RequestMapping("/guides")
 public class GuideController {
-	
+
 	@Autowired
 	private GuideService guideService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<GuideDTO> findAll(){
+	public List<GuideDTO> findAll() {
 		List<GuideEntity> guides = guideService.getGuides();
 		return modelMapper.map(guides, new TypeToken<List<GuideDTO>>() {
-        }.getType());
+		}.getType());
 	}
 }

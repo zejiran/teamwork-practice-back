@@ -7,13 +7,11 @@ import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
-import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 @Getter
 @Setter
-public class NaturalPersonEntity extends ClientEntity {
-
+public class NaturalPersonEntity extends BaseEntity {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private PersonEntity person;
 }

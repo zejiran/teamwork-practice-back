@@ -28,16 +28,17 @@ public class OutingService {
 	public List<OutingEntity> getOutings() {
 		return outingRepository.findAll();
 	}
-	
+
 	/**
 	 * Obtiene los datos de una instancia Outing a través de su id
+	 * 
 	 * @param outingId Identificar de la instancia a consultar
 	 * @return Instancia de Outing que coincide con id pasado por parametro.
 	 * @throws IllegalOperationException
 	 * @throws EntityNotFoundException
 	 */
 	@Transactional
-	public OutingEntity getOuting(Long outingId) throws EntityNotFoundException{
+	public OutingEntity getOuting(Long outingId) throws EntityNotFoundException {
 		Optional<OutingEntity> outingEntity = outingRepository.findById(outingId);
 		if (outingEntity.isEmpty()) {
 			throw new EntityNotFoundException(ErrorMessage.OUTING_NOT_FOUND);

@@ -17,23 +17,24 @@ import java.util.List;
 @RequestMapping("/locations")
 public class LocationController {
 
-    @Autowired
-    private LocationService locationService;
+	@Autowired
+	private LocationService locationService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    @GetMapping
-    @ResponseStatus(code= HttpStatus.OK)
-    public List<LocationDTO> findAll() {
-        List<LocationEntity> locations = locationService.getLocations();
-        return modelMapper.map(locations, new TypeToken<List<LocationDTO>>(){}.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<LocationDTO> findAll() {
+		List<LocationEntity> locations = locationService.getLocations();
+		return modelMapper.map(locations, new TypeToken<List<LocationDTO>>() {
+		}.getType());
+	}
 
-     @GetMapping(value = "/{id}")
-     @ResponseStatus (code = HttpStatus.OK)
-     public LocationDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
-        LocationEntity location = locationService.getLocationById(id);
-        return modelMapper.map(location, LocationDetailDTO.class);
-     }
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public LocationDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
+		LocationEntity location = locationService.getLocationById(id);
+		return modelMapper.map(location, LocationDetailDTO.class);
+	}
 }

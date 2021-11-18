@@ -12,4 +12,5 @@ public class TransactionDTO {
 	private PaymentType payment;
 	private Integer value;
 	private Date creationDate;
+	private String username;
 }

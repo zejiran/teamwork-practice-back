@@ -2,16 +2,15 @@ package co.edu.uniandes.dse.treeking.controllers;
 
 
 import co.edu.uniandes.dse.treeking.dto.AdminDTO;
+import co.edu.uniandes.dse.treeking.dto.AdminDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.AdminEntity;
+import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +31,12 @@ public class AdminController {
         List<AdminEntity> admins = adminService.getAdmins();
         return modelMapper.map(admins, new TypeToken<List<AdminDTO>>() {
         }.getType());
+    }
+
+    @GetMapping(value = "/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public AdminDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+        AdminEntity entity = adminService.getAdmin(id);
+        return modelMapper.map(entity, AdminDetailDTO.class);
     }
 }

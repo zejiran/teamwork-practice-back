@@ -39,11 +39,15 @@ public class OutingEntity extends BaseEntity {
 	@OneToMany(mappedBy = "outing")
 	private List<ActivityEntity> activities;
 
-	@ManyToMany(mappedBy = "outings",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "outings", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<GuideEntity> guides;
 
 	@PodamExclude
 	@OneToMany(mappedBy = "outing", fetch = FetchType.LAZY)
 	private List<QuotationEntity> quotations;
+
+	@PodamExclude
+    @ManyToOne
+    private AdminEntity admin;
 
 }

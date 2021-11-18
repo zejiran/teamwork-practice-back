@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import co.edu.uniandes.dse.treeking.entities.InsuranceEntity;
 
 @Repository
-public interface InsuranceRepository extends JpaRepository<InsuranceEntity, Long>{
+public interface InsuranceRepository extends JpaRepository<InsuranceEntity, Long> {
 
 }

@@ -20,19 +20,17 @@ import co.edu.uniandes.dse.treeking.services.ActivityService;
 public class ActivityController {
 
 	@Autowired
-    private ActivityService activityService;
+	private ActivityService activityService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<ActivityDTO> findAll() {
-            List<ActivityEntity> activities = activityService.getActivities();
-            return modelMapper.map(activities, new TypeToken<List<ActivityDTO>>() {
-            }.getType());
-    }
-
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ActivityDTO> findAll() {
+		List<ActivityEntity> activities = activityService.getActivities();
+		return modelMapper.map(activities, new TypeToken<List<ActivityDTO>>() {
+		}.getType());
+	}
 
 }

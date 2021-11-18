@@ -7,5 +7,5 @@ import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 
 @Repository
 public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
-	
+
 }

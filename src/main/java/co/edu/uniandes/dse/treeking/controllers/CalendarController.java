@@ -17,23 +17,24 @@ import java.util.List;
 @RequestMapping("/calendars")
 public class CalendarController {
 
-    @Autowired
-    private CalendarService calendarService;
+	@Autowired
+	private CalendarService calendarService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<CalendarDTO> findAll(){
-        List<CalendarEntity> calendars = calendarService.getCalendars();
-        return modelMapper.map(calendars, new TypeToken<List<CalendarDTO>>(){}.getType());
-    }
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<CalendarDTO> findAll() {
+		List<CalendarEntity> calendars = calendarService.getCalendars();
+		return modelMapper.map(calendars, new TypeToken<List<CalendarDTO>>() {
+		}.getType());
+	}
 
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public CalendarDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException{
-        CalendarEntity calendar = calendarService.getCalendarById(id);
-        return modelMapper.map(calendar, CalendarDetailDTO.class);
-    }
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public CalendarDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
+		CalendarEntity calendar = calendarService.getCalendarById(id);
+		return modelMapper.map(calendar, CalendarDetailDTO.class);
+	}
 }

@@ -34,4 +34,3 @@ public class IllegalOperationException extends Exception {
 		super(message);
 	}
 }
-

@@ -23,35 +23,37 @@ import co.edu.uniandes.dse.treeking.services.InsuranceService;
 public class InsuranceController {
 	@Autowired
 	private InsuranceService insuranceService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	/**
-     * Busca y devuelve todos los seguros que existen en la aplicacion.
-     *
-     * @return JSONArray {@link InsuranceDTO} - Los seguros encontrados en la
-     *         aplicación. Si no hay ninguno retorna una lista vacía.
-     */
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<InsuranceDTO> findAll() {
-            List<InsuranceEntity> insurances = insuranceService.getInsurances();
-            return modelMapper.map(insurances, new TypeToken<List<InsuranceDTO>>() {
-            }.getType());
-    }
-    
-    /**
-     * Busca el detalle de una instancia de Insurance según su identificador
-     * @param id Identificador del detalle de la instancia de Insurance que se quiere buscar
-     * @return Detalle de Insurance
-     * @throws EntityNotFoundException
-     */
-    @GetMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public InsuranceDetailDTO findOne (@PathVariable("id") Long id) throws EntityNotFoundException {
-    	InsuranceEntity insuranceEntity = insuranceService.getInsurance(id);
-    	return modelMapper.map(insuranceEntity, InsuranceDetailDTO.class);
-    }
+	 * Busca y devuelve todos los seguros que existen en la aplicacion.
+	 *
+	 * @return JSONArray {@link InsuranceDTO} - Los seguros encontrados en la
+	 *         aplicación. Si no hay ninguno retorna una lista vacía.
+	 */
+	@GetMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<InsuranceDTO> findAll() {
+		List<InsuranceEntity> insurances = insuranceService.getInsurances();
+		return modelMapper.map(insurances, new TypeToken<List<InsuranceDTO>>() {
+		}.getType());
+	}
+
+	/**
+	 * Busca el detalle de una instancia de Insurance según su identificador
+	 * 
+	 * @param id Identificador del detalle de la instancia de Insurance que se
+	 *           quiere buscar
+	 * @return Detalle de Insurance
+	 * @throws EntityNotFoundException
+	 */
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public InsuranceDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+		InsuranceEntity insuranceEntity = insuranceService.getInsurance(id);
+		return modelMapper.map(insuranceEntity, InsuranceDetailDTO.class);
+	}
 
 }
