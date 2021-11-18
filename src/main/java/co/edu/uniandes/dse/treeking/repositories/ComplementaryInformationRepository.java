@@ -7,5 +7,5 @@ import co.edu.uniandes.dse.treeking.entities.ComplementaryInformationEntity;
 
 @Repository
 public interface ComplementaryInformationRepository extends JpaRepository<ComplementaryInformationEntity, Long> {
-
+    
 }
