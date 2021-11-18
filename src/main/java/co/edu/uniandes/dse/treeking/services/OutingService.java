@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.repositories.OutingRepository;
 
 @Service
@@ -44,5 +45,17 @@ public class OutingService {
 			throw new EntityNotFoundException(ErrorMessage.OUTING_NOT_FOUND);
 		}
 		return outingEntity.get();
+	}
+	
+	/**
+	 * Crea una salida en la persistencia.
+	 *
+	 * @param outingEntity La entidad que representa la salida a persistir.
+	 * @return La entidad de la salida luego de persistirla.
+	 * @throws IllegalOperationException Si la salida a persistir ya existe.
+	 */
+	@Transactional
+	public OutingEntity createOuting(OutingEntity outingEntity) throws IllegalOperationException {
+		return outingRepository.save(outingEntity);
 	}
 }
