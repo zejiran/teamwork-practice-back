@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.repositories.ActivityRepository;
 
 
@@ -34,4 +35,11 @@ public class ActivityService {
 		}
 		return activity;
 	}
+	
+	@Transactional
+	public ActivityEntity createActivity(ActivityEntity activity) throws IllegalOperationException {
+		return activityRepository.save(activity);
+	}
+	
+	
 }
