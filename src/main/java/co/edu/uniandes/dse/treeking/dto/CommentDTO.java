@@ -8,4 +8,5 @@ public class CommentDTO {
     private String text;
     private Integer likes;
     private Integer dislikes;
+    private String username;
 }

@@ -11,7 +11,6 @@ import java.util.List;
 public class CommentDetailDTO extends CommentDTO {
     private String userID;
     private String userType;
-    private String username;
     private Date date;
     private List<CommentDTO> replies;
 }

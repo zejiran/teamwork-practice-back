@@ -8,5 +8,4 @@ import lombok.EqualsAndHashCode;
 public class TransactionDetailDTO extends TransactionDTO{
     private String userType;
     private String userID;
-    private String username;
 }
