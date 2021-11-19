@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "5bdc1557-113b-4d3a-ae58-868c7f25135f",
+		"_postman_id": "7d08aa5c-5d24-44c8-be22-e585f41ca146",
 		"name": "Admin Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get all admins",
+			"name": "Obtener todos los admins",
 			"event": [
 				{
 					"listen": "test",
@@ -110,6 +110,49 @@
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un admin que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /admin/0 no existe.\".\n\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);\r",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 201;\r",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"user\": \"prime\",\r\n\"mail\": \"prime@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/admins",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"admins"
+					]
+				}
 			},
 			"response": []
 		}
