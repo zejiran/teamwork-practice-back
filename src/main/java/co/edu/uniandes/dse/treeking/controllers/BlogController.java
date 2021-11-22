@@ -26,9 +26,9 @@ public class BlogController {
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public List<BlogDTO> findAll() {
+    public List<BlogDetailDTO> findAll() {
         List<BlogEntity> blogs = blogService.getBlogs();
-        return modelMapper.map(blogs, new TypeToken<List<BlogDTO>>() {
+        return modelMapper.map(blogs, new TypeToken<List<BlogDetailDTO>>() {
         }.getType());
     }
 
