@@ -9,6 +9,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -89,6 +91,22 @@ class UserServiceTest {
 		assertEquals(userEntity.getUser(), user.getUser());
 		assertEquals(userEntity.getPassword(), user.getPassword());
 		assertEquals(userEntity.getMail(), user.getMail());
+	}
 
+	/**
+	 * Test for adding a new User.
+	 */
+	@Test
+	void testAddUser() throws EntityNotFoundException, IllegalOperationException {
+		UserEntity newEntity = factory.manufacturePojo(UserEntity.class);
+		UserEntity result = userService.createUser(newEntity);
+		assertNotNull(result);
+
+		UserEntity entity = entityManager.find(UserEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getUser(), entity.getUser());
+		assertEquals(newEntity.getPassword(), entity.getPassword());
+		assertEquals(newEntity.getMail(), entity.getMail());
 	}
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import co.edu.uniandes.dse.treeking.dto.NaturalPersonDTO;
 import co.edu.uniandes.dse.treeking.dto.NaturalPersonDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.NaturalPersonEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.services.NaturalPersonService;
 
 /**
@@ -57,5 +60,22 @@ public class NaturalPersonController {
 	public NaturalPersonDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
 		NaturalPersonEntity naturalPersonEntity = naturalPersonService.getNaturalPerson(id);
 		return modelMapper.map(naturalPersonEntity, NaturalPersonDetailDTO.class);
+	}
+
+	/**
+	 * Save a new natural person with the URL information and returns it.
+	 *
+	 * @param naturalPersonDTO {@link NaturalPersonDTO} - natural person to be
+	 *                         saved.
+	 * 
+	 * @return JSON {@link NaturalPersonDTO} - Saved NaturalPerson.
+	 */
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public NaturalPersonDTO create(@RequestBody NaturalPersonDTO naturalPersonDTO)
+			throws IllegalOperationException, EntityNotFoundException {
+		NaturalPersonEntity naturalPersonEntity = naturalPersonService
+				.createNaturalPerson(modelMapper.map(naturalPersonDTO, NaturalPersonEntity.class));
+		return modelMapper.map(naturalPersonEntity, NaturalPersonDTO.class);
 	}
 }
