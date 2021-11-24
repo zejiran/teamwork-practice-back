@@ -9,6 +9,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -85,7 +87,23 @@ class NaturalPersonServiceTest {
 		NaturalPersonEntity naturalPersonEntity = naturalPersonList.get(0);
 		NaturalPersonEntity naturalPerson = naturalPersonService.getNaturalPerson(naturalPersonEntity.getId());
 		assertEquals(naturalPerson.getId(), naturalPersonEntity.getId());
-		assertEquals(naturalPerson.getPerson(),naturalPersonEntity.getPerson());
+		assertEquals(naturalPerson.getPerson(), naturalPersonEntity.getPerson());
 		assertNotNull(naturalPerson);
+	}
+
+	/**
+	 * Test for creating a new NaturalPerson.
+	 */
+	@Test
+	void testAddNaturalPerson() throws EntityNotFoundException, IllegalOperationException {
+		NaturalPersonEntity newEntity = factory.manufacturePojo(NaturalPersonEntity.class);
+		NaturalPersonEntity result = naturalPersonService.createNaturalPerson(newEntity);
+		assertNotNull(result);
+
+		NaturalPersonEntity entity = entityManager.find(NaturalPersonEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getPerson(), entity.getPerson());
+		assertNotNull(newEntity);
 	}
 }

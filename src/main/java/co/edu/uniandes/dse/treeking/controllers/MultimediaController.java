@@ -66,14 +66,14 @@ public class MultimediaController {
 	/**
 	 * Save a new multimedia with the URL information and returns it.
 	 *
-	 * @param book {@link MultimediaDTO} - multimedia to be saved.
+	 * @param multimediaDTO {@link MultimediaDTO} - multimedia to be saved.
 	 * 
 	 * @return JSON {@link MultimediaDTO}  - Saved Multimedia.
 	 */
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public MultimediaDTO create(@RequestBody MultimediaDTO bookDTO) throws IllegalOperationException, EntityNotFoundException {
-		MultimediaEntity multimediaEntity = multimediaService.createMultimedia(modelMapper.map(bookDTO, MultimediaEntity.class));
+	public MultimediaDTO create(@RequestBody MultimediaDTO multimediaDTO) throws IllegalOperationException, EntityNotFoundException {
+		MultimediaEntity multimediaEntity = multimediaService.createMultimedia(modelMapper.map(multimediaDTO, MultimediaEntity.class));
 		return modelMapper.map(multimediaEntity, MultimediaDTO.class);
 	}
 }
