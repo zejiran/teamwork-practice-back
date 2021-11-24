@@ -10,6 +10,8 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -87,28 +89,25 @@ class MultimediaServiceTest {
 		MultimediaEntity multimedia = multimediaService.getMultimedia(multimediaEntity.getId());
 		assertNotNull(multimedia);
 		assertEquals(multimedia.getId(), multimediaEntity.getId());
-		assertEquals(multimedia.getFileName(),multimediaEntity.getFileName());
-		assertEquals(multimedia.getExtension(),multimediaEntity.getExtension());
-		assertEquals(multimedia.getMediaType(),multimediaEntity.getMediaType());
+		assertEquals(multimedia.getFileName(), multimediaEntity.getFileName());
+		assertEquals(multimedia.getExtension(), multimediaEntity.getExtension());
+		assertEquals(multimedia.getMediaType(), multimediaEntity.getMediaType());
 	}
-	
-	
-//	/**
-//	 * Test for getting Multimedia.
-//	 */
-//	@Test
-//	public MultimediaEntity testAddMultimedia(Long authorId, Long bookId) throws EntityNotFoundException {
-//	    Optional < MultimediaEntity > authorEntity = authorRepository.findById(authorId);
-//	    Optional < BookEntity > bookEntity = bookRepository.findById(bookId);
-//
-//	    if (authorEntity.isEmpty())
-//	        throw new EntityNotFoundException(ErrorMessage.AUTHOR_NOT_FOUND);
-//
-//	    if (bookEntity.isEmpty())
-//	        throw new EntityNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
-//
-//	    bookEntity.get().getAuthors().add(authorEntity.get());
-//	    log.info("Termina proceso de asociarle un libro al autor con id = {0}", authorId);
-//	    return bookEntity.get();
-//	}
+
+	/**
+	 * Test for adding a new Multimedia.
+	 */
+	@Test
+	void testAddMultimedia() throws EntityNotFoundException, IllegalOperationException {
+		MultimediaEntity newEntity = factory.manufacturePojo(MultimediaEntity.class);
+		MultimediaEntity result = multimediaService.createMultimedia(newEntity);
+		assertNotNull(result);
+
+		MultimediaEntity entity = entityManager.find(MultimediaEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getFileName(), entity.getFileName());
+		assertEquals(newEntity.getExtension(), entity.getExtension());
+		assertEquals(newEntity.getMediaType(), entity.getMediaType());
+	}
 }
