@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
-
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
 import co.edu.uniandes.dse.treeking.repositories.QuotationRepository;
 
@@ -46,5 +46,17 @@ public class QuotationService {
 		} else {
 			return quotationEntity.get();
 		}
+	}
+	
+	/**
+	 * Crea una quotation en la persistencia.
+	 *
+	 * @param quotationEntity La entidad que representa la quotation a persistir.
+	 * @return La entidad de la quotation luego de persistirla.
+	 * @throws IllegalOperationException Si la quotation a persistir ya existe.
+	 */
+	@Transactional
+	public QuotationEntity createQuotation(QuotationEntity quotationEntity) throws IllegalOperationException {
+		return quotationRepository.save(quotationEntity);
 	}
 }
