@@ -45,4 +45,15 @@ public class PersonService {
 		}
 		return person;
 	}
+	
+	/**
+	 * Creates a Person in the database.
+	 *
+	 * @param person Object of PersonEntity with the new data.
+	 * @return Object of PersonEntity with the new data and it corresponding ID.
+	 */
+	@Transactional
+	public PersonEntity createPerson(PersonEntity person) {
+	    return personRepository.save(person);
+	}
 }
