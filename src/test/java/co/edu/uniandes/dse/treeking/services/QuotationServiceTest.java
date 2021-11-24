@@ -19,6 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.QuotationEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -78,6 +79,21 @@ class QuotationServiceTest {
 		assertEquals(quotation.getParticipants(), quotationEntity.getParticipants());
 		assertEquals(quotation.getTotalCost(), quotationEntity.getTotalCost());
 		assertEquals(quotation.getStatus(), quotationEntity.getStatus());
+	}
+	
+	
+	@Test
+	void testCreateQuotation() throws EntityNotFoundException, IllegalOperationException {
+		QuotationEntity newEntity = factory.manufacturePojo(QuotationEntity.class);
+		QuotationEntity result = quotationService.createQuotation(newEntity);
+		assertNotNull(result);
+
+		QuotationEntity entity = entityManager.find(QuotationEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getParticipants(), entity.getParticipants());
+		assertEquals(newEntity.getTotalCost(), entity.getTotalCost());
+		assertEquals(newEntity.getStatus(), entity.getStatus());
 	}
 
 }
