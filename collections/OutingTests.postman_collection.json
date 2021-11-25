@@ -103,6 +103,49 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Crear nueva salida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_e2\",data.id);\r",
+							"tests[\"Status code is 200\"] = responseCode.code === 201;\r",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"prueba\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/outings",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"outings"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

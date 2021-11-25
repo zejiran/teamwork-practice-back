@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import co.edu.uniandes.dse.treeking.dto.UserDTO;
 import co.edu.uniandes.dse.treeking.dto.UserDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.UserEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.services.UserService;
 
 /**
@@ -57,5 +60,19 @@ public class UserController {
 	public UserDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
 		UserEntity userEntity = userService.getUser(id);
 		return modelMapper.map(userEntity, UserDetailDTO.class);
+	}
+
+	/**
+	 * Save a new user with the URL information and returns it.
+	 *
+	 * @param userDTO {@link UserDTO} - user to be saved.
+	 * 
+	 * @return JSON {@link UserDTO} - Saved User.
+	 */
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public UserDTO create(@RequestBody UserDTO userDTO) throws IllegalOperationException, EntityNotFoundException {
+		UserEntity userEntity = userService.createUser(modelMapper.map(userDTO, UserEntity.class));
+		return modelMapper.map(userEntity, UserDTO.class);
 	}
 }

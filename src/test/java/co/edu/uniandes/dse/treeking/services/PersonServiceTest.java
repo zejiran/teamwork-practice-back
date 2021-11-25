@@ -9,6 +9,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -85,10 +87,29 @@ class PersonServiceTest {
 		PersonEntity personEntity = personList.get(0);
 		PersonEntity person = personService.getPerson(personEntity.getId());
 		assertEquals(person.getId(), personEntity.getId());
-		assertEquals(person.getName(),personEntity.getName());
-		assertEquals(person.getAddress(),personEntity.getAddress());
-		assertEquals(person.getIdNumber(),personEntity.getIdNumber());
-		assertEquals(person.getIdType(),personEntity.getIdType());
+		assertEquals(person.getName(), personEntity.getName());
+		assertEquals(person.getAddress(), personEntity.getAddress());
+		assertEquals(person.getIdNumber(), personEntity.getIdNumber());
+		assertEquals(person.getIdType(), personEntity.getIdType());
 		assertNotNull(person);
+	}
+
+	/**
+	 * Test for adding a new Person.
+	 */
+	@Test
+	void testAddPerson() throws EntityNotFoundException, IllegalOperationException {
+		PersonEntity newEntity = factory.manufacturePojo(PersonEntity.class);
+		PersonEntity result = personService.createPerson(newEntity);
+		assertNotNull(result);
+
+		PersonEntity entity = entityManager.find(PersonEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getName(), entity.getName());
+		assertEquals(newEntity.getAddress(), entity.getAddress());
+		assertEquals(newEntity.getIdNumber(), entity.getIdNumber());
+		assertEquals(newEntity.getIdType(), entity.getIdType());
+		assertNotNull(newEntity);
 	}
 }

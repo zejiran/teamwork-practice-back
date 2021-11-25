@@ -45,4 +45,16 @@ public class NaturalPersonService {
 		}
 		return naturalPerson;
 	}
+
+	/**
+	 * Creates a NaturalPerson in the database.
+	 *
+	 * @param natural person Object of NaturalPersonEntity with the new data.
+	 * @return Object of NaturalPersonEntity with the new data and it corresponding
+	 *         ID.
+	 */
+	@Transactional
+	public NaturalPersonEntity createNaturalPerson(NaturalPersonEntity naturalPerson) {
+		return naturalPersonRepository.save(naturalPerson);
+	}
 }
