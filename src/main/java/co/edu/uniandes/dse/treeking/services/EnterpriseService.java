@@ -8,12 +8,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
+import co.edu.uniandes.dse.treeking.entities.PostEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import co.edu.uniandes.dse.treeking.repositories.EnterpriseRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class EnterpriseService {
+
+	/**
+	 * Se encarga de crear un Enterprise en la base de datos.
+	 *
+	 * @param enterprise Objeto de EnterpriseEntity con los datos nuevos
+	 * @return Objeto de EnterpriseEntity con los datos nuevos y su ID.
+	 */
+	@Transactional
+	public EnterpriseEntity createEnterprise(EnterpriseEntity enterprise) {
+		log.info("Inicia proceso de creación del enterprise");
+		return enterpriseRepository.save(enterprise);
+	}
+
 	@Autowired
 	private EnterpriseRepository enterpriseRepository;
 
@@ -36,5 +52,4 @@ public class EnterpriseService {
 			throw new EntityNotFoundException(ErrorMessage.ENTERPRISE_NOT_FOUND);
 		return enterpriseEntity.get();
 	}
-
 }

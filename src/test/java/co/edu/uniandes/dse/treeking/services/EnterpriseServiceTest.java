@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
+import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -87,6 +88,27 @@ class EnterpriseServiceTest {
 		assertEquals(enterpriseEntity.getRepresentative(), resultEntity.getRepresentative());
 		assertEquals(enterpriseEntity.getTransactions(), resultEntity.getTransactions());
 		assertEquals(enterpriseEntity.getUser(), resultEntity.getUser());
+	}
+	
+	/**
+	 * Prueba para crear un Enterprise.
+	 */
+	@Test
+	void testCreateEnterprise() {
+		EnterpriseEntity newEntity = factory.manufacturePojo(EnterpriseEntity.class);
+		EnterpriseEntity result = enterpriseService.createEnterprise(newEntity);
+		assertNotNull(result);
+
+		EnterpriseEntity entity = entityManager.find(EnterpriseEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getCalendar(), entity.getCalendar());
+		assertEquals(newEntity.getMail(), entity.getMail());
+		assertEquals(newEntity.getPassword(), entity.getPassword());
+		assertEquals(newEntity.getBlog(), entity.getBlog());
+		assertEquals(newEntity.getRepresentative(), entity.getRepresentative());
+		assertEquals(newEntity.getTransactions(), entity.getTransactions());
+		assertEquals(newEntity.getUser(), entity.getUser());
 	}
 
 }
