@@ -17,7 +17,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.ComplementaryInformationEntity;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -78,6 +80,19 @@ class ComplementaryInformationServiceTest {
 		assertEquals(entity.getId(), ciEntity.getId());
 		assertEquals(entity.getDescription(), ciEntity.getDescription());
 		assertEquals(entity.getRecommendation(), ciEntity.getRecommendation());
+	}
+	
+	@Test
+	void testCreateComplementaryInformation() throws IllegalOperationException  {
+		ComplementaryInformationEntity newEntity = factory.manufacturePojo(ComplementaryInformationEntity.class);
+		ComplementaryInformationEntity result = complementaryInformationService.createComplementaryInformation(newEntity);
+		assertNotNull(result);
+
+		ComplementaryInformationEntity entity = entityManager.find(ComplementaryInformationEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getDescription(), entity.getDescription());
+
 	}
 
 }

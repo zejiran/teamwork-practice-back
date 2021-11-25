@@ -55,7 +55,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/complementaryinformations/105",
+					"raw": "http://{{ip}}:{{port}}/api/complementaryinformations/100",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -64,7 +64,50 @@
 					"path": [
 						"api",
 						"complementaryinformations",
-						"105"
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Complementary Information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);\r",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"hola\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/complementaryinformations",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"complementaryinformations"
 					]
 				}
 			},
