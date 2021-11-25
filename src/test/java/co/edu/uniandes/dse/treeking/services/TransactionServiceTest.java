@@ -16,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import co.edu.uniandes.dse.treeking.entities.PostEntity;
 import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -73,7 +74,7 @@ class TransactionServiceTest {
 			assertTrue(found);
 		}
 	}
-	
+
 	@Test
 	void testGetTransaction() throws EntityNotFoundException {
 		TransactionEntity transactionEntity = transactionList.get(0);
@@ -84,6 +85,28 @@ class TransactionServiceTest {
 		assertEquals(transactionEntity.getCreationDate(), resultEntity.getCreationDate());
 		assertEquals(transactionEntity.getPayment(), resultEntity.getPayment());
 		assertEquals(transactionEntity.getValue(), resultEntity.getValue());
+	}
+
+	/**
+	 * Prueba para crear un Transaction.
+	 */
+	@Test
+	void testCreateTransaction() {
+		TransactionEntity newEntity = factory.manufacturePojo(TransactionEntity.class);
+		TransactionEntity result = transactionService.createTransaction(newEntity);
+		assertNotNull(result);
+
+		TransactionEntity entity = entityManager.find(TransactionEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getClient(), entity.getClient());
+		assertEquals(newEntity.getCreationDate(), entity.getCreationDate());
+		assertEquals(newEntity.getPayment(), entity.getPayment());
+		assertEquals(newEntity.getValue(), entity.getValue());
+		assertEquals(newEntity.getUsername(), entity.getUsername());
+		assertEquals(newEntity.getEnterprise(), entity.getEnterprise());
+		assertEquals(newEntity.getUserID(), entity.getUserID());
+		assertEquals(newEntity.getUserType(), entity.getUserType());
 	}
 
 }

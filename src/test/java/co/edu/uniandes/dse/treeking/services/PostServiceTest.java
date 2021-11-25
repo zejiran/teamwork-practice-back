@@ -73,7 +73,7 @@ class PostServiceTest {
 			assertTrue(found);
 		}
 	}
-	
+
 	@Test
 	void testGetPost() throws EntityNotFoundException {
 		PostEntity postEntity = postList.get(0);
@@ -83,5 +83,27 @@ class PostServiceTest {
 		assertEquals(postEntity.getBlog(), resultEntity.getBlog());
 		assertEquals(postEntity.getTitle(), resultEntity.getTitle());
 		assertEquals(postEntity.getRatings(), resultEntity.getRatings());
+		assertEquals(postEntity.getComment(), resultEntity.getComment());
+		assertEquals(postEntity.getContainer(), resultEntity.getContainer());
 	}
+
+	/**
+	 * Prueba para crear un Post.
+	 */
+	@Test
+	void testCreatePost() {
+		PostEntity newEntity = factory.manufacturePojo(PostEntity.class);
+		PostEntity result = postService.createPost(newEntity);
+		assertNotNull(result);
+
+		PostEntity entity = entityManager.find(PostEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getBlog(), entity.getBlog());
+		assertEquals(newEntity.getTitle(), entity.getTitle());
+		assertEquals(newEntity.getRatings(), entity.getRatings());
+		assertEquals(newEntity.getComment(), entity.getComment());
+		assertEquals(newEntity.getContainer(), entity.getContainer());
+	}
+
 }

@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "1e90852e-fe72-495e-8d00-933e30c296a9",
+		"_postman_id": "493763c0-d6ef-4565-8dc7-62eb425e99f5",
 		"name": "Enterprise Tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -21,19 +21,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/enterprises/",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"enterprises",
-						""
-					]
-				}
+				"url": "http://{{ip}}:{{port}}/api/enterprises/"
 			},
 			"response": []
 		},
@@ -62,19 +50,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/enterprises/100",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"enterprises",
-						"100"
-					]
-				},
+				"url": "http://{{ip}}:{{port}}/api/enterprises/100",
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise de la aplicación.  \nLa petición no tiene cuerpo.\nSe envía el id del enterprise deseado por la URL de la petición.\n\n**Código http esperado: 200**"
 			},
 			"response": []
@@ -96,20 +72,40 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/enterprises/0",
-					"protocol": "http",
-					"host": [
-						"{{ip}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"enterprises",
-						"0"
-					]
-				},
+				"url": "http://{{ip}}:{{port}}/api/enterprises/0",
 				"description": "**Release: Paso-5**\n\nConsulta un enterprise que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /enterprise/0 no existe.\".\n\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Create an enterprise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);\r",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"user\": \"foo.perez\",\r\n    \"password\": \"foo123\",\r\n    \"mail\": \"pepe\"\r\n}   "
+				},
+				"url": "http://{{ip}}:{{port}}/api/enterprises"
 			},
 			"response": []
 		}
