@@ -17,8 +17,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.ItineraryEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -59,6 +61,20 @@ class ItineraryServiceTest {
 		assertEquals(itineraryEntity.getId(), entity.getId());
 		assertEquals(itineraryEntity.getLodging(), entity.getLodging());
 		assertEquals(itineraryEntity.getTransportation(), itineraryEntity.getTransportation());
+	}
+	
+	@Test
+	void testCreateItinerary() throws IllegalOperationException {
+		ItineraryEntity newEntity = factory.manufacturePojo(ItineraryEntity.class);
+		ItineraryEntity result = itineraryService.createItinerary(newEntity);
+		assertNotNull(result);
+
+		ItineraryEntity entity = entityManager.find(ItineraryEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getLodging(), entity.getLodging());
+		assertEquals(newEntity.getTransportation(), entity.getTransportation());
+
 	}
 
 	private void clearData() {

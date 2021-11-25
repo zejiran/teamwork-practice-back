@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uniandes.dse.treeking.dto.ActivityDTO;
 import co.edu.uniandes.dse.treeking.dto.EnterpriseDTO;
 import co.edu.uniandes.dse.treeking.dto.ItineraryDTO;
+import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
 import co.edu.uniandes.dse.treeking.entities.ItineraryEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.services.ItineraryService;
 
 @RestController
@@ -44,6 +48,12 @@ public class ItineraryController {
 	public ItineraryDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
 		ItineraryEntity itineraryEntity = itineraryService.getItinerary(id);
 		return modelMapper.map(itineraryEntity, ItineraryDTO.class);
-
+	}
+    
+    @PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public ItineraryDTO create(@RequestBody ItineraryDTO itineraryDTO) throws IllegalOperationException {
+		ItineraryEntity itineraryEntity = itineraryService.createItinerary(modelMapper.map(itineraryDTO, ItineraryEntity.class));
+		return modelMapper.map(itineraryEntity, ItineraryDTO.class);
 	}
 }
