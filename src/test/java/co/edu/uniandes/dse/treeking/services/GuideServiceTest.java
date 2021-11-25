@@ -17,8 +17,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.GuideEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -62,6 +64,20 @@ class GuideServiceTest {
 		assertEquals(guideEntity.getPoints(), entity.getPoints());
 		assertEquals(guideEntity.getName(), guideEntity.getName());
 		assertEquals(guideEntity.getReviews(), guideEntity.getReviews());
+	}
+	
+	@Test
+	void testCreateGuide() throws IllegalOperationException  {
+		GuideEntity newEntity = factory.manufacturePojo(GuideEntity.class);
+		GuideEntity result =guideService.createGuide(newEntity);
+		assertNotNull(result);
+
+		GuideEntity entity = entityManager.find(GuideEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getName(), entity.getName());
+		assertEquals(newEntity.getAge(), entity.getAge());
+
 	}
 	private void clearData() {
 		entityManager.getEntityManager().createQuery("delete from GuideEntity").executeUpdate();

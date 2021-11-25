@@ -16,8 +16,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -57,6 +59,20 @@ class ActivityServiceTest {
 		assertEquals(entity.getId(), activityEntity.getId());
 		assertEquals(entity.getDescription(), activityEntity.getDescription());
 		assertEquals(entity.getMinutes(), activityEntity.getMinutes());
+	}
+	
+	@Test
+	void testCreateActivity() throws IllegalOperationException   {
+		ActivityEntity newEntity = factory.manufacturePojo(ActivityEntity.class);
+		ActivityEntity result = activityService.createActivity(newEntity);
+		assertNotNull(result);
+
+		ActivityEntity entity = entityManager.find(ActivityEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getName(), entity.getName());
+		assertEquals(newEntity.getDescription(), entity.getDescription());
+
 	}
 
 	private void clearData() {
