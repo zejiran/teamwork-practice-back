@@ -11,11 +11,25 @@ import co.edu.uniandes.dse.treeking.entities.TransactionEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import co.edu.uniandes.dse.treeking.repositories.TransactionRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class TransactionService {
 	@Autowired
 	private TransactionRepository transactionRepository;
+
+	/**
+	 * Se encarga de crear un Transaction en la base de datos.
+	 *
+	 * @param transaction Objeto de TransactionEntity con los datos nuevos
+	 * @return Objeto de TransactionEntity con los datos nuevos y su ID.
+	 */
+	@Transactional
+	public TransactionEntity createTransaction(TransactionEntity transaction) {
+		log.info("Inicia proceso de creación del transaction");
+		return transactionRepository.save(transaction);
+	}
 
 	@Transactional
 	public List<TransactionEntity> getTransactions() {
