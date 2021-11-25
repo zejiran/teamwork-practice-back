@@ -2,6 +2,8 @@ package co.edu.uniandes.dse.treeking.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class CommentDTO {
     private Long id;
@@ -9,4 +11,5 @@ public class CommentDTO {
     private Integer likes;
     private Integer dislikes;
     private String username;
+    private Date date;
 }

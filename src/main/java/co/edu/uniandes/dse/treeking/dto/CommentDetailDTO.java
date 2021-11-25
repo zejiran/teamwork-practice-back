@@ -3,7 +3,6 @@ package co.edu.uniandes.dse.treeking.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Date;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
@@ -11,6 +10,5 @@ import java.util.List;
 public class CommentDetailDTO extends CommentDTO {
     private String userID;
     private String userType;
-    private Date date;
     private List<CommentDTO> replies;
 }

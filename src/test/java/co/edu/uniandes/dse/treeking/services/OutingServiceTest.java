@@ -19,6 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.OutingEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -78,5 +79,23 @@ class OutingServiceTest {
 		assertEquals(outing.getPlace(), outingEntity.getPlace());
 		assertEquals(outing.getParticipationCost(), outingEntity.getParticipationCost());
 	}
+	
+	/**
+	 * Prueba para crear un Outing
+	 */
+	@Test
+	void testCreateOuting() throws EntityNotFoundException, IllegalOperationException {
+		OutingEntity newEntity = factory.manufacturePojo(OutingEntity.class);
+		OutingEntity result = outingService.createOuting(newEntity);
+		assertNotNull(result);
+
+		OutingEntity entity = entityManager.find(OutingEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getDate(), entity.getDate());
+		assertEquals(newEntity.getPlace(), entity.getPlace());
+		assertEquals(newEntity.getParticipationCost(), entity.getParticipationCost());
+	}
+
 
 }

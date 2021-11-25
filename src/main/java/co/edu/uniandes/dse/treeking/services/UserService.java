@@ -45,4 +45,15 @@ public class UserService {
 		}
 		return user;
 	}
+	
+	/**
+	 * Creates a User in the database.
+	 *
+	 * @param user Object of UserEntity with the new data.
+	 * @return Object of UserEntity with the new data and it corresponding ID.
+	 */
+	@Transactional
+	public UserEntity createUser(UserEntity user) {
+	    return userRepository.save(user);
+	}
 }

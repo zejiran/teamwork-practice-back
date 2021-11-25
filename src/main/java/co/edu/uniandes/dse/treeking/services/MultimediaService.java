@@ -45,4 +45,15 @@ public class MultimediaService {
 		}
 		return multimedia;
 	}
+	
+	/**
+	 * Creates a Multimedia in the database.
+	 *
+	 * @param multimedia Object of MultimediaEntity with the new data.
+	 * @return Object of MultimediaEntity with the new data and it corresponding ID.
+	 */
+	@Transactional
+	public MultimediaEntity createMultimedia(MultimediaEntity multimedia) {
+	    return multimediaRepository.save(multimedia);
+	}
 }

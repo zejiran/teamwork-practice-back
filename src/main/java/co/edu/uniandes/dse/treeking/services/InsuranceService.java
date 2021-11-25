@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.treeking.entities.InsuranceEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.treeking.repositories.InsuranceRepository;
 
 @Service
@@ -43,5 +44,17 @@ public class InsuranceService {
 			throw new EntityNotFoundException(ErrorMessage.INSURANCE_NOT_FOUND);
 		}
 		return insuranceEntity.get();
+	}
+	
+	/**
+	 * Crea un insurance en la persistencia.
+	 *
+	 * @param insuranceEntity La entidad que representa la insurance a persistir.
+	 * @return La entidad de la insurance luego de persistirla.
+	 * @throws IllegalOperationException Si la insurance a persistir ya existe.
+	 */
+	@Transactional
+	public InsuranceEntity createInsurance(InsuranceEntity insuranceEntity) throws IllegalOperationException {
+		return insuranceRepository.save(insuranceEntity);
 	}
 }

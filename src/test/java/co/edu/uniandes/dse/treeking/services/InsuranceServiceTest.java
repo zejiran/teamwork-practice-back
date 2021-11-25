@@ -19,6 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.edu.uniandes.dse.treeking.entities.InsuranceEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.treeking.exceptions.IllegalOperationException;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -81,5 +82,20 @@ class InsuranceServiceTest {
 		assertEquals(insuranceEntity.getConditions(), insurance.getConditions());
 		assertEquals(insuranceEntity.getName(), insurance.getName());
 		assertEquals(insuranceEntity.getPrice(), insurance.getPrice());
+	}
+	
+	@Test
+	void testCreateInsurance() throws EntityNotFoundException, IllegalOperationException {
+		InsuranceEntity newEntity = factory.manufacturePojo(InsuranceEntity.class);
+		InsuranceEntity result = insuranceService.createInsurance(newEntity);
+		assertNotNull(result);
+
+		InsuranceEntity entity = entityManager.find(InsuranceEntity.class, result.getId());
+
+		assertEquals(newEntity.getId(), entity.getId());
+		assertEquals(newEntity.getFeatures(), entity.getFeatures());
+		assertEquals(newEntity.getConditions(), entity.getConditions());
+		assertEquals(newEntity.getName(), entity.getName());
+		assertEquals(newEntity.getPrice(), entity.getPrice());
 	}
 }
