@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e835e63d-158f-40de-b656-af4a5a919d85",
+		"_postman_id": "8a46f46a-5312-4e28-b248-3fd5a7ccf6af",
 		"name": "Review Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -110,6 +110,105 @@
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un review que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /review/0 no existe.\".\n\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "crear un comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_c\",data.id);\r",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 201;\r",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/comments",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear una review",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);\r",
+							"console.log(responseCode.code);\r",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 201;\r",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"score\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/reviews",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"reviews"
+					]
+				}
 			},
 			"response": []
 		}

@@ -1,18 +1,16 @@
 package co.edu.uniandes.dse.treeking.services;
 
-import java.util.List;
-import java.util.Optional;
-
 import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.treeking.repositories.CommentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.edu.uniandes.dse.treeking.entities.CommentEntity;
-import co.edu.uniandes.dse.treeking.repositories.CommentRepository;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Clase que implementa los servicios de la lógica de la entidad Comment.Para
@@ -45,5 +43,11 @@ public class CommentService {
 			throw new EntityNotFoundException(ErrorMessage.COMMENT_NOT_FOUND);
 		log.info("Termina proceso de consultar el comentario con id = {0}", commentId);
 		return CommentEntity.get();
+	}
+
+	@Transactional
+	public CommentEntity createComment(CommentEntity comment) {
+		log.info("Inicia proceso de creación del autor");
+		return commentRepository.save(comment);
 	}
 }

@@ -1,7 +1,9 @@
 package co.edu.uniandes.dse.treeking.controllers;
 
+import co.edu.uniandes.dse.treeking.dto.CommentDTO;
 import co.edu.uniandes.dse.treeking.dto.CommentDetailDTO;
 import co.edu.uniandes.dse.treeking.dto.CommentDTO;
+import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
@@ -38,5 +40,12 @@ public class CommentController {
     public CommentDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
         CommentEntity entity = commentService.getComment(id);
         return modelMapper.map(entity, CommentDetailDTO.class);
+    }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public CommentDTO create(@RequestBody CommentDTO commentDTO) {
+        CommentEntity commentEntity = commentService.createComment(modelMapper.map(commentDTO, CommentEntity.class));
+        return modelMapper.map(commentEntity, CommentDTO.class);
     }
 }

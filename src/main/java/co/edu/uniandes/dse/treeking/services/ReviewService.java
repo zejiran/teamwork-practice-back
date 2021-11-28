@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
+import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -39,11 +40,17 @@ public class ReviewService {
 
 	@Transactional
 	public ReviewEntity getReview(Long reviewId) throws EntityNotFoundException {
-		log.info("Inicia proceso de consultar la review con id = {0}", reviewId);
+		log.info("Inicia proceso de consultar la review con id = " + reviewId);
 		Optional<ReviewEntity> ReviewEntity = reviewRepository.findById(reviewId);
 		if (ReviewEntity.isEmpty())
 			throw new EntityNotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
-		log.info("Termina proceso de consultar la review con id = {0}", reviewId);
+		log.info("Termina proceso de consultar la review con id = " + reviewId);
 		return ReviewEntity.get();
+	}
+
+	@Transactional
+	public ReviewEntity createReview(ReviewEntity review) {
+		log.info("Inicia proceso de creación del autor");
+		return reviewRepository.save(review);
 	}
 }

@@ -1,7 +1,7 @@
 package co.edu.uniandes.dse.treeking.controllers;
-import co.edu.uniandes.dse.treeking.dto.ReviewDetailDTO;
+
 import co.edu.uniandes.dse.treeking.dto.ReviewDTO;
-import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
+import co.edu.uniandes.dse.treeking.dto.ReviewDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.ReviewEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.ReviewService;
@@ -37,5 +37,12 @@ public class ReviewController {
     public ReviewDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
         ReviewEntity entity = reviewService.getReview(id);
         return modelMapper.map(entity, ReviewDetailDTO.class);
+    }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ReviewDTO create(@RequestBody ReviewDTO reviewDTO) {
+        ReviewEntity reviewEntity = reviewService.createReview(modelMapper.map(reviewDTO, ReviewEntity.class));
+        return modelMapper.map(reviewEntity, ReviewDTO.class);
     }
 }

@@ -9,5 +9,4 @@ public class ReviewDTO {
 	private CommentDTO comment;
 	private Integer score;
 	private RouteDTO route;
-
 }

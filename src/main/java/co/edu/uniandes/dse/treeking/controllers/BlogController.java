@@ -1,6 +1,8 @@
 package co.edu.uniandes.dse.treeking.controllers;
+import co.edu.uniandes.dse.treeking.dto.BlogDTO;
 import co.edu.uniandes.dse.treeking.dto.BlogDetailDTO;
 import co.edu.uniandes.dse.treeking.dto.BlogDTO;
+import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
@@ -38,4 +40,11 @@ public class BlogController {
         BlogEntity entity = blogService.getBlog(id);
         return modelMapper.map(entity, BlogDetailDTO.class);
     }
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public BlogDTO create(@RequestBody BlogDTO blogDTO) {
+        BlogEntity blogEntity = blogService.createBlog(modelMapper.map(blogDTO, BlogEntity.class));
+        return modelMapper.map(blogEntity, BlogDTO.class);
+    }
+
 }

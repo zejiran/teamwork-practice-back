@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "a37f9232-6bb4-4a1d-83e2-ac99ac397b25",
+		"_postman_id": "dbaefa78-9eea-4afd-9d54-c8665256e0ec",
 		"name": "Comment Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "Obtener todos los comments",
 			"event": [
 				{
 					"listen": "test",
@@ -110,6 +110,49 @@
 					]
 				},
 				"description": "**Release: Paso-5**\n\nConsulta un comment que no existe en la aplicación.  \n\nPara la prueba se verifica que se genera el error y el mensaje \"El recurso /comment/0 no existe.\".\n\n**Código http esperado: 404**"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);\r",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 201;\r",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"text\": \"textooo\",\r\n\"likes\": 1,\r\n\"dislikes\": 1,\r\n\"username\": \"prime\",\r\n\"date\": \"2002-04-03\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/admins",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"admins"
+					]
+				}
 			},
 			"response": []
 		}

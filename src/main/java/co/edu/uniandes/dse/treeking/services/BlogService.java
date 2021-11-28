@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import co.edu.uniandes.dse.treeking.entities.BlogEntity;
+import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -40,11 +41,17 @@ public class BlogService {
 
 	@Transactional
 	public BlogEntity getBlog(Long blogId) throws EntityNotFoundException {
-		log.info("Inicia proceso de consultar el blog con id = {0}", blogId);
+		log.info("Inicia proceso de consultar el blog con id = " + blogId);
 		Optional<BlogEntity> BlogEntity = blogRepository.findById(blogId);
 		if (BlogEntity.isEmpty())
 			throw new EntityNotFoundException(ErrorMessage.BLOG_NOT_FOUND);
-		log.info("Termina proceso de consultar el blog con id = {0}", blogId);
+		log.info("Termina proceso de consultar el blog con id = " + blogId);
 		return BlogEntity.get();
+	}
+
+	@Transactional
+	public BlogEntity createBlog(BlogEntity blog) {
+		log.info("Inicia proceso de creación del autor");
+		return blogRepository.save(blog);
 	}
 }
