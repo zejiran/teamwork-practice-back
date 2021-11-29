@@ -44,9 +44,9 @@ public class AdminController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public AdminDTO create(@RequestBody AdminDTO adminDTO) {
+    public AdminDetailDTO create(@RequestBody AdminDetailDTO adminDTO) {
         AdminEntity adminEntity = adminService.createAdmin(modelMapper.map(adminDTO, AdminEntity.class));
-        return modelMapper.map(adminEntity, AdminDTO.class);
+        return modelMapper.map(adminEntity, AdminDetailDTO.class);
     }
 
 
