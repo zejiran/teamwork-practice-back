@@ -13,7 +13,9 @@ import java.util.List;
 @Getter
 @Setter
 public class BlogEntity extends BaseEntity {
-
+	private String username;
+	private Long userId;
+	private String userType;
 	@OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostEntity> posts;
 }

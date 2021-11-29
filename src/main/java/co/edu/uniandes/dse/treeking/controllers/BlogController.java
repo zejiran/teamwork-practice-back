@@ -42,9 +42,9 @@ public class BlogController {
     }
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public BlogDTO create(@RequestBody BlogDTO blogDTO) {
+    public BlogDetailDTO create(@RequestBody BlogDetailDTO blogDTO) {
         BlogEntity blogEntity = blogService.createBlog(modelMapper.map(blogDTO, BlogEntity.class));
-        return modelMapper.map(blogEntity, BlogDTO.class);
+        return modelMapper.map(blogEntity, BlogDetailDTO.class);
     }
 
 }

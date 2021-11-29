@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class BlogDTO {
 	private Long id;
+	private String username;
 }
