@@ -55,7 +55,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/api/users/101",
+					"raw": "http://{{ip}}:{{port}}/api/users/100",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -64,7 +64,7 @@
 					"path": [
 						"api",
 						"users",
-						"32"
+						"100"
 					]
 				}
 			},
