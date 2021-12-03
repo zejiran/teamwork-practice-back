@@ -1,20 +1,13 @@
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (100, 'peperez@gmail.com', 'asdfTER12', 'peperez.hola');
-
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (101, 'carlos@gmail.com', 'aatsattsa2', 'carlo.mag');
-
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (102, 'star@gmail.com', 'aststa', 'star.hola');
-
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (103, 'rodrigo@gmail.com', 'tartarstarst', 'rodrigo.c');
-
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (104, 'luca@gmail.com', 'nioneionio', 'luca.rio');
-
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (105, 'no@gmail.com', 'aatsattsa2', 'no.no.no');
-
-INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (106, 'lucy@gmail.com', 'aststa', 'lucy.war');
-
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (106, 'lucy@gmail.com', 'aststa', 'lucy.warrio');
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (107, 'jose@gmail.com', 'tartarstarst', 'jose.j.j');
-.
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (108, 'elmaster@gmail.com', 'nioneionio', 'master3000');
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (109, 'prt@gmail.com', 'ddd', 'prt.777');
 
 INSERT INTO CLIENT_ENTITY (ID) VALUES (100);
 
@@ -41,8 +34,6 @@ INSERT INTO BLOG_ENTITY(ID) VALUES (2);
 INSERT INTO POST_ENTITY(ID, RATINGS, BLOG_ID) VALUES (5,  9, 2);
 
 INSERT INTO ENTERPRISE_ENTITY(ID, MAIL, USER, BLOG_ID, REPRESENTATIVE_ID) VALUES (10, 'pepe', 'pepe123', 2, 100);
-
-INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER, BLOG_ID) VALUES (32, 'prt@gmail.com', 'ddd', 'prt.777', 2);
 
 INSERT INTO ADMIN_ENTITY(ID,USER,PASSWORD,MAIL) VALUES (32, 'pepe','33', 'prt@gmail.com');
 
