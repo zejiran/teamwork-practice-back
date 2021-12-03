@@ -123,7 +123,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fileName\": \"gatos.mp4\"\r\n}",
+					"raw": "{\r\n    \"fileName\": \"gatos.mp4\"\r\n, \"mediaType\": \"VIDEO\", \"extension\": \"mp4\" }",
 					"options": {
 						"raw": {
 							"language": "json"
