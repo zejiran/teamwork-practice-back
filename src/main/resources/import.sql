@@ -1,5 +1,21 @@
 INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (100, 'peperez@gmail.com', 'asdfTER12', 'peperez.hola');
 
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (101, 'carlos@gmail.com', 'aatsattsa2', 'carlo.mag');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (102, 'star@gmail.com', 'aststa', 'star.hola');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (103, 'rodrigo@gmail.com', 'tartarstarst', 'rodrigo.c');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (104, 'luca@gmail.com', 'nioneionio', 'luca.rio');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (105, 'no@gmail.com', 'aatsattsa2', 'no.no.no');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (106, 'lucy@gmail.com', 'aststa', 'lucy.war');
+
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (107, 'jose@gmail.com', 'tartarstarst', 'jose.j.j');
+.
+INSERT INTO USER_ENTITY(ID, MAIL, PASSWORD, USER) VALUES (108, 'elmaster@gmail.com', 'nioneionio', 'master3000');
+
 INSERT INTO CLIENT_ENTITY (ID) VALUES (100);
 
 INSERT INTO ITINERARY_ENTITY(ID, LODGING, TRANSPORTATION) VALUES (100, 'Equipaje, estadia con desayuno', 'Viaje por autobus');
