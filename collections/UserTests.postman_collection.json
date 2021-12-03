@@ -123,7 +123,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"username\"\r\n}",
+					"raw": "{\r\n    \"user\": \"username\"\r\n, \"password\": \"pass\"\r\n, \"mail\": \"email@email.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
