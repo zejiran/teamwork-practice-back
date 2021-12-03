@@ -2,6 +2,8 @@ package co.edu.uniandes.dse.treeking.controllers;
 
 import co.edu.uniandes.dse.treeking.dto.LocationDTO;
 import co.edu.uniandes.dse.treeking.dto.LocationDetailDTO;
+import co.edu.uniandes.dse.treeking.dto.LocationDTO;
+import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.LocationService;
@@ -36,5 +38,12 @@ public class LocationController {
 	public LocationDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
 		LocationEntity location = locationService.getLocationById(id);
 		return modelMapper.map(location, LocationDetailDTO.class);
+	}
+
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public LocationDTO create(@RequestBody LocationDTO locationDTO) {
+		LocationEntity locationEntity = locationService.createLocation(modelMapper.map(locationDTO, LocationEntity.class));
+		return modelMapper.map(locationEntity, LocationDTO.class);
 	}
 }
