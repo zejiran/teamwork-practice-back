@@ -9,5 +9,4 @@ public class RouteDTO {
 	private String routeName;
 	private Difficulty difficulty;
 	private Float estimatedDuration;
-	private OutingDTO outing;
 }
