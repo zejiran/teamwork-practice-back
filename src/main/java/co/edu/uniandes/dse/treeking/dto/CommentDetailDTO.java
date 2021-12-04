@@ -11,4 +11,5 @@ public class CommentDetailDTO extends CommentDTO {
     private String userID;
     private String userType;
     private List<CommentDTO> replies;
+    private CommentDTO comment;
 }

@@ -2,9 +2,6 @@ package co.edu.uniandes.dse.treeking.controllers;
 
 import co.edu.uniandes.dse.treeking.dto.CommentDTO;
 import co.edu.uniandes.dse.treeking.dto.CommentDetailDTO;
-import co.edu.uniandes.dse.treeking.dto.CommentDTO;
-import co.edu.uniandes.dse.treeking.entities.CommentEntity;
-import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.entities.CommentEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.CommentService;
@@ -42,10 +39,16 @@ public class CommentController {
         return modelMapper.map(entity, CommentDetailDTO.class);
     }
 
+    @PostMapping("/{id}/replies")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public CommentDetailDTO addReply(@PathVariable("id") Long fatherId, @RequestBody CommentDetailDTO commentDTO) throws EntityNotFoundException {
+        CommentEntity commentEntity = commentService.create(fatherId , modelMapper.map(commentDTO, CommentEntity.class));
+        return modelMapper.map(commentEntity, CommentDetailDTO.class);
+    }
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public CommentDTO create(@RequestBody CommentDTO commentDTO) {
-        CommentEntity commentEntity = commentService.createComment(modelMapper.map(commentDTO, CommentEntity.class));
-        return modelMapper.map(commentEntity, CommentDTO.class);
+    public CommentDetailDTO create(@RequestBody CommentDetailDTO comment){
+        CommentEntity commentEntity = commentService.create(modelMapper.map(comment, CommentEntity.class));
+        return modelMapper.map(commentEntity, CommentDetailDTO.class);
     }
 }
