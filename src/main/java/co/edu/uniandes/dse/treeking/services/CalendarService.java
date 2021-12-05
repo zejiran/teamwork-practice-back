@@ -3,9 +3,11 @@ package co.edu.uniandes.dse.treeking.services;
 import java.util.List;
 import java.util.Optional;
 
+import co.edu.uniandes.dse.treeking.entities.LocationEntity;
 import co.edu.uniandes.dse.treeking.entities.RouteEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.exceptions.ErrorMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.uniandes.dse.treeking.entities.CalendarEntity;
 import co.edu.uniandes.dse.treeking.repositories.CalendarRepository;
 
+@Slf4j
 @Service
 public class CalendarService {
 
@@ -34,4 +37,12 @@ public class CalendarService {
 		}
 		return calendarEntity.get();
 	}
+
+	@Transactional
+	public CalendarEntity createCalendar(CalendarEntity calendar) {
+		log.info("Inicia proceso de creación del calendar");
+		return calendarRepository.save(calendar);
+	}
+
+
 }

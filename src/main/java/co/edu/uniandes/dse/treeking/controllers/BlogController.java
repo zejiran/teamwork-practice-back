@@ -1,9 +1,6 @@
 package co.edu.uniandes.dse.treeking.controllers;
-import co.edu.uniandes.dse.treeking.dto.BlogDTO;
+
 import co.edu.uniandes.dse.treeking.dto.BlogDetailDTO;
-import co.edu.uniandes.dse.treeking.dto.BlogDTO;
-import co.edu.uniandes.dse.treeking.entities.BlogEntity;
-import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.entities.BlogEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.BlogService;

@@ -32,6 +32,7 @@ public class CommentEntity extends BaseEntity{
     private List<CommentEntity> replies;
 
     @PodamExclude
-    @ManyToOne
+    @JoinColumn
+    @ManyToOne(cascade = CascadeType.ALL)
     private CommentEntity comment;
 }

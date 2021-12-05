@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class RouteDTO {
+	private Long id;
 	private String routeName;
 	private Difficulty difficulty;
 	private Float estimatedDuration;
-	private OutingDTO outing;
 }

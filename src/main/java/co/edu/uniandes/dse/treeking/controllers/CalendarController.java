@@ -2,6 +2,8 @@ package co.edu.uniandes.dse.treeking.controllers;
 
 import co.edu.uniandes.dse.treeking.dto.CalendarDTO;
 import co.edu.uniandes.dse.treeking.dto.CalendarDetailDTO;
+import co.edu.uniandes.dse.treeking.dto.CalendarDTO;
+import co.edu.uniandes.dse.treeking.entities.CalendarEntity;
 import co.edu.uniandes.dse.treeking.entities.CalendarEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.CalendarService;
@@ -36,5 +38,13 @@ public class CalendarController {
 	public CalendarDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
 		CalendarEntity calendar = calendarService.getCalendarById(id);
 		return modelMapper.map(calendar, CalendarDetailDTO.class);
+	}
+
+
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public CalendarDTO create(@RequestBody CalendarDTO calendarDTO) {
+		CalendarEntity calendarEntity = calendarService.createCalendar(modelMapper.map(calendarDTO, CalendarEntity.class));
+		return modelMapper.map(calendarEntity, CalendarDTO.class);
 	}
 }

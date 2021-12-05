@@ -37,17 +37,26 @@ public class CommentService {
 
 	@Transactional
 	public CommentEntity getComment(Long commentId) throws EntityNotFoundException {
-		log.info("Inicia proceso de consultar el comentario con id = {0}", commentId);
+		log.info("Inicia proceso de consultar el comentario con id = " +commentId);
 		Optional<CommentEntity> CommentEntity = commentRepository.findById(commentId);
 		if (CommentEntity.isEmpty())
 			throw new EntityNotFoundException(ErrorMessage.COMMENT_NOT_FOUND);
-		log.info("Termina proceso de consultar el comentario con id = {0}", commentId);
+		log.info("Termina proceso de consultar el comentario con id = " +commentId);
 		return CommentEntity.get();
 	}
 
 	@Transactional
-	public CommentEntity createComment(CommentEntity comment) {
-		log.info("Inicia proceso de creación del autor");
+	public CommentEntity create(Long idFather, CommentEntity comment) throws EntityNotFoundException {
+		log.info("Inicia proceso de creación del comentario");
+		CommentEntity commentFather;
+		commentFather = getComment(idFather);
+		comment.setComment(commentFather);
+		return commentRepository.save(comment);
+	}
+	@Transactional
+	public CommentEntity create(CommentEntity comment) {
+		log.info("Inicia proceso de creación del comentario");
+		comment.setComment(null);
 		return commentRepository.save(comment);
 	}
 }

@@ -7,6 +7,4 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class MultimediaDetailDTO extends MultimediaDTO {
-	private FileType mediaType;
-	private String extension;
 }

@@ -1,7 +1,9 @@
 package co.edu.uniandes.dse.treeking.controllers;
 
 import co.edu.uniandes.dse.treeking.dto.RouteDTO;
+import co.edu.uniandes.dse.treeking.dto.RouteDTO;
 import co.edu.uniandes.dse.treeking.dto.RouteDetailDTO;
+import co.edu.uniandes.dse.treeking.entities.RouteEntity;
 import co.edu.uniandes.dse.treeking.entities.RouteEntity;
 import co.edu.uniandes.dse.treeking.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.treeking.services.RouteService;
@@ -37,5 +39,12 @@ public class RouteController {
 	public RouteDetailDTO findOneById(@PathVariable("id") Long id) throws EntityNotFoundException {
 		RouteEntity route = routeService.getRouteById(id);
 		return modelMapper.map(route, RouteDetailDTO.class);
+	}
+
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public RouteDTO create(@RequestBody RouteDTO routeDTO) {
+		RouteEntity routeEntity = routeService.createRoute(modelMapper.map(routeDTO, RouteEntity.class));
+		return modelMapper.map(routeEntity, RouteDTO.class);
 	}
 }
