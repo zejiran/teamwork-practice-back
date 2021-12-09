@@ -26,9 +26,9 @@ public class ReviewController {
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public List<ReviewDTO> findAll() {
+    public List<ReviewDetailDTO> findAll() {
         List<ReviewEntity> reviews = reviewService.getReviews();
-        return modelMapper.map(reviews, new TypeToken<List<ReviewDTO>>() {
+        return modelMapper.map(reviews, new TypeToken<List<ReviewDetailDTO>>() {
         }.getType());
     }
 
