@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uniandes.dse.treeking.dto.ActivityDTO;
 import co.edu.uniandes.dse.treeking.dto.EnterpriseDTO;
 import co.edu.uniandes.dse.treeking.dto.GuideDTO;
+import co.edu.uniandes.dse.treeking.dto.GuideDetailDTO;
 import co.edu.uniandes.dse.treeking.entities.ActivityEntity;
 import co.edu.uniandes.dse.treeking.entities.EnterpriseEntity;
 import co.edu.uniandes.dse.treeking.entities.GuideEntity;
@@ -36,17 +37,17 @@ public class GuideController {
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<GuideDTO> findAll() {
+	public List<GuideDetailDTO> findAll() {
 		List<GuideEntity> guides = guideService.getGuides();
-		return modelMapper.map(guides, new TypeToken<List<GuideDTO>>() {
+		return modelMapper.map(guides, new TypeToken<List<GuideDetailDTO>>() {
 		}.getType());
 	}
 	
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public GuideDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public GuideDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
 		GuideEntity guideEntity = guideService.getGuide(id);
-		return modelMapper.map(guideEntity, GuideDTO.class);
+		return modelMapper.map(guideEntity, GuideDetailDTO.class);
 	}
 	
 	@PostMapping
